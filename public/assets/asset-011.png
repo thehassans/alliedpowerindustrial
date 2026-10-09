@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PetroArab - Leading Petrochemical Companies in Saudi Arabia</title>
+  <meta name="description"
+    content="PetroArab is one of the leading petrochemical companies in Saudi Arabia, specializing in Maintenance, Repair, and Operating parts across various industrial segments. We offer customized procurement models and a wide range of equipment, spare parts, and consumables from local and global sources.">
+  <meta name="keywords"
+    content="PetroArab, Petrochemical companies in Saudi Arabia, Maintenance and Repair parts, Industrial procurement">
+  <meta name="copyright" content="Copyright &copy; 2023 Petroarab All Rights Reserved">
+  <meta name="author" content="Petroarab">
+  <meta name="zipcode" content="35814">
+  <meta name="city" content="Al Jubail ">
+  <meta name="country" content="Kingdom of Saudi Arabia">
+  <meta name="robots" content="index, follow">
+  <link rel="shortcut icon" href="favicon.ico" />
+  <meta name="google-site-verification" content="ZUTJl-qN7mFztZ-cEDET28DgJGKeyMexpaxTiwNYLIY" />
+  <meta property="og:image" content="https://www.petroarab.co/og.png" />
+  <link rel="canonical" href="https://www.petroarab.co/">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PetroArab",
+      "url": "https://www.petroarab.co",
+      "logo": "https://www.petroarab.co/img/logo.png",
+      "description": "PetroArab is a leading petrochemical company in Saudi Arabia, specializing in Maintenance, Repair, and Operating parts for various industrial segments.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1st Floor Al Dana Street Fanateer",
+        "addressLocality": "Al Jubail",
+        "addressCountry": "Saudi Arabia",
+        "postalCode": "35814"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "Customer Service",
+        "telephone": "+00966 53 5040728",
+        "email": "info@petroarab.co"
+      }
+    }
+  </script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EXH8QJZ14"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0EXH8QJZ14');
+  </script>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/petroarab.css" rel="stylesheet" type="text/css"/>
+<!--Main Menu File-->
+<link id="effect" rel="stylesheet" type="text/css" media="all" href="css/dropdown-effects/fade-down.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/menu.css" />
+<link rel="stylesheet" type="text/css" media="all" href="css/menu-demo.css" />
+<link id="theme" rel="stylesheet" type="text/css" media="all" href="css/color-skins/white-red.css" />
+
+<link href="css/magnific/magnific-popup.css" rel="stylesheet" type="text/css"/>
+<!-- Bootstrap Font Icon CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+<!-- Owl Stylesheets -->
+<link href="css/owl.carousel.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/owl.theme.default.min.css" rel="stylesheet" type="text/css"/>
+<link href="css/responsive-tabs.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/easy-responsive-tabs.css" />
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> -->
+
+<link rel="stylesheet" type="text/css" href="bootstrap-icons-1.10.4/font/bootstrap-icons.css" />
+</head>
+
+<body>
+  <div class="site-container">
+    <header class="top-menu">
+  <!-- Mobile Header -->
+  <div class="wsmobileheader clearfix ">
+    <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
+    <span class="smllogo">
+      <a href="index.php">
+        <img src="img/petroarab-international-logo.svg" alt="Petroarab" />
+      </a>
+    </span>
+    <a href="tel:8244255578" class="callusbtn"><i class="fas fa-phone-alt" aria-hidden="true"></i></a>
+    <!-- <a href="#search" class="callusbtn"> <i class="fas fa-search" aria-hidden="true"></i></a> -->
+  </div>
+  <!-- Mobile Header -->
+
+  <div class="wsmainfull clearfix">
+    <div class="wsmainwp clearfix">
+      <div class="desktoplogo">
+        <a href="index.php">
+          <div class="content">
+            <img src="img/petroarab-international-logo.svg" alt="Petroarab">
+          </div>
+        </a>
+      </div>
+
+
+
+
+      <!--Main Menu HTML Code-->
+      <nav class="wsmenu clearfix">
+        <ul class="wsmenu-list main-menu">
+          <li><a href="index.php"><i class="bi bi-house"></i></a></li>
+          <li><a href="about-us.php">About Us</a></li>
+          <li><a href="#">Activities <span class="wsarrow"></span></a>
+            <ul class="sub-menu">
+              <li><a href="international-procurement.php"><i class="bi bi-chevron-right"></i> International Procurement</a></li>
+              <li><a href="local-procurement.php"><i class="bi bi-chevron-right"></i> Local Procurement</a></li>
+              <li><a href="vendor-managed-inventory.php"><i class="bi bi-chevron-right"></i> VMI (Vendor Managed Inventory)</a></li>
+              <li><a href="partnership.php"><i class="bi bi-chevron-right"></i> Partnership</a></li>
+              <li><a href="logistics.php"><i class="bi bi-chevron-right"></i> Logistics</a></li>
+              <li><a href="showroom.php"><i class="bi bi-chevron-right"></i> Showroom</a></li>
+              <li><a href="lump-sum-turnkey.php"><i class="bi bi-chevron-right"></i> LSTK</a></li>
+              <li><a href="project-sales.php"><i class="bi bi-chevron-right"></i> Project Sales</a></li>
+            </ul>
+          </li>
+          <li><a href="products.php">Products</a></li>
+          <li><a href="sectors.php">Sectors</a></li>
+          <!-- <li><a href="#">Sectors <span class="wsarrow"></span></a>
+            <ul class="sub-menu">
+              <li><a href="oil-and-gas.php"><i class="bi bi-chevron-right"></i> Oil and Gas</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Petrochemical</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Mining</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Power</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Water </a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Cement</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Marine</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Food and Beverage </a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> EPC</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Manufacturing</a></li>
+              <li><a href="#"><i class="bi bi-chevron-right"></i> Metal</a></li>
+            </ul>
+          </li> -->
+          <li><a href="img/manufacturers.pdf" target="_blank">Manufacturers</a></li>
+          <li><a href="#">Quick Links <span class="wsarrow"></span></a>
+            <ul class="sub-menu">
+              <li><a href="spare-parts-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Spare Parts</a></li>
+              <li><a href="industrial-tool-suppliers-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Industrial Tool Suppliers</a></li>
+              <li><a href="supply-chain-and-logictics-service-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Supply chain & logictics service</a></li>
+              <li><a href="equipment-suppliers-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Equipment Suppliers</a></li>
+              <li><a href="Lump-sum-turnkey-services-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Lump sum turnkey services</a></li>
+              <li><a href="MRO-procurement-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>MRO Procurement</a></li>
+              <li><a href="electrical-items-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Electrical items</a></li>
+              <li><a href="instrumentation-pumps-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Instrumentation & Pumps</a></li>
+              <li><a href="air-compressors-and-dryers-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Air Compressors and Dryers </a></li>
+              <li><a href="cables-and-accessories-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Cables & Accessories</a></li>
+              <li><a href="mechanical-parts-conveyor-systems-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Mechanical Parts Conveyors Systems</a></li>
+              <li><a href="drives-and-transmission-spares-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Drives & Transmission Spares</a></li>
+              <li><a href="test-and-measuring-equipment-in-saudi-arabia.php"><i class="bi bi-chevron-right"></i>Test and measuring equipments</a></li>
+
+            </ul>
+          </li>
+          <li><a href="contact-petroarab.php">Contact Us</a></li>
+        </ul>
+      </nav>
+      <!--Menu HTML Code-->
+    </div>
+  </div>
+</header>
+
+<!--Main Xetra Menu-->
+<ul class="top-xtra-menu">
+  <!-- <li class="top-register-btn">
+    <a href="#"><i class="far fa-edit"></i> Register</a>
+  </li>
+  <li class="top-login-btn">
+    <a href="#"><i class="fas fa-sign-in-alt"></i> Login</a>
+  </li> -->
+  <li class="top-bell-btn">
+    <a href="https://g.co/kgs/F9oo2d" target="_blank"><i class="bi bi-geo-alt"></i> Location map</a>
+  </li>
+  <li class="top-bell-btn">
+    <a href="tel:009660133475671"><i class="bi bi-telephone-plus"></i> 00966-013-3475671</a>
+  </li>
+  <li class="top-appStatus-btn hidden-xs">
+    <a href="mailto:info@petroarab.com"><i class="bi bi-send"></i> info@petroarab.co</a>
+  </li>
+</ul>
+
+<a href="#" class="back-to-top"><i class="bi bi-arrow-up"></i></a>    <section class="slider">
+      <div id="myCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <!-- <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">.01</button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2">.02</button>
+    </div> -->
+        <div class="carousel-inner">
+          <div class="carousel-item active slide1" data-bs-interval="10000">
+            <a href="#">
+              <img src="img/slider/1.jpg" class="d-block w-100" alt="Petrochemical companies in Saudi Arabia"
+                title="Petrochemical companies in Saudi Arabia" />
+            </a>
+          </div>
+          <div class="carousel-item slide2" data-bs-interval="10000">
+            <a href="#">
+              <img src="img/slider/2.jpg" class="d-block w-100" alt="Petrochemical companies in Saudi Arabia"
+                title="Petrochemical companies in Saudi Arabia" />
+            </a>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </section>
+    <section class="home-welcome-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 text-center home-welcome-image-bg">
+            <img src="img/home-welcome-frame.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="col-md-7 my-auto">
+            <h1>PetroArab - Top Petrochemical Company in Saudi Arabia</h1>
+            <p>PetroArab is a leading supplier of Maintenance, Repair and Operating parts to Various
+              industrial Segments offering customized procurement models suitable to customer
+              need and covers wide range of equipment's , spare parts and consumables from local
+              to global sources from different makes and origins . We also cater to engineering
+              needs of all industries we focused from design , engineering , erection and
+              commissioning up to LSTK.</p>
+            <a href="about-us.php" class="btn-view-blue">View more <i class="bi bi-arrow-right-circle-fill"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-fact-bg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-11 offset-md-1 home-fact-bg-color">
+            <div class="row">
+              <div class="col-md-3 col-6">
+                <div class="home-fact-box">
+                  <img src="img/home-fact-icon-1.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h3>100 million</h3>
+                  <p>Procurement Budget<br />Every Year</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="home-fact-box">
+                  <img src="img/home-fact-icon-2.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h3>1000</h3>
+                  <p>Suppliers We Manage<br />Globally and locally</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="home-fact-box">
+                  <img src="img/home-fact-icon-3.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h3>25+</h3>
+                  <p>Global<br />Representation</p>
+                </div>
+              </div>
+              <div class="col-md-3 col-6">
+                <div class="home-fact-box">
+                  <img src="img/home-fact-icon-4.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h3><span>Up to</span> 25% Savings</h3>
+                  <p>Procurement<br />Models</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-offering-bg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-4 mt-auto">
+            <div class="home-offering-map-bg">
+              <div class="map-circle-dot"></div>
+              <div class="map-circle" style="animation-delay: 0s"></div>
+              <div class="map-circle" style="animation-delay: 1s"></div>
+              <div class="map-circle" style="animation-delay: 2s"></div>
+              <div class="map-circle" style="animation-delay: 3s"></div>
+              <img src="img/home-offering-map.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                title="Petrochemical Company in Saudi Arabia" />
+            </div>
+          </div>
+          <div class="col-md-8 home-offering-content-bg">
+            <div class="col-md-6">
+              <h2>Our Offerings</h2>
+              <p>PetroArab with its years of experience in sourcing and procurement realize that one model does fit all
+                and hence have developed various procurement model to fit the customer need as various factors influence
+                the process.<br />
+                <b>Let’s Discuss your procurement needs.</b>
+              </p>
+            </div>
+
+            <div class="owl-carousel owl-theme home-offering-owl" id="home-offering-owl">
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-1.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Global Sourcing and Procurement</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-2.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Local Sourcing and Procurement</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-3.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Project Sourcing and Procurement</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-4.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Blanket Agreements</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-5.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Street Buying Contracts</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-6.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Vendor Managed Inventory</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-7.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Logistics and Supply Chain</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-8.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>OEM Representation</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+              <div class="item home-offering-owl-box">
+                <a href="contact-petroarab.php">
+                  <img src="img/home-offering-icon-9.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                    title="Petrochemical Company in Saudi Arabia" />
+                  <h2>Data Management and Cataloging</h2>
+                  <h4>Know More</h4>
+                  <span></span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-benefits-bg">
+      <div class="container">
+        <h2>Benefits of Partnering with a Leading Petrochemical Company in Saudi Arabia - PetroArab</h2>
+        <div class="row">
+          <div class="col-md-4">
+            <div class="home-benefits-box">
+              <img src="img/home-benefits-icon-1.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                title="Petrochemical Company in Saudi Arabia" />
+              <h3>In-Time Quotations</h3>
+              <p>PetroArab, a leading petrochemical company in Saudi Arabia, ensures timely quotations to meet customer
+                deadlines and KPIs. Our dedicated SRM and Expediting team maintains effective communication with
+                suppliers to achieve customer objectives.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="home-benefits-box">
+              <img src="img/home-benefits-icon-2.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                title="Petrochemical Company in Saudi Arabia" />
+              <h3>Competitive Pricing</h3>
+              <p>With our extensive experience, PetroArab offers competitive pricing for equipment and parts sourced
+                from various international OEMs. As a top petrochemical company in Saudi Arabia, we often provide better
+                pricing than sourcing directly from manufacturers.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="home-benefits-box">
+              <img src="img/home-benefits-icon-3.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                title="Petrochemical Company in Saudi Arabia" />
+              <h3>Optimized Lead Times and Cost</h3>
+              <p>Our experienced logistics and supply chain team ensures optimized lead times and cost-efficiency. As a
+                prominent petrochemical company in Saudi Arabia, we use the correct shipping methods and consolidate POs
+                to manage long-term agreements effectively.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="home-benefits-box">
+              <img src="img/Inheuse-Quality.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                title="Petrochemical Company in Saudi Arabia" />
+              <h3>Inhouse Quality
+                Assurance</h3>
+              <p>PetroArab’s inhouse Quality Assurance team ensures all materials and processes meet strict quality
+                standards. We conduct regular inspections and collaborate closely with suppliers to deliver reliable,
+                compliant results.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="home-benefits-box">
+              <img src="img/Payment-Terms.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                title="Petrochemical Company in Saudi Arabia" />
+              <h3>Payment Terms</h3>
+              <p>PetroArab offers clear and flexible payment terms to support smooth transactions with our clients and
+                suppliers. We ensure timely processing and transparency to maintain strong business relationships.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="home-benefits-box">
+              <img src="img/Localization-(Made-in-Saudi-Arabia).png" class="img-fluid"
+                alt="Petrochemical Company in Saudi Arabia" title="Petrochemical Company in Saudi Arabia" />
+              <h3>Localization
+                (Made in Saudi Arabia)</h3>
+              <p>PetroArab supports the Kingdom’s Vision 2030 by prioritizing local content and sourcing. We actively
+                collaborate with certified Saudi manufacturers to boost national industry and ensure high-quality,
+                locally made solutions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-better-bg">
+      <div class="container">
+        <h2>Working better together<br /> For a Great Future-Localization</h2>
+        <!-- <a href="contact-petroarab.php" class="btn-one-full">Enquire Now</a> -->
+        <a href="contact-petroarab.php" class="btn-one-full">Contact the Leading Petrochemical Company in Saudi
+          Arabia</a>
+
+      </div>
+    </section>
+    <section class="home-clients-bg">
+      <div class="container">
+        <div class="owl-carousel owl-theme home-clients-owl" id="home-clients-owl">
+          <div class="item home-clients-owl-box">
+            <img src="img/clients/1.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="item home-clients-owl-box">
+            <img src="img/clients/2.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="item home-clients-owl-box">
+            <img src="img/clients/3.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="item home-clients-owl-box">
+            <img src="img/clients/4.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="item home-clients-owl-box">
+            <img src="img/clients/5.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="item home-clients-owl-box">
+            <img src="img/clients/6.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-partner-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 mt-auto">
+            <img src="img/home-partner-bg.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+          <div class="col-md-5 home-partner-content-bg">
+            <img src="img/home-partner-logo.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+            <h2>A place where we both<br />can develop & become a partner</h2>
+            <p>PetroArab have a business model where we sign an NDA/MOU with and OEM and offer all sales and business
+              development activities and guaranteed functions in shortest possible time with almost at NO COST. In this
+              model we allocate a products engineer which will deliver all assigned task as needed by OEM and we
+              mutually develop a sales and business development plan and derive a roadmap to achieve common goal.</p>
+            <p class="m-0">Our activity doesn’t end at only supplies with our inhouse service teams we are able to offer
+              our partner a seamless end to end representation solution which involves from PetroArab is successfully
+              managing many such representation and helped global manufacturers get into Industrial customer in no time.
+              We have dedicated team of engineers with all disciplines to support global OEMs to help market and develop
+              and if needed we also hire new specialist when needed.</p>
+            <a href="contact-petroarab.php" class="btn-one-full">Become a Partner Now</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-stats-bg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-9 home-stats-box">
+            <div class="row">
+              <div class="col-md-3 col-6 home-stats-content-box">
+                <h3 class="counter">250 </h3><i class="bi bi-plus"></i>
+                <h4>Manpower</h4>
+              </div>
+              <div class="col-md-3 col-6 home-stats-content-box">
+                <h3 class="counter">5</h3>
+                <h4>Global Offices</h4>
+              </div>
+              <div class="col-md-3 col-6 home-stats-content-box">
+                <h3 class="counter">5000</h3>
+                <h4>Sqm. Warehouse</h4>
+              </div>
+              <div class="col-md-3 col-6 home-stats-content-box">
+                <h3 class="counter">100</h3><i class="bi bi-plus"></i>
+                <h4>Customer</h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3"></div>
+        </div>
+      </div>
+    </section>
+    <section class="home-vendor-model-bg">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7 my-auto">
+            <h2>One Vendor Model</h2>
+            <p>Local Procurement can be challenging for customers being remotely located and very challenging as the
+              commodities bought fall under various categories and spread over several hundreds or thousands of vendors
+              across the region. The large supplier base spread possesses various challenges for buyers as below. The
+              requirement is immediate and must be delivered hassle free in a very short duration of time sometime in
+              days.</p>
+            <p>PetroaArab have come up with One Vendor Model which will eliminate dealing with numerous vendors reduces
+              PR-PO processes and hence reduce the overall process and acquisition cost for customer.</p>
+            <div id="Ntext">
+              <ul class="list fw-bold ps-1">
+                <li>Focus on strategic purchasing. Hence, we developed One Vendor Models where we dedicate team, and
+                  they manage all your local buying and supply chain and payments terms. This has helped many of our
+                  customers to reduce suppliers’ transactions and hence reduced operational expense of the company. In
+                  this model we commit delivery within from 24Hrs-72Hrs Max based on product availability and location.
+                </li>
+                <li>We are aware of the local supplier market and since we are buying for various customer, we take
+                  advantage of negotiated prices.</li>
+                <li>We help our customers to have the grip on their tail spends.</li>
+                <li>Timely reporting and analysis. Insight into even the smallest one-time purchases</li>
+                <li>Help customer in uncontrolled expenses</li>
+                <li>Lower risk of rejections and due to quality or inaccurate items.</li>
+                <li>Most Important is Conduct and Compliance</li>
+              </ul>
+            </div>
+            <a id="toggle" class="home-vendor-model-btn">Read More</a>
+          </div>
+          <div class="col-md-5 hidden-xs">
+            <img src="img/home-vendor-model-bg.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-markets-served-bg">
+      <div class="container">
+        <h2>Markets Served</h2>
+        <div class="row">
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Metal</h3>
+                <img src="img/markets-served/1.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Power</h3>
+                <img src="img/markets-served/2.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Petrochemical</h3>
+                <img src="img/markets-served/3.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Mining</h3>
+                <img src="img/markets-served/4.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Oil and Gas</h3>
+                <img src="img/markets-served/5.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Food</h3>
+                <img src="img/markets-served/6.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Fabrication</h3>
+                <img src="img/markets-served/7.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-markets-served-box">
+              <a href="#">
+                <h3>Transport</h3>
+                <img src="img/markets-served/8.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="home-sbu-bg">
+      <div class="container">
+        <h2>Strategic Business Units ( SBU )</h2>
+        <div class="row">
+          <div class="col-md-3 col-6">
+            <div class="home-sbu-box">
+              <a href="#">
+                <h3>MRO</h3>
+                <img src="img/sbu/1.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-sbu-box">
+              <a href="#">
+                <h3>Machinery</h3>
+                <img src="img/sbu/2.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-sbu-box">
+              <a href="#">
+                <h3>Consumables</h3>
+                <img src="img/sbu/3.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-sbu-box">
+              <a href="#">
+                <h3>Project Supplies</h3>
+                <img src="img/sbu/4.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-sbu-box">
+              <a href="#">
+                <h3>Welding Solutions</h3>
+                <img src="img/sbu/5.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-3 col-6">
+            <div class="home-sbu-box">
+              <a href="#">
+                <h3>Representation</h3>
+                <img src="img/sbu/6.jpg" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+                  title="Petrochemical Company in Saudi Arabia" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 text-end">
+            <img src="img\home-sbu-bg-img.png" class="img-fluid" alt="Petrochemical Company in Saudi Arabia"
+              title="Petrochemical Company in Saudi Arabia" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-footer-connect-bg">
+  <div class="container">
+    <h2>Get in touch with us</h2>
+    <div class="col-md-12 footer-connect-form">
+      <form method="post" onSubmit="return validateFormOnSubmit(this);" action="contact-enquiry.php">
+        <div class="row">
+          <div class="mb-3 col-md-4">
+            <input type="text" class="form-control" placeholder="Name" name="name" id="exampleInputEmail1"
+              aria-describedby="emailHelp" required>
+          </div>
+          <!-- <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Mobile Number" name="contactNumber"  id="exampleInputEmail1" aria-describedby="emailHelp" required>
+          </div> -->
+          <div class="mb-3 col-md-4">
+            <input type="email" class="form-control" placeholder="E-mail ID" name="email" id="exampleInputEmail1"
+              aria-describedby="emailHelp" required>
+          </div>
+          <!-- <div class="mb-3">
+            <textarea class="form-control" placeholder="Message" name="comments" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div> -->
+          <div class="col-md-4">
+            <input type="hidden" id="subject" name="subject" value="Enquiry From Contact Page" />
+            <button type="submit" class="btn btn-one-full">Submit &nbsp;<i class="bi bi-send-fill"></i></button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>    <footer id="contact">
+  <div class="container footer-pad">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 footer-list hidden-xs">
+        <h3><span>Our Offerings </span>
+          <div></div>
+        </h3>
+        <ul>
+          <li><a href="international-procurement.php"> International Procurement</a></li>
+          <li><a href="local-procurement.php"> Local Procurement</a></li>
+          <li><a href="vendor-managed-inventory.php"> VMI (Vendor Managed Inventory)</a></li>
+          <li><a href="partnership.php"> Partnership</a></li>
+          <li><a href="logistics.php"> Logistics</a></li>
+          <li><a href="showroom.php"> Showroom</a></li>
+          <li><a href="lump-sum-turnkey.php"> LSTK</a></li>
+          <li><a href="project-sales.php"> Project Sales</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-5 col-lg-5 footer-list hidden-xs">
+        <h3><span>Our Sectors </span>
+          <div></div>
+        </h3>
+        <ul class="half">
+          <li><a href="sectors.php"> Oil and Gas</a></li>
+          <li><a href="sectors.php"> Petrochemical</a></li>
+          <li><a href="sectors.php"> Mining</a></li>
+          <li><a href="sectors.php"> Power</a></li>
+          <li><a href="sectors.php"> Water</a></li>
+          <li><a href="sectors.php"> Cement</a></li>
+          <li><a href="sectors.php"> Marine</a></li>
+          <li><a href="sectors.php"> Food and Beverage</a></li>
+          <li><a href="sectors.php"> EPC</a></li>
+          <li><a href="sectors.php"> Manufacturing</a></li>
+          <li><a href="sectors.php"> Metal</a></li>
+        </ul>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 footer-list">
+        <h3><span>Contact us </span>
+          <div></div>
+        </h3>
+        <address>Karan Tower,<br />
+          Building 6, Office Number 153,154,159,<br />
+          1st Floor, Al Dana Street, Fanateer,<br />
+          Al Jubail 35814, Kingdom of Saudi Arabia.
+        </address>
+        <ul class="contact">
+          <li><a href="tel:009660133475671"><i class="bi bi-telephone"></i> <span class="num-font">00966-013-3475671
+              </span></a></li>
+          <li><a href="mailto:info@petroarab.co"><i class="bi bi-envelope"></i> info@petroarab.co</a></li>
+        </ul>
+      </div>
+      <!-- <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 footerextra-Mt">
+        <ul class="footerextra">
+          <li><a href="#">About</a></li>
+        </ul>
+      </div> -->
+      <div class="col-md-4 col-lg-4 footerextra-Mt offset-md-8">
+        <ul class="social-network social-circle">
+          <li><a href="#" target="_blank" class="icoFacebook" title="Facebook"><i class="bi bi-facebook"></i></a></li>
+          <li><a href="#" target="_blank" class="icoTwitter" title="Twitter"><i class="bi bi-twitter"></i></a></li>
+          <li><a href="#" target="_blank" class="icoYoutube" title="Youtube"><i class="bi bi-youtube"></i></a></li>
+          <li><a href="#" target="_blank" class="icoInstagram" title="Instagram"><i class="bi bi-instagram"></i></a>
+          <li><a href="https://www.linkedin.com/company/petroarab/" target="_blank" class="icoLinkedin" title="Linkedin"><i class="bi bi-linkedin"></i></a></li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="copy row">
+      <div class="copy-center col-md-6 offset-md-3">© <span class="num-font">2023</span> Petroarab <i>|</i> <span
+          class="m-block">Site by <a href="https://chillipages.com/" title="Chillipages Technologies"
+            target="_blank">Chillipages Technologies</a></span></div>
+    </div>
+  </div>
+</footer>    <!-- jQuery library -->
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/menu.js"></script>
+<script type="text/javascript" src="js/modernizr-2.6.2.min.js"></script>
+<script type="text/javascript" src="css/magnific/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="js/jCarouselLite.js"></script>
+<script type="text/javascript" src="js/owl.carousel.js"></script>
+<script type="text/javascript" src="js/jquery.counterup.min.js"></script>
+<script type="text/javascript" src="js/waypoints.min.js"></script>
+<script type="text/javascript" src="js/jquery.responsiveTabs.js"></script>
+<script type="text/javascript" src="js/main.js"></script>  </div>
+</body>
+
+</html>
