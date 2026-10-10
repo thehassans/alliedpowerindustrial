@@ -352,7 +352,7 @@ export default function App() {
           </div>
 
           {/* Desktop Navigation Links (No 134 next to products) */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '8px' }} className="d-none d-lg-flex">
+          <nav className="desktop-nav-wrap">
             <a
               href="#"
               onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
@@ -484,11 +484,12 @@ export default function App() {
           </nav>
 
           {/* Mobile Right Action Group */}
-          <div style={{ display: 'none' }} className="d-flex d-lg-none align-items-center gap-2">
+          <div className="mobile-nav-toggle-wrap">
             <button
               onClick={() => setIsCartOpen(true)}
               className="header-rfq-btn"
-              style={{ padding: '6px 12px' }}
+              style={{ padding: '7px 12px', fontSize: '13px' }}
+              title="Open RFQ Cart"
             >
               <i className="bi bi-cart3"></i>
               {totalCartCount > 0 && (
@@ -498,15 +499,8 @@ export default function App() {
 
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              style={{
-                background: 'none',
-                border: 'none',
-                fontSize: '28px',
-                color: 'var(--color-black)',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center'
-              }}
+              className="mobile-hamburger-btn"
+              aria-label="Toggle navigation menu"
             >
               <i className={`bi ${mobileMenuOpen ? 'bi-x-lg' : 'bi-list'}`}></i>
             </button>
@@ -639,7 +633,7 @@ export default function App() {
                 Allied Power Industrial Company is Saudi Arabia’s premier stocking distributor of certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems.
               </p>
 
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+              <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => scrollToSection('catalog')}
                   className="btn-primary-green"
@@ -698,7 +692,7 @@ export default function App() {
                 Supplying factory-tested electrical equipment with complete Mill Test Certificates (MTC), origin documentation, and hazardous area compliance (UL, ATEX, IECEx) for mega-infrastructure projects across the Kingdom.
               </p>
 
-              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
+              <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
                 <button
                   onClick={() => scrollToSection('catalog')}
                   className="btn-primary-green"
@@ -768,14 +762,17 @@ export default function App() {
           (Clean Corporate Profile with Saudi Vision 2030 Credentials)
           ======================================================== */}
       <section id="welcome" className="about-executive-section">
-        <div style={{
-          maxWidth: '1320px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))',
-          gap: '50px',
-          alignItems: 'center'
-        }}>
+        <div
+          className="about-main-grid"
+          style={{
+            maxWidth: '1320px',
+            margin: '0 auto',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 340px), 1fr))',
+            gap: '50px',
+            alignItems: 'center'
+          }}
+        >
           <div>
             <div style={{
               display: 'inline-flex',
@@ -824,7 +821,7 @@ export default function App() {
             </p>
 
             {/* 4 Feature Value Props */}
-            <div style={{
+            <div className="about-features-grid" style={{
               display: 'grid',
               gridTemplateColumns: '1fr 1fr',
               gap: '14px',
@@ -1149,7 +1146,7 @@ export default function App() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '24px'
           }}>
             {visibleOfferings.map((item, idx) => (
@@ -1207,7 +1204,7 @@ export default function App() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
             gap: '24px'
           }}>
             {benefits.map((b, idx) => (
@@ -1653,14 +1650,17 @@ export default function App() {
         </div>
 
         {/* Main Footer Body */}
-        <div style={{
-          maxWidth: '1320px',
-          margin: '0 auto',
-          padding: '65px 30px 40px',
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-          gap: '40px'
-        }}>
+        <div
+          className="main-footer-grid"
+          style={{
+            maxWidth: '1320px',
+            margin: '0 auto',
+            padding: '65px 30px 40px',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+            gap: '40px'
+          }}
+        >
           {/* Column 1: Brand & Enterprise Profile */}
           <div>
             <div style={{
@@ -1964,17 +1964,20 @@ export default function App() {
           borderTop: '1px solid rgba(255, 255, 255, 0.08)',
           padding: '22px 30px'
         }}>
-          <div style={{
-            maxWidth: '1320px',
-            margin: '0 auto',
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            flexWrap: 'wrap',
-            gap: '16px',
-            fontSize: '12px',
-            color: '#94a3b8'
-          }}>
+          <div
+            className="footer-bottom-bar"
+            style={{
+              maxWidth: '1320px',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '16px',
+              fontSize: '12px',
+              color: '#94a3b8'
+            }}
+          >
             <div>
               &copy; {new Date().getFullYear()} Allied Power Industrial Company. All Rights Reserved. &bull; CR: 2051061937 &bull; VAT: 310294829100003
             </div>

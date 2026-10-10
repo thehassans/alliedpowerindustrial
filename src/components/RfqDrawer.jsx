@@ -114,6 +114,7 @@ export default function RfqDrawer({
       onClick={onClose}
     >
       <div
+        className="rfq-drawer-content-box"
         style={{
           width: '100%',
           maxWidth: '560px',
@@ -128,15 +129,18 @@ export default function RfqDrawer({
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header (Theme: Deep Green) */}
-        <div style={{
-          padding: '22px 26px',
-          backgroundColor: 'var(--color-green)',
-          color: '#ffffff',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          borderBottom: '3px solid var(--color-red)'
-        }}>
+        <div
+          className="rfq-drawer-header"
+          style={{
+            padding: '22px 26px',
+            backgroundColor: 'var(--color-green)',
+            color: '#ffffff',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            borderBottom: '3px solid var(--color-red)'
+          }}
+        >
           <div>
             <h3 style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: '#ffffff', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <i className="bi bi-cart-check-fill" style={{ color: '#ffffff' }}></i>
@@ -168,7 +172,7 @@ export default function RfqDrawer({
         </div>
 
         {/* Drawer Content */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '24px' }}>
+        <div className="rfq-drawer-body" style={{ flex: 1, overflowY: 'auto', padding: '24px' }}>
           {submittedRfq ? (
             <div style={{
               textAlign: 'center',
@@ -426,7 +430,7 @@ export default function RfqDrawer({
                   Procurement Information
                 </h4>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div className="rfq-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <input
                     type="text"
                     placeholder="Your Full Name *"
@@ -445,7 +449,7 @@ export default function RfqDrawer({
                   />
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                <div className="rfq-form-row" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
                   <input
                     type="email"
                     placeholder="Corporate Email *"

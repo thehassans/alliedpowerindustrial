@@ -744,18 +744,257 @@ a:hover {
   background: var(--color-green);
 }
 
-/* Responsive adjustments */
-@media (max-width: 992px) {
+/* Global viewport safeguards to prevent horizontal scroll */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+}
+
+.site-container {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+/* Navigation wrappers */
+.desktop-nav-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mobile-nav-toggle-wrap {
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobile-hamburger-btn {
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: var(--color-black);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+/* ========================================================
+   RESPONSIVE MOBILE ALIGNMENT SYSTEM
+   ======================================================== */
+@media (max-width: 991px) {
   .top-utility-bar {
-    display: none;
+    display: none !important;
+  }
+  .desktop-nav-wrap {
+    display: none !important;
+  }
+  .mobile-nav-toggle-wrap {
+    display: flex !important;
+  }
+  .main-nav-bar {
+    padding: 10px 16px !important;
   }
   .hero-clean-section {
-    margin-top: 70px;
-    height: 540px;
+    margin-top: 66px !important;
+    height: auto !important;
+    min-height: 560px !important;
+    padding: 30px 0 !important;
+  }
+  .hero-overlay-cinematic {
+    padding: 30px 18px !important;
+    position: relative !important;
   }
   .hero-clean-title {
-    font-size: 34px !important;
-    line-height: 44px !important;
+    font-size: 32px !important;
+    line-height: 40px !important;
+    margin-bottom: 14px !important;
+  }
+  .hero-clean-subtitle {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    margin-bottom: 22px !important;
+  }
+  .hero-action-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .hero-action-buttons button,
+  .hero-action-buttons a {
+    width: 100% !important;
+    justify-content: center !important;
+    text-align: center !important;
+    padding: 12px 18px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Sections vertical rhythm */
+  .ultra-stats-strip {
+    padding: 30px 16px !important;
+  }
+  .stats-number-green,
+  .stats-number-red {
+    font-size: 32px !important;
+  }
+  .about-executive-section {
+    padding: 45px 16px !important;
+  }
+  .about-main-grid {
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .about-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .about-corp-card {
+    padding: 24px 18px !important;
+  }
+
+  /* Catalog section on mobile */
+  #catalog {
+    padding: 45px 16px !important;
+  }
+  .catalog-search-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .catalog-controls-group {
+    width: 100% !important;
+    justify-content: stretch !important;
+    gap: 8px !important;
+  }
+  .catalog-controls-group select {
+    flex: 1 !important;
+    width: 100% !important;
+  }
+  .products-cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)) !important;
+    gap: 16px !important;
+  }
+  .premium-product-card {
+    border-radius: 12px !important;
+  }
+
+  /* Turnkey Offerings & Benefits on mobile */
+  .home-offering-bg,
+  .home-benefits-bg,
+  #markets,
+  #sbu,
+  #contact {
+    padding: 45px 16px !important;
+  }
+
+  /* Footer on mobile */
+  .main-footer-grid {
+    padding: 45px 16px 28px !important;
+    grid-template-columns: 1fr !important;
+    gap: 30px !important;
+  }
+  .footer-bottom-bar {
+    padding: 18px 16px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 12px !important;
+    text-align: left !important;
+  }
+  .footer-bottom-bar > div {
+    width: 100% !important;
+  }
+
+  /* RFQ Document Modal on mobile */
+  .rfq-modal-backdrop {
+    padding: 8px !important;
+    align-items: flex-start !important;
+  }
+  .rfq-document-container {
+    max-height: 98vh !important;
+    border-radius: 12px !important;
+    width: 100% !important;
+  }
+  .rfq-modal-header-bar {
+    padding: 12px 14px !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 10px !important;
+  }
+  .rfq-modal-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+    width: 100% !important;
+  }
+  .rfq-modal-actions button,
+  .rfq-modal-actions a {
+    justify-content: center !important;
+    padding: 8px 10px !important;
+    font-size: 12px !important;
+  }
+  .rfq-modal-close-btn {
+    position: absolute !important;
+    top: 10px !important;
+    right: 10px !important;
+  }
+  #rfq-printable-area {
+    padding: 18px 12px !important;
+  }
+  .rfq-party-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .rfq-commercial-totals-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .rfq-signatures-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+    margin-top: 18px !important;
+  }
+
+  /* Product details modal on mobile */
+  .product-modal-dialog {
+    padding: 20px 16px !important;
+    border-radius: 12px !important;
+    margin: 8px !important;
+  }
+  .product-modal-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-clean-title {
+    font-size: 26px !important;
+    line-height: 34px !important;
+  }
+  .hero-pill-tag {
+    font-size: 10.5px !important;
+    padding: 4px 10px !important;
+    letter-spacing: 0.4px !important;
+  }
+  .rfq-modal-actions {
+    grid-template-columns: 1fr !important;
+  }
+  .rfq-drawer-content-box {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  .rfq-form-row {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .rfq-drawer-header {
+    padding: 16px 18px !important;
+  }
+  .rfq-drawer-body {
+    padding: 16px 14px !important;
   }
 }
 

@@ -36,6 +36,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
       onClick={onClose}
     >
       <div
+        className="product-modal-dialog"
         style={{
           backgroundColor: '#ffffff',
           borderRadius: '16px',
@@ -71,7 +72,8 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
             cursor: 'pointer',
             fontSize: '18px',
             color: 'var(--color-black)',
-            transition: 'all 0.2s'
+            transition: 'all 0.2s',
+            zIndex: 10
           }}
           onMouseEnter={(e) => { e.currentTarget.style.background = '#e2e8f0'; }}
           onMouseLeave={(e) => { e.currentTarget.style.background = '#f1f5f9'; }}
@@ -80,11 +82,14 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
           <i className="bi bi-x-lg"></i>
         </button>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '30px'
-        }}>
+        <div
+          className="product-modal-grid"
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: '30px'
+          }}
+        >
           {/* Left Column: Image Gallery */}
           <div>
             <div style={{

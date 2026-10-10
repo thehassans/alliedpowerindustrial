@@ -176,7 +176,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
       >
         {/* Modal Action Bar (Hidden during Print) */}
         <div
-          className="no-print"
+          className="rfq-modal-header-bar no-print"
           style={{
             padding: '16px 26px',
             backgroundColor: '#0a1018',
@@ -184,10 +184,11 @@ export default function RfqDocumentModal({ rfq, onClose }) {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            borderBottom: '3px solid var(--color-green)'
+            borderBottom: '3px solid var(--color-green)',
+            position: 'relative'
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', minWidth: 0, paddingRight: '40px' }}>
             <div style={{
               width: '36px',
               height: '36px',
@@ -197,21 +198,22 @@ export default function RfqDocumentModal({ rfq, onClose }) {
               alignItems: 'center',
               justifyContent: 'center',
               color: '#00b862',
-              fontSize: '18px'
+              fontSize: '18px',
+              flexShrink: 0
             }}>
               <i className="bi bi-file-earmark-pdf-fill"></i>
             </div>
-            <div>
-              <strong style={{ fontSize: '15px', color: '#ffffff', display: 'block', fontWeight: 800 }}>
+            <div style={{ minWidth: 0 }}>
+              <strong style={{ fontSize: '15px', color: '#ffffff', display: 'block', fontWeight: 800, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 Procurement Requisition &bull; {rfq.id}
               </strong>
-              <span style={{ fontSize: '11px', color: '#94a3b8' }}>
+              <span style={{ fontSize: '11px', color: '#94a3b8', display: 'block', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
                 Allied Power Industrial Company &bull; Official Stamped Procurement Document
               </span>
             </div>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+          <div className="rfq-modal-actions" style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
             <button
               onClick={handleDownload}
               style={{
@@ -219,7 +221,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 color: '#ffffff',
                 border: 'none',
                 borderRadius: '8px',
-                padding: '9px 18px',
+                padding: '9px 16px',
                 fontSize: '13px',
                 fontWeight: 800,
                 cursor: 'pointer',
@@ -240,7 +242,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 color: '#ffffff',
                 border: '1px solid rgba(255, 255, 255, 0.2)',
                 borderRadius: '8px',
-                padding: '9px 16px',
+                padding: '9px 14px',
                 fontSize: '13px',
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -275,6 +277,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
 
             <button
               onClick={onClose}
+              className="rfq-modal-close-btn"
               style={{
                 background: 'rgba(255, 255, 255, 0.1)',
                 color: '#ffffff',
@@ -288,6 +291,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 justifyContent: 'center',
                 fontSize: '16px'
               }}
+              title="Close Requisition Modal"
             >
               <i className="bi bi-x-lg"></i>
             </button>
@@ -364,7 +368,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
           </div>
 
           {/* Supplier & Buyer Two-Column Block */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '22px', marginBottom: '24px' }}>
+          <div className="rfq-party-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '22px', marginBottom: '24px' }}>
             <div style={{ background: '#f8fafc', padding: '16px 20px', borderRadius: '10px', border: '1px solid #e2e8f0', borderLeft: '4px solid #006837' }}>
               <span style={{ fontSize: '10px', fontWeight: 800, color: '#006837', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                 Stockist / Vendor Logistics
@@ -394,9 +398,9 @@ export default function RfqDocumentModal({ rfq, onClose }) {
             </div>
           </div>
 
-          {/* Line Items Table */}
-          <div style={{ marginBottom: '24px' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '12px' }}>
+          {/* Line Items Table with horizontal scroll wrapper for mobile */}
+          <div className="rfq-table-scroll-wrapper" style={{ width: '100%', overflowX: 'auto', WebkitOverflowScrolling: 'touch', marginBottom: '24px' }}>
+            <table style={{ width: '100%', minWidth: '640px', borderCollapse: 'collapse', fontSize: '12px' }}>
               <thead>
                 <tr style={{ backgroundColor: '#0f172a', color: '#ffffff', textAlign: 'left' }}>
                   <th style={{ padding: '10px 12px', border: '1px solid #0f172a', width: '32px' }}>#</th>
@@ -453,7 +457,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
           </div>
 
           {/* Commercial Totals & Notes */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: '22px', marginBottom: '26px' }}>
+          <div className="rfq-commercial-totals-grid" style={{ display: 'grid', gridTemplateColumns: '1.3fr 1fr', gap: '22px', marginBottom: '26px' }}>
             <div style={{ background: '#f8fafc', padding: '16px 20px', borderRadius: '10px', border: '1px solid #e2e8f0', fontSize: '11px', color: '#475569', lineHeight: '19px' }}>
               <strong style={{ color: '#0f172a', fontSize: '12px', display: 'block', marginBottom: '4px' }}>
                 Technical Compliance &amp; Delivery Terms:
@@ -495,7 +499,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
           </div>
 
           {/* Signatures & Corporate Stamp Block */}
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '30px', paddingTop: '22px', borderTop: '1px dashed #cbd5e1' }}>
+          <div className="rfq-signatures-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginTop: '30px', paddingTop: '22px', borderTop: '1px dashed #cbd5e1' }}>
             <div>
               <div style={{ fontSize: '10px', color: '#64748b', textTransform: 'uppercase', marginBottom: '40px', letterSpacing: '0.5px' }}>
                 Prepared &amp; Verified By (Vendor Stockist)

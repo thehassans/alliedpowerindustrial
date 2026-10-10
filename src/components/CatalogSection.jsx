@@ -162,13 +162,16 @@ export default function CatalogSection({
           border: '1px solid #e2e8f0'
         }}>
           {/* Top row: Search input + Sort + Items per page */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-            gap: '16px',
-            marginBottom: '22px',
-            alignItems: 'center'
-          }}>
+          <div
+            className="catalog-search-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
+              gap: '16px',
+              marginBottom: '22px',
+              alignItems: 'center'
+            }}
+          >
             {/* Search Input */}
             <div style={{ position: 'relative', flex: 1 }}>
               <i className="bi bi-search" style={{
@@ -222,7 +225,7 @@ export default function CatalogSection({
             </div>
 
             {/* Controls (Sort & Display Count) */}
-            <div style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
+            <div className="catalog-controls-group" style={{ display: 'flex', gap: '12px', justifyContent: 'flex-end', flexWrap: 'wrap' }}>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
@@ -383,11 +386,14 @@ export default function CatalogSection({
             </button>
           </div>
         ) : (
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(285px, 1fr))',
-            gap: '24px'
-          }}>
+          <div
+            className="products-cards-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
+              gap: '24px'
+            }}
+          >
             {paginatedProducts.map((product) => {
               const waQuoteMsg = encodeURIComponent(
                 `Hello Allied Power Industrial (Mr. Farzand Naeem),\n\nI would like to inquire about this product:\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Brand: ${product.brand}\n• Price: ${product.price} SAR\n\nPlease let me know availability and technical submittal.`
