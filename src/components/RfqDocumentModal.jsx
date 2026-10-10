@@ -121,9 +121,12 @@ export default function RfqDocumentModal({ rfq, onClose }) {
     year: 'numeric'
   });
 
-  const subtotal = rfq.subtotal || rfq.items.reduce((acc, it) => acc + (it.price * it.quantity), 0);
-  const vat = rfq.vat !== undefined ? rfq.vat : subtotal * 0.15;
-  const total = rfq.total !== undefined ? rfq.total : subtotal + vat;
+  const includeVat = rfq.includeVat !== undefined ? rfq.includeVat : (rfq.vat !== undefined ? rfq.vat > 0 : true);
+  const subtotal = rfq.subtotal !== undefined ? rfq.subtotal : (rfq.items || []).reduce((acc, it) => acc + (it.price * it.quantity), 0);
+  const vat = includeVat ? (rfq.vat !== undefined ? rfq.vat : subtotal * 0.15) : 0;
+  const total = rfq.total !== undefined ? rfq.total : (subtotal + vat);
+
+  const destinationText = [rfq.city, rfq.project].filter(Boolean).join(' — ') || rfq.city || rfq.project || 'Kingdom Mega-Project Site';
 
   const generateWhatsAppShare = () => {
     let msg = `*ALLIED POWER INDUSTRIAL COMPANY — PROCUREMENT REQUISITION*\n`;
@@ -131,13 +134,21 @@ export default function RfqDocumentModal({ rfq, onClose }) {
     msg += `Date: ${formattedDate}\n`;
     msg += `Company: ${rfq.company || 'N/A'}\n`;
     msg += `Contact: ${rfq.name || 'N/A'} (${rfq.phone || 'N/A'})\n`;
-    msg += `Project: ${rfq.project || 'General Inquiry'}\n`;
+    if (rfq.city) msg += `Destination City: ${rfq.city}\n`;
+    msg += `Project / Site: ${rfq.project || 'General Inquiry'}\n`;
     msg += `------------------------------------\n`;
-    rfq.items.forEach((it, i) => {
+    (rfq.items || []).forEach((it, i) => {
       msg += `${i + 1}. ${it.name} | Qty: ${it.quantity} | Total: ${(it.price * it.quantity).toFixed(2)} SAR\n`;
     });
     msg += `------------------------------------\n`;
-    msg += `Total Estimated Value: ${total.toFixed(2)} SAR (incl. VAT)\n`;
+    msg += `Materials Subtotal: ${subtotal.toFixed(2)} SAR\n`;
+    if (includeVat) {
+      msg += `ZATCA VAT (15%): ${vat.toFixed(2)} SAR\n`;
+      msg += `Total Estimated Value: ${total.toFixed(2)} SAR (incl. 15% VAT)\n`;
+    } else {
+      msg += `VAT: 0.00 SAR (Optional / Excluded)\n`;
+      msg += `Total Estimated Value: ${total.toFixed(2)} SAR (VAT Excluded)\n`;
+    }
     msg += `Please confirm stock availability and formal delivery lead time.`;
     return encodeURIComponent(msg);
   };
@@ -389,11 +400,14 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 Client / Requisitioner Details
               </span>
               <div style={{ marginTop: '8px', fontSize: '13px', lineHeight: '21px' }}>
-                <strong style={{ fontSize: '14px', color: '#0f172a' }}>{rfq.company || 'Enterprise Contractor'}</strong><br />
-                <span>Requisitioner: <strong>{rfq.name || 'Procurement Officer'}</strong></span><br />
+                <strong style={{ fontSize: '14px', color: '#0f172a', wordBreak: 'break-word', display: 'block' }}>
+                  {rfq.company || 'Enterprise Contractor'}
+                </strong>
+                <span>Requisitioner: <strong style={{ color: '#0f172a' }}>{rfq.name || 'Procurement Officer'}</strong></span><br />
                 <span>Contact: {rfq.phone || rfq.email || 'N/A'}</span><br />
                 <span>Email: {rfq.email || 'N/A'}</span><br />
-                <span>Project / Site: <strong style={{ color: '#0f172a' }}>{rfq.project || 'General Project Delivery'}</strong></span>
+                {rfq.city && <span>Delivery Hub: <strong style={{ color: '#006837' }}>{rfq.city}</strong><br /></span>}
+                <span>Project / Site: <strong style={{ color: '#0f172a', wordBreak: 'break-word' }}>{rfq.project || destinationText}</strong></span>
               </div>
             </div>
           </div>
@@ -479,8 +493,10 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 <strong style={{ color: '#0f172a' }}>{subtotal.toFixed(2)} SAR</strong>
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '13px', marginBottom: '8px' }}>
-                <span style={{ color: '#64748b' }}>ZATCA VAT (15%):</span>
-                <strong style={{ color: '#0f172a' }}>{vat.toFixed(2)} SAR</strong>
+                <span style={{ color: '#64748b' }}>{includeVat ? 'ZATCA VAT (15%):' : 'VAT (Excluded / 0%):'}</span>
+                <strong style={{ color: includeVat ? '#0f172a' : '#64748b' }}>
+                  {includeVat ? `${vat.toFixed(2)} SAR` : '0.00 SAR'}
+                </strong>
               </div>
               <div style={{
                 display: 'flex',
@@ -492,7 +508,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 paddingTop: '10px',
                 marginTop: '10px'
               }}>
-                <span>Grand Requisition Value:</span>
+                <span>{includeVat ? 'Grand Requisition Value:' : 'Grand Total (Excl. VAT):'}</span>
                 <span>{total.toFixed(2)} SAR</span>
               </div>
             </div>
@@ -515,8 +531,8 @@ export default function RfqDocumentModal({ rfq, onClose }) {
                 Client Procurement Acceptance &amp; Stamp
               </div>
               <div style={{ borderTop: '1px solid #0f172a', paddingTop: '6px', fontSize: '12px' }}>
-                <strong>Authorized Signatory / Official Stamp</strong><br />
-                <span style={{ color: '#64748b' }}>{rfq.company || 'Enterprise Client Organization'}</span>
+                <strong>Authorized Signatory: {rfq.name || 'Procurement Officer'}</strong><br />
+                <span style={{ color: '#64748b', wordBreak: 'break-word', display: 'block' }}>{rfq.company || 'Enterprise Client Organization'}</span>
               </div>
             </div>
           </div>

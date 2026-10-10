@@ -21,6 +21,41 @@ function base64ToUint8Array(base64) {
   return bytes;
 }
 
+// Escape special PDF characters: (, ), \
+function escapePdfText(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/\\/g, '\\\\')
+    .replace(/\(/g, '\\)')
+    .replace(/\)/g, '\\)')
+    .replace(/[^\x20-\x7E]/g, ' '); // Keep printable ASCII
+}
+
+// Wrap text into clean lines without truncating words or adding '...'
+function wrapText(str, maxCharsPerLine = 60) {
+  if (!str) return [];
+  const clean = escapePdfText(str).trim();
+  if (!clean) return [];
+  if (clean.length <= maxCharsPerLine) return [clean];
+
+  const words = clean.split(/\s+/).filter(Boolean);
+  const lines = [];
+  let curLine = '';
+
+  for (const word of words) {
+    if (!curLine) {
+      curLine = word;
+    } else if ((curLine + ' ' + word).length <= maxCharsPerLine) {
+      curLine += ' ' + word;
+    } else {
+      lines.push(curLine);
+      curLine = word;
+    }
+  }
+  if (curLine) lines.push(curLine);
+  return lines;
+}
+
 export function generateRfqPdfBlob(rfq) {
   const dateStr = new Date(rfq.date || Date.now()).toLocaleDateString('en-GB', {
     day: '2-digit',
@@ -28,30 +63,22 @@ export function generateRfqPdfBlob(rfq) {
     year: 'numeric'
   });
 
-  const subtotal = rfq.subtotal || rfq.items.reduce((acc, it) => acc + (it.price * it.quantity), 0);
-  const vat = rfq.vat !== undefined ? rfq.vat : subtotal * 0.15;
-  const total = rfq.total !== undefined ? rfq.total : subtotal + vat;
+  const subtotal = rfq.subtotal !== undefined
+    ? rfq.subtotal
+    : (rfq.items || []).reduce((acc, it) => acc + (it.price * it.quantity), 0);
 
-  // Escape special PDF characters: (, ), \
-  const escapePdfText = (str) => {
-    if (!str) return '';
-    return String(str)
-      .replace(/\\/g, '\\\\')
-      .replace(/\(/g, '\\)')
-      .replace(/\)/g, '\\)')
-      .replace(/[^\x20-\x7E]/g, ' '); // Keep printable ASCII
-  };
+  // Optional VAT handling (default to true if not specified or if vat > 0)
+  const includeVat = rfq.includeVat !== undefined
+    ? rfq.includeVat
+    : (rfq.vat !== undefined ? rfq.vat > 0 : true);
 
-  const sanitizeLine = (str, maxLen = 50) => {
-    const clean = escapePdfText(str);
-    if (clean.length <= maxLen) return clean;
-    const trimmed = clean.substring(0, maxLen - 3);
-    const lastSpace = trimmed.lastIndexOf(' ');
-    if (lastSpace > maxLen * 0.55) {
-      return trimmed.substring(0, lastSpace) + '...';
-    }
-    return trimmed + '...';
-  };
+  const vat = includeVat
+    ? (rfq.vat !== undefined ? rfq.vat : subtotal * 0.15)
+    : 0;
+
+  const total = rfq.total !== undefined
+    ? rfq.total
+    : (subtotal + vat);
 
   const headerBytes = base64ToUint8Array(APIC_HEADER_JPEG_BASE64);
   const footerBytes = base64ToUint8Array(APIC_FOOTER_JPEG_BASE64);
@@ -77,44 +104,72 @@ export function generateRfqPdfBlob(rfq) {
   stream += `q ${targetW} 0 0 ${renderFooterH} ${footerX} ${footerY} cm /FooterImg Do Q\n`;
 
   // 3. Requisition Identification Meta Bar (Placed below the header image)
-  const metaY = headerY - 12;
-  stream += `0.96 0.98 0.96 rg 40 ${metaY - 36} 515 36 re f\n`;
-  stream += `0.80 0.88 0.82 RG 0.5 w 40 ${metaY - 36} 515 36 re S\n`;
-  stream += `0 0.408 0.216 rg 40 ${metaY - 36} 4 36 re f\n`;
+  const metaY = headerY - 10;
+  stream += `0.96 0.98 0.96 rg 40 ${metaY - 34} 515 34 re f\n`;
+  stream += `0.80 0.88 0.82 RG 0.5 w 40 ${metaY - 34} 515 34 re S\n`;
+  stream += `0 0.408 0.216 rg 40 ${metaY - 34} 4 34 re f\n`;
 
-  stream += `BT /F2 10.5 Tf 0 0.408 0.216 rg 52 ${metaY - 16} Td (REQUEST FOR QUOTATION (RFQ)) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.3 0.35 0.4 rg 52 ${metaY - 28} Td (Official Material Schedule & Procurement Requisition) Tj ET\n`;
+  stream += `BT /F2 10 Tf 0 0.408 0.216 rg 52 ${metaY - 15} Td (REQUEST FOR QUOTATION (RFQ)) Tj ET\n`;
+  stream += `BT /F1 7 Tf 0.3 0.35 0.4 rg 52 ${metaY - 26} Td (Official Material Schedule & Procurement Requisition) Tj ET\n`;
 
-  stream += `BT /F2 9.5 Tf 0.05 0.08 0.12 rg 280 ${metaY - 16} Td (Ref: ${escapePdfText(rfq.id)}) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.3 0.35 0.4 rg 280 ${metaY - 28} Td (Date: ${escapePdfText(dateStr)}   |   Validity: 30 Days) Tj ET\n`;
+  stream += `BT /F2 9.5 Tf 0.05 0.08 0.12 rg 280 ${metaY - 15} Td (Ref: ${escapePdfText(rfq.id)}) Tj ET\n`;
+  stream += `BT /F1 7 Tf 0.3 0.35 0.4 rg 280 ${metaY - 26} Td (Date: ${escapePdfText(dateStr)}   |   Validity: 30 Days) Tj ET\n`;
 
-  stream += `BT /F2 8 Tf 0.784 0.063 0.180 rg 450 ${metaY - 20} Td (Status: ${escapePdfText(rfq.status || 'Active Procurement')}) Tj ET\n`;
+  stream += `BT /F2 8 Tf 0.784 0.063 0.180 rg 450 ${metaY - 18} Td (Status: ${escapePdfText(rfq.status || 'Active Procurement')}) Tj ET\n`;
 
-  // 4. Supplier & Buyer Info Boxes (Two columns, height 54)
-  const boxY = metaY - 46;
+  // 4. Supplier & Buyer Info Boxes (Two columns, height 64pt for full details without truncation)
+  const boxY = metaY - 42;
+  const boxHeight = 64;
 
   // Supplier Box (Left)
-  stream += `0.97 0.98 0.99 rg 40 ${boxY - 54} 250 54 re f\n`;
-  stream += `0.85 0.88 0.92 RG 0.5 w 40 ${boxY - 54} 250 54 re S\n`;
-  stream += `0 0.408 0.216 rg 40 ${boxY - 54} 3 54 re f\n`;
+  stream += `0.97 0.98 0.99 rg 40 ${boxY - boxHeight} 250 ${boxHeight} re f\n`;
+  stream += `0.85 0.88 0.92 RG 0.5 w 40 ${boxY - boxHeight} 250 ${boxHeight} re S\n`;
+  stream += `0 0.408 0.216 rg 40 ${boxY - boxHeight} 3 ${boxHeight} re f\n`;
   stream += `BT /F2 7.5 Tf 0 0.408 0.216 rg 48 ${boxY - 12} Td (STOCKIST / WAREHOUSE LOGISTICS) Tj ET\n`;
-  stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 48 ${boxY - 22} Td (Allied Power Industrial Company) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.25 0.3 0.35 rg 48 ${boxY - 32} Td (Sales Contact: Farzand Naeem (+966 53 401 7242)) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.25 0.3 0.35 rg 48 ${boxY - 41} Td (Facility: Prince Naif St, Al-Khobar Warehouse Hub) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0 0.408 0.216 rg 48 ${boxY - 50} Td (Fast Delivery: All Over the Kingdom of Saudi Arabia) Tj ET\n`;
+  stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 48 ${boxY - 23} Td (Allied Power Industrial Company) Tj ET\n`;
+  stream += `BT /F1 7 Tf 0.25 0.3 0.35 rg 48 ${boxY - 33} Td (Sales Contact: Farzand Naeem (+966 53 401 7242)) Tj ET\n`;
+  stream += `BT /F1 7 Tf 0.25 0.3 0.35 rg 48 ${boxY - 43} Td (Facility: Prince Naif St, Al-Khobar Warehouse Hub) Tj ET\n`;
+  stream += `BT /F1 7 Tf 0.25 0.3 0.35 rg 48 ${boxY - 52} Td (Email: farzand@alliedpowerindustrial.com) Tj ET\n`;
+  stream += `BT /F2 7 Tf 0 0.408 0.216 rg 48 ${boxY - 61} Td (Fast Delivery: All Over the Kingdom of Saudi Arabia) Tj ET\n`;
 
-  // Buyer Box (Right)
-  stream += `0.97 0.98 0.99 rg 305 ${boxY - 54} 250 54 re f\n`;
-  stream += `0.85 0.88 0.92 RG 0.5 w 305 ${boxY - 54} 250 54 re S\n`;
-  stream += `0.784 0.063 0.180 rg 305 ${boxY - 54} 3 54 re f\n`;
+  // Buyer Box (Right) - Full company name, customer name, contact & destination
+  const buyerCompanyLines = wrapText(rfq.company || 'Corporate Enterprise Client', 38);
+  const buyerName = escapePdfText(rfq.name || 'Procurement Team');
+  const buyerContact = escapePdfText([rfq.phone, rfq.email].filter(Boolean).join(' | ') || 'N/A');
+  const buyerDestStr = [rfq.city, rfq.project].filter(Boolean).join(' - ') || rfq.city || rfq.project || 'Kingdom Mega-Project Site';
+  const buyerDestLines = wrapText(`Destination: ${buyerDestStr}`, 38);
+
+  stream += `0.97 0.98 0.99 rg 305 ${boxY - boxHeight} 250 ${boxHeight} re f\n`;
+  stream += `0.85 0.88 0.92 RG 0.5 w 305 ${boxY - boxHeight} 250 ${boxHeight} re S\n`;
+  stream += `0.784 0.063 0.180 rg 305 ${boxY - boxHeight} 3 ${boxHeight} re f\n`;
   stream += `BT /F2 7.5 Tf 0.784 0.063 0.180 rg 313 ${boxY - 12} Td (BUYER / REQUISITIONER DETAILS) Tj ET\n`;
-  stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 313 ${boxY - 22} Td (${sanitizeLine(rfq.company || 'Corporate Client', 36)}) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.25 0.3 0.35 rg 313 ${boxY - 32} Td (Attn: ${sanitizeLine(rfq.name || 'Procurement Team', 36)}) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.25 0.3 0.35 rg 313 ${boxY - 41} Td (Contact: ${sanitizeLine(rfq.phone || rfq.email || 'N/A', 36)}) Tj ET\n`;
-  stream += `BT /F1 7.2 Tf 0.25 0.3 0.35 rg 313 ${boxY - 50} Td (Destination: ${sanitizeLine(rfq.project || 'Kingdom Mega-Project Site', 36)}) Tj ET\n`;
+  
+  // Render Company (1 or 2 lines in bold)
+  let buyerTextY = boxY - 23;
+  stream += `BT /F2 8.2 Tf 0.05 0.08 0.12 rg 313 ${buyerTextY} Td (${buyerCompanyLines[0] || 'Corporate Client'}) Tj ET\n`;
+  if (buyerCompanyLines[1]) {
+    buyerTextY -= 9;
+    stream += `BT /F2 8.2 Tf 0.05 0.08 0.12 rg 313 ${buyerTextY} Td (${buyerCompanyLines[1]}) Tj ET\n`;
+  }
+  
+  // Attn / Requisitioner Name in Full
+  buyerTextY -= 10;
+  stream += `BT /F1 7.2 Tf 0.25 0.3 0.35 rg 313 ${buyerTextY} Td (Attn: ${buyerName}) Tj ET\n`;
+  
+  // Contact Phone / Email in Full
+  buyerTextY -= 9;
+  stream += `BT /F1 6.8 Tf 0.25 0.3 0.35 rg 313 ${buyerTextY} Td (Contact: ${buyerContact}) Tj ET\n`;
+  
+  // Destination in Full
+  buyerTextY -= 9;
+  stream += `BT /F1 6.8 Tf 0.25 0.3 0.35 rg 313 ${buyerTextY} Td (${buyerDestLines[0] || 'Destination: Kingdom Project Site'}) Tj ET\n`;
+  if (buyerDestLines[1] && buyerTextY - 8 > boxY - boxHeight + 2) {
+    buyerTextY -= 8;
+    stream += `BT /F1 6.8 Tf 0.25 0.3 0.35 rg 313 ${buyerTextY} Td (${buyerDestLines[1]}) Tj ET\n`;
+  }
 
   // 5. Table Header
-  const tableTopY = boxY - 64;
+  const tableTopY = boxY - boxHeight - 12;
   stream += `0.06 0.09 0.16 rg 40 ${tableTopY - 18} 515 18 re f\n`;
   stream += `BT /F2 7.5 Tf 1 1 1 rg 46 ${tableTopY - 12} Td (#) Tj ET\n`;
   stream += `BT /F2 7.5 Tf 1 1 1 rg 65 ${tableTopY - 12} Td (SKU) Tj ET\n`;
@@ -124,13 +179,25 @@ export function generateRfqPdfBlob(rfq) {
   stream += `BT /F2 7.5 Tf 1 1 1 rg 448 ${tableTopY - 12} Td (UNIT (SAR)) Tj ET\n`;
   stream += `BT /F2 7.5 Tf 1 1 1 rg 504 ${tableTopY - 12} Td (TOTAL (SAR)) Tj ET\n`;
 
-  // 6. Table Rows
+  // 6. Table Rows - Dynamic row height for complete product detail without '...'
   let curY = tableTopY - 18;
   const maxItems = Math.min(rfq.items.length, 12);
-  const rowHeight = maxItems > 7 ? 24 : 28;
 
   for (let i = 0; i < maxItems; i++) {
     const item = rfq.items[i];
+
+    const catProd = ALLIED_PRODUCTS.find(p => p.sku === item.sku || p.id === item.id);
+    const fullName = item.name || (catProd && catProd.name) || '';
+    const fullSpecs = item.description || (catProd && (catProd.description || catProd.fullDescription)) || (item.category ? `Category: ${item.category} | Aramco 9COM / SABIC Standard` : 'Saudi Aramco 9COM / SABIC Specification Compliant');
+
+    // Wrap product title and specs into complete lines without truncation
+    const titleLines = wrapText(fullName, 56);
+    const specLines = wrapText(fullSpecs, 68);
+
+    // Calculate dynamic row height based on line count
+    const totalLines = titleLines.length + specLines.length;
+    const rowHeight = Math.max(28, totalLines * 8.5 + 8);
+
     curY -= rowHeight;
 
     // Row alternating background
@@ -143,42 +210,37 @@ export function generateRfqPdfBlob(rfq) {
     const itemTotal = (item.price * item.quantity).toFixed(2);
     const unitPrice = item.price.toFixed(2);
 
-    // Look up authentic catalog product details if available
-    const catProd = ALLIED_PRODUCTS.find(p => p.sku === item.sku || p.id === item.id);
-    const fullName = item.name || (catProd && catProd.name) || '';
-    const fullSpecs = item.description || (catProd && (catProd.description || catProd.fullDescription)) || (item.category ? `Category: ${item.category} | Aramco 9COM / SABIC Standard` : 'Saudi Aramco 9COM / SABIC Specification Compliant');
-
-    const line1Title = sanitizeLine(fullName, 66);
-    const line2Specs = sanitizeLine(fullSpecs, 80);
-
-    const verticalCenterY = curY + (rowHeight === 28 ? 10 : 8);
+    // Vertical top alignment for single-line columns
+    const colAlignY = curY + rowHeight - 13;
 
     // Col 1: #
-    stream += `BT /F1 7.5 Tf 0.2 0.25 0.3 rg 46 ${verticalCenterY} Td (${i + 1}) Tj ET\n`;
+    stream += `BT /F1 7.5 Tf 0.2 0.25 0.3 rg 46 ${colAlignY} Td (${i + 1}) Tj ET\n`;
 
     // Col 2: SKU
-    stream += `BT /F1 7 Tf 0.3 0.35 0.4 rg 65 ${verticalCenterY} Td (${sanitizeLine(item.sku, 12)}) Tj ET\n`;
+    stream += `BT /F1 7 Tf 0.3 0.35 0.4 rg 65 ${colAlignY} Td (${escapePdfText(item.sku)}) Tj ET\n`;
 
-    // Col 3: Title & Specifications (2 Clean Lines)
-    if (rowHeight === 28) {
-      stream += `BT /F2 7.2 Tf 0.05 0.08 0.12 rg 118 ${curY + 16} Td (${line1Title}) Tj ET\n`;
-      stream += `BT /F1 6.0 Tf 0.35 0.40 0.45 rg 118 ${curY + 6} Td (${line2Specs}) Tj ET\n`;
-    } else {
-      stream += `BT /F2 7 Tf 0.05 0.08 0.12 rg 118 ${curY + 13} Td (${line1Title}) Tj ET\n`;
-      stream += `BT /F1 5.8 Tf 0.35 0.40 0.45 rg 118 ${curY + 4} Td (${line2Specs}) Tj ET\n`;
+    // Col 3: Complete Material Title & Complete Technical Specifications
+    let itemTextY = curY + rowHeight - 11;
+    for (const tl of titleLines) {
+      stream += `BT /F2 7.2 Tf 0.05 0.08 0.12 rg 118 ${itemTextY} Td (${tl}) Tj ET\n`;
+      itemTextY -= 8.5;
+    }
+    for (const sl of specLines) {
+      stream += `BT /F1 5.8 Tf 0.35 0.40 0.45 rg 118 ${itemTextY} Td (${sl}) Tj ET\n`;
+      itemTextY -= 7.2;
     }
 
     // Col 4: Brand
-    stream += `BT /F2 7 Tf 0 0.408 0.216 rg 364 ${verticalCenterY} Td (${sanitizeLine(item.brand, 12)}) Tj ET\n`;
+    stream += `BT /F2 7 Tf 0 0.408 0.216 rg 364 ${colAlignY} Td (${escapePdfText(item.brand || 'APIC')}) Tj ET\n`;
 
     // Col 5: Qty
-    stream += `BT /F2 7.5 Tf 0.05 0.08 0.12 rg 416 ${verticalCenterY} Td (${item.quantity}) Tj ET\n`;
+    stream += `BT /F2 7.5 Tf 0.05 0.08 0.12 rg 416 ${colAlignY} Td (${item.quantity}) Tj ET\n`;
 
     // Col 6: Unit Price
-    stream += `BT /F1 7.5 Tf 0.2 0.25 0.3 rg 450 ${verticalCenterY} Td (${unitPrice}) Tj ET\n`;
+    stream += `BT /F1 7.5 Tf 0.2 0.25 0.3 rg 450 ${colAlignY} Td (${unitPrice}) Tj ET\n`;
 
     // Col 7: Total Price
-    stream += `BT /F2 7.5 Tf 0 0.408 0.216 rg 506 ${verticalCenterY} Td (${itemTotal}) Tj ET\n`;
+    stream += `BT /F2 7.5 Tf 0 0.408 0.216 rg 506 ${colAlignY} Td (${itemTotal}) Tj ET\n`;
   }
 
   // 7. Commercial Summary & Technical Terms
@@ -191,12 +253,21 @@ export function generateRfqPdfBlob(rfq) {
   stream += `BT /F1 8 Tf 0.3 0.35 0.4 rg 350 ${summaryY - 12} Td (Materials Subtotal:) Tj ET\n`;
   stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 470 ${summaryY - 12} Td (${subtotal.toFixed(2)} SAR) Tj ET\n`;
 
-  stream += `BT /F1 8 Tf 0.3 0.35 0.4 rg 350 ${summaryY - 26} Td (ZATCA VAT (15%):) Tj ET\n`;
-  stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 470 ${summaryY - 26} Td (${vat.toFixed(2)} SAR) Tj ET\n`;
+  if (includeVat) {
+    stream += `BT /F1 8 Tf 0.3 0.35 0.4 rg 350 ${summaryY - 26} Td (ZATCA VAT (15%):) Tj ET\n`;
+    stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 470 ${summaryY - 26} Td (${vat.toFixed(2)} SAR) Tj ET\n`;
 
-  stream += `0 0.408 0.216 rg 340 ${summaryY - 54} 215 20 re f\n`;
-  stream += `BT /F2 9 Tf 1 1 1 rg 350 ${summaryY - 48} Td (ESTIMATED TOTAL:) Tj ET\n`;
-  stream += `BT /F2 9.5 Tf 1 1 1 rg 460 ${summaryY - 48} Td (${total.toFixed(2)} SAR) Tj ET\n`;
+    stream += `0 0.408 0.216 rg 340 ${summaryY - 54} 215 20 re f\n`;
+    stream += `BT /F2 9 Tf 1 1 1 rg 350 ${summaryY - 48} Td (ESTIMATED TOTAL:) Tj ET\n`;
+    stream += `BT /F2 9.5 Tf 1 1 1 rg 460 ${summaryY - 48} Td (${total.toFixed(2)} SAR) Tj ET\n`;
+  } else {
+    stream += `BT /F1 8 Tf 0.3 0.35 0.4 rg 350 ${summaryY - 26} Td (VAT (Excluded / 0%):) Tj ET\n`;
+    stream += `BT /F2 8.5 Tf 0.4 0.45 0.5 rg 470 ${summaryY - 26} Td (0.00 SAR) Tj ET\n`;
+
+    stream += `0 0.408 0.216 rg 340 ${summaryY - 54} 215 20 re f\n`;
+    stream += `BT /F2 8.5 Tf 1 1 1 rg 350 ${summaryY - 48} Td (TOTAL (EXCL. VAT):) Tj ET\n`;
+    stream += `BT /F2 9.5 Tf 1 1 1 rg 460 ${summaryY - 48} Td (${total.toFixed(2)} SAR) Tj ET\n`;
+  }
 
   // Terms and Quality Endorsement (Left Side)
   stream += `0.96 0.97 0.98 rg 40 ${summaryY - 54} 290 58 re f\n`;
@@ -216,8 +287,13 @@ export function generateRfqPdfBlob(rfq) {
 
   stream += `0.85 0.88 0.92 RG 0.5 w 335 ${sigY} m 555 ${sigY} l S\n`;
   stream += `BT /F2 7.5 Tf 0.05 0.08 0.12 rg 335 ${sigY - 10} Td (CLIENT PROCUREMENT ACCEPTANCE & STAMP) Tj ET\n`;
-  stream += `BT /F1 7 Tf 0.3 0.35 0.4 rg 335 ${sigY - 20} Td (Authorized Signatory: ${sanitizeLine(rfq.name || 'Procurement Officer', 30)}) Tj ET\n`;
-  stream += `BT /F1 6.5 Tf 0.4 0.45 0.5 rg 335 ${sigY - 29} Td (${sanitizeLine(rfq.company || 'Enterprise Client', 35)}) Tj ET\n`;
+  stream += `BT /F1 7 Tf 0.3 0.35 0.4 rg 335 ${sigY - 20} Td (Authorized Signatory: ${escapePdfText(rfq.name || 'Procurement Officer')}) Tj ET\n`;
+  
+  const clientCompanySigLines = wrapText(rfq.company || 'Enterprise Client Organization', 38);
+  stream += `BT /F1 6.5 Tf 0.4 0.45 0.5 rg 335 ${sigY - 29} Td (${clientCompanySigLines[0] || 'Enterprise Client Organization'}) Tj ET\n`;
+  if (clientCompanySigLines[1]) {
+    stream += `BT /F1 6.5 Tf 0.4 0.45 0.5 rg 335 ${sigY - 37} Td (${clientCompanySigLines[1]}) Tj ET\n`;
+  }
 
   // 9. Assemble Binary PDF with Images
   const enc = new TextEncoder();
@@ -282,7 +358,7 @@ export function downloadRfqPdf(rfq) {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `Allied_Power_Industrial_RFQ_${rfq.id.replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`;
+    a.download = `Allied_Power_Industrial_RFQ_${(rfq.id || 'RFQ').replace(/[^a-zA-Z0-9_-]/g, '_')}.pdf`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);

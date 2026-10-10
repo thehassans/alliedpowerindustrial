@@ -191,7 +191,7 @@ export default function RfqManager({ rfqs, onRefreshRfqs, onOpenRfqDocument }) {
                         {rfq.total.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })} SAR
                       </div>
                       <div style={{ fontSize: '11px', color: '#94a3b8' }}>
-                        {rfq.items.length} materials
+                        {rfq.items.length} materials {rfq.includeVat === false ? '• Excl. VAT' : ''}
                       </div>
                     </div>
 
@@ -277,8 +277,18 @@ export default function RfqManager({ rfqs, onRefreshRfqs, onOpenRfqDocument }) {
                         <strong style={{ fontSize: '13px', color: '#0f172a' }}>{rfq.phone || 'N/A'}</strong>
                       </div>
                       <div>
+                        <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>Delivery City / Hub</span>
+                        <strong style={{ fontSize: '13px', color: '#006837' }}>{rfq.city || 'Kingdom-Wide'}</strong>
+                      </div>
+                      <div>
                         <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>Project Destination</span>
                         <strong style={{ fontSize: '13px', color: '#0f172a' }}>{rfq.project || 'General Inquiry'}</strong>
+                      </div>
+                      <div>
+                        <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>Tax / VAT Status</span>
+                        <strong style={{ fontSize: '13px', color: rfq.includeVat !== false ? '#006837' : '#64748b' }}>
+                          {rfq.includeVat !== false ? '15% ZATCA VAT Included' : 'VAT Excluded (0%)'}
+                        </strong>
                       </div>
                       <div>
                         <span style={{ fontSize: '11px', color: '#64748b', display: 'block' }}>Buyer Instructions</span>

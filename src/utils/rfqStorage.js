@@ -101,9 +101,12 @@ export function saveRfqRecord(rfqData) {
     const existing = getStoredRfqs();
     const newId = `API-RFQ-${new Date().getFullYear()}-${Math.floor(1000 + Math.random() * 9000)}`;
     
-    const subtotal = rfqData.items.reduce((acc, item) => acc + (item.price * item.quantity), 0);
-    const vat = subtotal * 0.15;
-    const total = subtotal + vat;
+    const subtotal = rfqData.subtotal !== undefined
+      ? rfqData.subtotal
+      : (rfqData.items || []).reduce((acc, item) => acc + (item.price * item.quantity), 0);
+    const includeVat = rfqData.includeVat !== undefined ? rfqData.includeVat : true;
+    const vat = rfqData.vat !== undefined ? rfqData.vat : (includeVat ? subtotal * 0.15 : 0);
+    const total = rfqData.total !== undefined ? rfqData.total : (subtotal + vat);
 
     const newRecord = {
       id: rfqData.id || newId,
@@ -113,9 +116,11 @@ export function saveRfqRecord(rfqData) {
       name: rfqData.name || 'Procurement Officer',
       email: rfqData.email || '',
       phone: rfqData.phone || '',
+      city: rfqData.city || '',
       project: rfqData.project || 'Standard Industrial Supply',
       notes: rfqData.notes || '',
       items: rfqData.items || [],
+      includeVat,
       subtotal,
       vat,
       total

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { saveRfqRecord } from '../utils/rfqStorage';
 import { downloadRfqPdf } from '../utils/generatePdf';
 import { COUNTRY_CODES, DEFAULT_COUNTRY_CODE, formatFullPhoneNumber } from '../utils/countryCodes';
+import { SAUDI_CITIES, POPULAR_SAUDI_CITIES } from '../utils/saudiCities';
 
 export default function RfqDrawer({
   isOpen,
@@ -16,6 +17,11 @@ export default function RfqDrawer({
 
   const [countryCode, setCountryCode] = useState(DEFAULT_COUNTRY_CODE);
   const [phoneNumber, setPhoneNumber] = useState('');
+  const [selectedCity, setSelectedCity] = useState('Al-Khobar');
+  const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
+  const [citySearchQuery, setCitySearchQuery] = useState('');
+  const [includeVat, setIncludeVat] = useState(true);
+
   const [rfqForm, setRfqForm] = useState({
     name: '',
     company: '',
@@ -25,31 +31,73 @@ export default function RfqDrawer({
   });
   const [submittedRfq, setSubmittedRfq] = useState(null);
 
+  const cityDropdownRef = useRef(null);
+
+  // Close city dropdown on outside click
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (cityDropdownRef.current && !cityDropdownRef.current.contains(event.target)) {
+        setIsCityDropdownOpen(false);
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   const selectedCountry = COUNTRY_CODES.find(c => c.code === countryCode) || COUNTRY_CODES[0];
 
-  const totalSAR = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const subtotal = cartItems.reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const vat = includeVat ? subtotal * 0.15 : 0;
+  const total = subtotal + vat;
+
+  // Filter cities by search query
+  const filteredCities = SAUDI_CITIES.filter(c =>
+    c.name.toLowerCase().includes(citySearchQuery.toLowerCase()) ||
+    c.region.toLowerCase().includes(citySearchQuery.toLowerCase()) ||
+    c.hub.toLowerCase().includes(citySearchQuery.toLowerCase())
+  );
+
+  const handleSelectCity = (city) => {
+    setSelectedCity(city.name);
+    setCitySearchQuery('');
+    setIsCityDropdownOpen(false);
+  };
+
+  const getCombinedProjectLocation = () => {
+    const parts = [selectedCity, rfqForm.project].filter(Boolean);
+    return parts.join(' — ') || selectedCity || 'Kingdom Mega-Project Site';
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const fullPhone = formatFullPhoneNumber(countryCode, phoneNumber);
+    const combinedDestination = getCombinedProjectLocation();
+
     const record = saveRfqRecord({
       name: rfqForm.name,
       company: rfqForm.company,
       email: rfqForm.email,
       phone: fullPhone,
-      project: rfqForm.project,
+      city: selectedCity,
+      project: combinedDestination,
       notes: rfqForm.notes,
-      items: cartItems
+      items: cartItems,
+      includeVat,
+      subtotal,
+      vat,
+      total
     });
 
     setSubmittedRfq(record);
     onClearCart();
-    // Auto-trigger direct PDF download
+    // Auto-trigger direct PDF download with full details
     downloadRfqPdf(record);
   };
 
   const handlePreviewDocument = () => {
     const fullPhone = formatFullPhoneNumber(countryCode, phoneNumber);
+    const combinedDestination = getCombinedProjectLocation();
+
     const draft = {
       id: `API-RFQ-${new Date().getFullYear()}-DRAFT`,
       date: new Date().toISOString(),
@@ -57,12 +105,14 @@ export default function RfqDrawer({
       name: rfqForm.name || 'Procurement Officer',
       email: rfqForm.email,
       phone: fullPhone,
-      project: rfqForm.project || 'Project Delivery (Kingdom-Wide)',
+      city: selectedCity,
+      project: combinedDestination,
       notes: rfqForm.notes,
       items: cartItems,
-      subtotal: totalSAR,
-      vat: totalSAR * 0.15,
-      total: totalSAR * 1.15,
+      includeVat,
+      subtotal,
+      vat,
+      total,
       status: 'Draft Requisition'
     };
     if (onViewRfqDocument) {
@@ -72,14 +122,17 @@ export default function RfqDrawer({
 
   const generateWhatsAppMessage = () => {
     const fullPhone = formatFullPhoneNumber(countryCode, phoneNumber);
+    const combinedDestination = getCombinedProjectLocation();
+
     let msg = `*ALLIED POWER INDUSTRIAL COMPANY — OFFICIAL RFQ*\n`;
     msg += `------------------------------------\n`;
     msg += `To: Mr. Farzand Naeem (Sales Manager)\n`;
     if (rfqForm.company) msg += `Company: ${rfqForm.company}\n`;
     if (rfqForm.name) msg += `Contact Person: ${rfqForm.name}\n`;
     if (fullPhone) msg += `Phone: ${fullPhone}\n`;
-    if (rfqForm.project) msg += `Project: ${rfqForm.project}\n`;
-    msg += `Delivery: Fast delivery all over the Kingdom\n`;
+    if (selectedCity) msg += `Delivery Hub / City: ${selectedCity}\n`;
+    if (rfqForm.project) msg += `Project / Site: ${rfqForm.project}\n`;
+    msg += `Logistics: Fast delivery all over the Kingdom\n`;
     msg += `------------------------------------\n`;
     msg += `*REQUESTED MATERIAL LIST (${cartItems.length} Items):*\n\n`;
 
@@ -91,7 +144,14 @@ export default function RfqDrawer({
     });
 
     msg += `------------------------------------\n`;
-    msg += `*Estimated Total: ${(totalSAR * 1.15).toFixed(2)} SAR (incl. VAT)*\n`;
+    msg += `Materials Subtotal: ${subtotal.toFixed(2)} SAR\n`;
+    if (includeVat) {
+      msg += `ZATCA VAT (15%): ${vat.toFixed(2)} SAR\n`;
+      msg += `*Grand Total: ${total.toFixed(2)} SAR (incl. 15% VAT)*\n`;
+    } else {
+      msg += `VAT: 0.00 SAR (Optional / Excluded)\n`;
+      msg += `*Grand Total: ${total.toFixed(2)} SAR (VAT Excluded)*\n`;
+    }
     if (rfqForm.notes) msg += `Notes: ${rfqForm.notes}\n`;
     msg += `------------------------------------\n`;
     msg += `Please review availability and provide an official quotation with test certificates.`;
@@ -189,7 +249,7 @@ export default function RfqDrawer({
                 Requisition Ref: <span style={{ color: 'var(--color-green)', fontFamily: 'monospace' }}>{submittedRfq.id}</span>
               </div>
               <p style={{ color: 'var(--color-text-secondary)', fontSize: '13px', lineHeight: '22px', marginBottom: '24px' }}>
-                Your quotation request has been formally recorded and routed to <strong>Mr. Farzand Naeem (Sales Manager)</strong>. You can now view, print, or download your official procurement document.
+                Your quotation request has been formally recorded and routed to <strong>Mr. Farzand Naeem (Sales Manager)</strong> with delivery to <strong>{submittedRfq.city || 'Kingdom-Wide'}</strong>. Complete details and official stamped PDF have been prepared.
               </p>
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -301,7 +361,7 @@ export default function RfqDrawer({
           ) : (
             <div>
               {/* Product List */}
-              <div style={{ marginBottom: '24px' }}>
+              <div style={{ marginBottom: '20px' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                   <span style={{ fontSize: '12px', fontWeight: 800, color: 'var(--color-black)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
                     Selected Materials ({cartItems.length})
@@ -401,26 +461,116 @@ export default function RfqDrawer({
                 </div>
               </div>
 
-              {/* Price Estimate Summary */}
+              {/* Price Estimate Summary & Optional VAT Card */}
               <div style={{
-                background: 'var(--color-surface-soft)',
-                border: '1px solid var(--color-border)',
-                borderRadius: '10px',
+                background: '#f8fafc',
+                border: '1px solid #e2e8f0',
+                borderRadius: '12px',
                 padding: '16px 20px',
-                marginBottom: '24px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center'
+                marginBottom: '22px'
               }}>
-                <div>
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-black)', display: 'block' }}>Estimated Requisition Total:</span>
-                  <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>15% ZATCA VAT calculated on document</span>
+                {/* VAT Optional Switch / Toggle */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  paddingBottom: '12px',
+                  borderBottom: '1px dashed #cbd5e1',
+                  marginBottom: '12px'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{
+                      width: '32px',
+                      height: '32px',
+                      borderRadius: '8px',
+                      backgroundColor: includeVat ? 'rgba(0, 104, 55, 0.12)' : '#e2e8f0',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: includeVat ? 'var(--color-green)' : '#64748b',
+                      fontSize: '15px'
+                    }}>
+                      <i className="bi bi-percent"></i>
+                    </div>
+                    <div>
+                      <strong style={{ fontSize: '13px', color: '#0f172a', display: 'block' }}>
+                        Include 15% ZATCA VAT
+                      </strong>
+                      <span style={{ fontSize: '11px', color: '#64748b' }}>
+                        Optional tax calculation for quotation &amp; PDF
+                      </span>
+                    </div>
+                  </div>
+
+                  <label style={{ display: 'inline-flex', alignItems: 'center', cursor: 'pointer', position: 'relative' }}>
+                    <input
+                      type="checkbox"
+                      checked={includeVat}
+                      onChange={(e) => setIncludeVat(e.target.checked)}
+                      style={{ position: 'absolute', opacity: 0, width: 0, height: 0 }}
+                    />
+                    <div style={{
+                      width: '44px',
+                      height: '24px',
+                      backgroundColor: includeVat ? '#006837' : '#cbd5e1',
+                      borderRadius: '12px',
+                      transition: 'background-color 0.2s ease',
+                      position: 'relative'
+                    }}>
+                      <div style={{
+                        width: '18px',
+                        height: '18px',
+                        backgroundColor: '#ffffff',
+                        borderRadius: '50%',
+                        position: 'absolute',
+                        top: '3px',
+                        left: includeVat ? '23px' : '3px',
+                        transition: 'left 0.2s ease',
+                        boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+                      }} />
+                    </div>
+                  </label>
                 </div>
-                <div>
-                  <span style={{ fontSize: '22px', fontWeight: 800, color: 'var(--color-black)', marginRight: '4px' }}>
-                    {totalSAR.toFixed(2)}
-                  </span>
-                  <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-red)' }}>SAR</span>
+
+                {/* Subtotal & VAT Breakdown */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', fontSize: '12px', color: '#475569', marginBottom: '10px' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                    <span>Materials Subtotal:</span>
+                    <strong style={{ color: '#0f172a' }}>{subtotal.toFixed(2)} SAR</strong>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span>
+                      ZATCA VAT (15%):
+                      {!includeVat && <span style={{ marginLeft: '6px', color: '#94a3b8', fontStyle: 'italic' }}>(Excluded)</span>}
+                    </span>
+                    <strong style={{ color: includeVat ? '#0f172a' : '#94a3b8' }}>
+                      {includeVat ? `${vat.toFixed(2)} SAR` : '0.00 SAR'}
+                    </strong>
+                  </div>
+                </div>
+
+                {/* Grand Total Bar */}
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  paddingTop: '10px',
+                  borderTop: '2px solid #e2e8f0'
+                }}>
+                  <div>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-black)', display: 'block' }}>
+                      Estimated Requisition Total:
+                    </span>
+                    <span style={{ fontSize: '11px', color: includeVat ? 'var(--color-green)' : '#64748b', fontWeight: 600 }}>
+                      {includeVat ? '15% VAT included on document' : 'Net subtotal / VAT excluded'}
+                    </span>
+                  </div>
+                  <div>
+                    <span style={{ fontSize: '22px', fontWeight: 800, color: 'var(--color-black)', marginRight: '4px' }}>
+                      {total.toFixed(2)}
+                    </span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-red)' }}>SAR</span>
+                  </div>
                 </div>
               </div>
 
@@ -511,9 +661,158 @@ export default function RfqDrawer({
                   </div>
                 </div>
 
+                {/* Delivery City (Searchable & Dropdown) */}
+                <div ref={cityDropdownRef} style={{ position: 'relative' }}>
+                  <label style={{ fontSize: '11px', fontWeight: 700, color: '#475569', display: 'flex', alignItems: 'center', gap: '5px', marginBottom: '5px' }}>
+                    <i className="bi bi-geo-alt-fill" style={{ color: 'var(--color-green)' }}></i>
+                    Delivery Destination City (Searchable Hub) *
+                  </label>
+
+                  <div
+                    onClick={() => setIsCityDropdownOpen(!isCityDropdownOpen)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      padding: '10px 14px',
+                      borderRadius: '8px',
+                      border: isCityDropdownOpen ? '1px solid var(--color-green)' : '1px solid #cbd5e1',
+                      backgroundColor: '#ffffff',
+                      cursor: 'pointer',
+                      fontSize: '13px',
+                      boxShadow: isCityDropdownOpen ? '0 0 0 2px rgba(0, 104, 55, 0.15)' : 'none'
+                    }}
+                  >
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', minWidth: 0 }}>
+                      <i className="bi bi-building" style={{ color: '#64748b', fontSize: '14px' }}></i>
+                      <strong style={{ color: '#0f172a' }}>{selectedCity}</strong>
+                      <span style={{ fontSize: '11px', color: '#94a3b8', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                        &bull; {SAUDI_CITIES.find(c => c.name === selectedCity)?.region || 'Saudi Arabia'}
+                      </span>
+                    </div>
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#64748b' }}>
+                      <i className={`bi ${isCityDropdownOpen ? 'bi-chevron-up' : 'bi-chevron-down'}`} style={{ fontSize: '12px' }}></i>
+                    </div>
+                  </div>
+
+                  {/* Dropdown Menu Popup */}
+                  {isCityDropdownOpen && (
+                    <div style={{
+                      position: 'absolute',
+                      top: '100%',
+                      left: 0,
+                      right: 0,
+                      marginTop: '6px',
+                      backgroundColor: '#ffffff',
+                      borderRadius: '10px',
+                      border: '1px solid #cbd5e1',
+                      boxShadow: '0 10px 25px rgba(0,0,0,0.15)',
+                      zIndex: 100010,
+                      maxHeight: '260px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      overflow: 'hidden'
+                    }}>
+                      {/* Search box inside dropdown */}
+                      <div style={{ padding: '8px 10px', borderBottom: '1px solid #e2e8f0', backgroundColor: '#f8fafc' }}>
+                        <div style={{ position: 'relative' }}>
+                          <i className="bi bi-search" style={{ position: 'absolute', left: '10px', top: '50%', transform: 'translateY(-50%)', color: '#94a3b8', fontSize: '12px' }}></i>
+                          <input
+                            type="text"
+                            placeholder="Type to search Saudi city or hub..."
+                            value={citySearchQuery}
+                            onChange={(e) => setCitySearchQuery(e.target.value)}
+                            onClick={(e) => e.stopPropagation()}
+                            autoFocus
+                            style={{
+                              width: '100%',
+                              padding: '6px 10px 6px 30px',
+                              borderRadius: '6px',
+                              border: '1px solid #cbd5e1',
+                              fontSize: '12px',
+                              outline: 'none'
+                            }}
+                          />
+                        </div>
+                      </div>
+
+                      {/* City list items */}
+                      <div style={{ overflowY: 'auto', flex: 1, padding: '4px' }}>
+                        {filteredCities.length === 0 ? (
+                          <div style={{ padding: '12px', textAlign: 'center', fontSize: '12px', color: '#94a3b8' }}>
+                            No matching Saudi city found
+                          </div>
+                        ) : (
+                          filteredCities.map((c) => {
+                            const isSelected = selectedCity === c.name;
+                            return (
+                              <div
+                                key={c.name}
+                                onClick={() => handleSelectCity(c)}
+                                style={{
+                                  padding: '8px 12px',
+                                  borderRadius: '6px',
+                                  cursor: 'pointer',
+                                  backgroundColor: isSelected ? '#f0fdf4' : 'transparent',
+                                  color: isSelected ? 'var(--color-green)' : '#0f172a',
+                                  display: 'flex',
+                                  justifyContent: 'space-between',
+                                  alignItems: 'center',
+                                  fontSize: '12px',
+                                  transition: 'background-color 0.1s ease'
+                                }}
+                                onMouseEnter={(e) => {
+                                  if (!isSelected) e.currentTarget.style.backgroundColor = '#f8fafc';
+                                }}
+                                onMouseLeave={(e) => {
+                                  if (!isSelected) e.currentTarget.style.backgroundColor = 'transparent';
+                                }}
+                              >
+                                <div>
+                                  <strong style={{ display: 'block', fontSize: '12.5px' }}>{c.name}</strong>
+                                  <span style={{ fontSize: '11px', color: '#64748b' }}>{c.hub} &bull; {c.region}</span>
+                                </div>
+                                {isSelected && (
+                                  <i className="bi bi-check-lg" style={{ color: 'var(--color-green)', fontSize: '16px', fontWeight: 800 }}></i>
+                                )}
+                              </div>
+                            );
+                          })
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Popular City Quick-Select Chips */}
+                  <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '6px' }}>
+                    {POPULAR_SAUDI_CITIES.slice(0, 6).map((c) => (
+                      <button
+                        type="button"
+                        key={c.name}
+                        onClick={() => setSelectedCity(c.name)}
+                        style={{
+                          backgroundColor: selectedCity === c.name ? '#006837' : '#f1f5f9',
+                          color: selectedCity === c.name ? '#ffffff' : '#475569',
+                          border: selectedCity === c.name ? '1px solid #006837' : '1px solid #e2e8f0',
+                          borderRadius: '14px',
+                          padding: '3px 10px',
+                          fontSize: '11px',
+                          fontWeight: selectedCity === c.name ? 700 : 500,
+                          cursor: 'pointer',
+                          transition: 'all 0.15s ease'
+                        }}
+                      >
+                        {c.name}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Project / Site Name */}
                 <input
                   type="text"
-                  placeholder="Project Name / Delivery Location (e.g. Al-Khobar, Jubail, Ras Tanura, Riyadh)"
+                  placeholder="Project Name / Site Reference (e.g. Aramco Marjan, SABIC Turnaround, Substation #4 - Optional)"
                   value={rfqForm.project}
                   onChange={(e) => setRfqForm({ ...rfqForm, project: e.target.value })}
                   style={{ padding: '10px 14px', borderRadius: '8px', border: '1px solid #cbd5e1', fontSize: '13px' }}
