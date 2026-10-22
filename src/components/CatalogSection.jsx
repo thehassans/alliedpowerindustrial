@@ -39,13 +39,31 @@ export default function CatalogSection({
     setCurrentPage(1);
   };
 
-  // Category counts
+  // Category counts & dynamic lists (auto-includes custom brands/categories added in Admin)
   const categoryCounts = useMemo(() => {
     const counts = { All: products.length };
     products.forEach(p => {
-      counts[p.category] = (counts[p.category] || 0) + 1;
+      if (p.category) {
+        counts[p.category] = (counts[p.category] || 0) + 1;
+      }
     });
     return counts;
+  }, [products]);
+
+  const availableCategories = useMemo(() => {
+    const set = new Set(ALLIED_CATEGORIES);
+    products.forEach(p => {
+      if (p.category) set.add(p.category);
+    });
+    return Array.from(set);
+  }, [products]);
+
+  const availableBrands = useMemo(() => {
+    const set = new Set(ALLIED_BRANDS);
+    products.forEach(p => {
+      if (p.brand) set.add(p.brand);
+    });
+    return Array.from(set);
   }, [products]);
 
   // Filter & Sort Logic
@@ -279,7 +297,7 @@ export default function CatalogSection({
               Filter by Category:
             </div>
             <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-              {['All', ...ALLIED_CATEGORIES].map((cat) => {
+              {['All', ...availableCategories].map((cat) => {
                 const count = categoryCounts[cat] || 0;
                 const isSelected = activeCategory === cat;
                 return (
@@ -304,7 +322,7 @@ export default function CatalogSection({
               Filter by Manufacturer / Brand:
             </div>
             <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap' }}>
-              {['All', ...ALLIED_BRANDS].map((brand) => {
+              {['All', ...availableBrands].map((brand) => {
                 const isSelected = selectedBrand === brand;
                 return (
                   <button
@@ -414,13 +432,22 @@ export default function CatalogSection({
                     </span>
 
                     {/* Stock Tag Top Right */}
-                    <span className="product-stock-tag">
-                      IN STOCK
+                    <span
+                      className="product-stock-tag"
+                      style={
+                        product.inStock === false
+                          ? { backgroundColor: '#fef2f2', color: '#dc2626', borderColor: '#fecaca' }
+                          : undefined
+                      }
+                    >
+                      {product.inStock === false ? 'CALL OFF' : 'IN STOCK'}
                     </span>
 
                     <img
                       src={product.image}
                       alt={product.name}
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                         e.target.src = 'https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png';
                       }}

@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { ALLIED_PRODUCTS, ALLIED_CATEGORIES, ALLIED_BRANDS } from './data/alliedProducts';
 import { getCatalogProducts } from './utils/productStorage';
 import { COUNTRY_CODES, DEFAULT_COUNTRY_CODE, formatFullPhoneNumber } from './utils/countryCodes';
 import { getStoredSocialLinks, SOCIAL_PLATFORMS } from './utils/socialStorage';
 import CatalogSection from './components/CatalogSection';
-import ProductModal from './components/ProductModal';
-import RfqDrawer from './components/RfqDrawer';
-import RfqDocumentModal from './components/RfqDocumentModal';
-import AdminApp from './admin/AdminApp';
+
+const ProductModal = lazy(() => import('./components/ProductModal'));
+const RfqDrawer = lazy(() => import('./components/RfqDrawer'));
+const RfqDocumentModal = lazy(() => import('./components/RfqDocumentModal'));
+const AdminApp = lazy(() => import('./admin/AdminApp'));
 
 export default function App() {
   // Navigation / Route Handling (Supports /admin & public site)
@@ -291,9 +292,19 @@ export default function App() {
   // If in admin mode, render the AdminApp directly
   if (currentRoute === 'admin') {
     return (
-      <AdminApp
-        onBackToSite={() => navigateToRoute('site')}
-      />
+      <Suspense fallback={
+        <div style={{ minHeight: '100vh', backgroundColor: '#0a121c', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#ffffff', fontFamily: 'Inter, sans-serif' }}>
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ fontSize: '14px', fontWeight: 700, color: '#00b862', letterSpacing: '1px', textTransform: 'uppercase' }}>
+              Loading Allied Power Admin Studio...
+            </div>
+          </div>
+        </div>
+      }>
+        <AdminApp
+          onBackToSite={() => navigateToRoute('site')}
+        />
+      </Suspense>
     );
   }
 
@@ -2549,36 +2560,41 @@ export default function App() {
         </div>
       )}
 
-      {/* Product Quick View Modal */}
-      {selectedProduct && (
-        <ProductModal
-          product={selectedProduct}
-          onClose={() => setSelectedProduct(null)}
-          onAddToCart={handleAddToCart}
-        />
-      )}
+      {/* Lazy-Loaded Interactive Modals & Drawers */}
+      <Suspense fallback={null}>
+        {/* Product Quick View Modal */}
+        {selectedProduct && (
+          <ProductModal
+            product={selectedProduct}
+            onClose={() => setSelectedProduct(null)}
+            onAddToCart={handleAddToCart}
+          />
+        )}
 
-      {/* RFQ Cart Drawer */}
-      <RfqDrawer
-        isOpen={isCartOpen}
-        onClose={() => setIsCartOpen(false)}
-        cartItems={cartItems}
-        onUpdateQuantity={handleUpdateQuantity}
-        onRemoveItem={handleRemoveItem}
-        onClearCart={handleClearCart}
-        onViewRfqDocument={(doc) => {
-          setIsCartOpen(false);
-          setViewingRfqDoc(doc);
-        }}
-      />
+        {/* RFQ Cart Drawer */}
+        {isCartOpen && (
+          <RfqDrawer
+            isOpen={isCartOpen}
+            onClose={() => setIsCartOpen(false)}
+            cartItems={cartItems}
+            onUpdateQuantity={handleUpdateQuantity}
+            onRemoveItem={handleRemoveItem}
+            onClearCart={handleClearCart}
+            onViewRfqDocument={(doc) => {
+              setIsCartOpen(false);
+              setViewingRfqDoc(doc);
+            }}
+          />
+        )}
 
-      {/* Official RFQ Document Viewer Modal (Print / Download PDF) */}
-      {viewingRfqDoc && (
-        <RfqDocumentModal
-          rfq={viewingRfqDoc}
-          onClose={() => setViewingRfqDoc(null)}
-        />
-      )}
+        {/* Official RFQ Document Viewer Modal (Print / Download PDF) */}
+        {viewingRfqDoc && (
+          <RfqDocumentModal
+            rfq={viewingRfqDoc}
+            onClose={() => setViewingRfqDoc(null)}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }
