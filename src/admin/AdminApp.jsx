@@ -94,7 +94,7 @@ export default function AdminApp({ onBackToSite }) {
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }} className="d-none d-sm-flex">
             <span style={{ fontSize: '13px', fontWeight: 700, color: '#090d16', letterSpacing: '-0.01em' }}>
-              Allied Power Industrial
+              Allied Power Industrial Company
             </span>
             <span style={{ fontSize: '12px', color: '#94a3b8' }}>/</span>
             <span style={{ fontSize: '13px', fontWeight: 500, color: '#64748b' }}>

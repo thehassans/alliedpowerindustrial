@@ -130,6 +130,7 @@ export default function RfqDocumentModal({ rfq, onClose }) {
 
   const generateWhatsAppShare = () => {
     let msg = `*ALLIED POWER INDUSTRIAL COMPANY — PROCUREMENT REQUISITION*\n`;
+    msg += `Aramco Vendor Code: 10121504 | SEC Vendor Code: 0002017931\n`;
     msg += `RFQ Reference: ${rfq.id}\n`;
     msg += `Date: ${formattedDate}\n`;
     msg += `Company: ${rfq.company || 'N/A'}\n`;
@@ -386,8 +387,9 @@ export default function RfqDocumentModal({ rfq, onClose }) {
               </span>
               <div style={{ marginTop: '8px', fontSize: '13px', lineHeight: '21px' }}>
                 <strong style={{ fontSize: '14px', color: '#0f172a' }}>Allied Power Industrial Company</strong><br />
-                <span>Sales Manager: <strong>Farzand Naeem</strong></span><br />
-                <span>Phone / WhatsApp: +966 53 401 7242</span><br />
+                <span style={{ fontSize: '11.5px', fontWeight: 700, color: '#006837' }}>Aramco Vendor Code: 10121504 &bull; SEC Vendor Code: 0002017931</span><br />
+                <span>Sales Manager: <strong>Farzand Naeem</strong> (+966 53 401 7242)</span><br />
+                <span>Address: Prince Naif Street, Cross 13, Al Khobar 34428, KSA</span><br />
                 <span>Email: farzand@alliedpowerindustrial.com</span><br />
                 <span style={{ color: '#006837', fontWeight: 700 }}>
                   <i className="bi bi-truck"></i> Fast delivery all over the Kingdom of Saudi Arabia

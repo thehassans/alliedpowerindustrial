@@ -37,6 +37,7 @@ export default function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [viewingRfqDoc, setViewingRfqDoc] = useState(null);
+  const [showAramcoLetterModal, setShowAramcoLetterModal] = useState(false);
 
   // Contact Form
   const [contactCountryCode, setContactCountryCode] = useState(DEFAULT_COUNTRY_CODE);
@@ -167,7 +168,7 @@ export default function App() {
     }
   };
 
-  // Offerings tailored to Allied Power Industrial
+  // Offerings tailored to Allied Power Industrial Company
   const offerings = [
     {
       title: 'Cable Splicing & Terminations',
@@ -218,12 +219,12 @@ export default function App() {
 
   const visibleOfferings = offerings.slice(offeringPage * 3, offeringPage * 3 + 3);
 
-  // Key Advantages of Allied Power Industrial
+  // Key Advantages of Allied Power Industrial Company
   const benefits = [
     {
       icon: '/assets/asset-031.png',
       title: 'Prompt Formal Quotations',
-      desc: 'Allied Power Industrial ensures rapid quotation turnaround led by Farzand Naeem and our technical sales team to meet critical project procurement deadlines and bidding requirements.',
+      desc: 'Allied Power Industrial Company ensures rapid quotation turnaround led by Farzand Naeem and our technical sales team to meet critical project procurement deadlines and bidding requirements.',
     },
     {
       icon: '/assets/asset-032.png',
@@ -238,7 +239,7 @@ export default function App() {
     {
       icon: '/assets/asset-034.png',
       title: 'Certified Technical Compliance',
-      desc: 'Every item supplied is accompanied by manufacturer certificates of conformity, factory test reports, and compliance documentation satisfying Saudi Aramco, SABIC, and SEC audits.',
+      desc: 'Every item supplied is accompanied by manufacturer certificates of conformity, factory test reports, and compliance documentation satisfying Saudi Aramco (Vendor #10121504), SEC (Vendor #0002017931), and SABIC audits.',
     },
     {
       icon: '/assets/asset-035.png',
@@ -248,7 +249,7 @@ export default function App() {
     {
       icon: '/assets/asset-036.png',
       title: 'Kingdom Vision 2030 Support',
-      desc: 'Allied Power Industrial actively strengthens the Kingdom’s industrial supply chain infrastructure, supporting national manufacturing and localization initiatives.',
+      desc: 'Allied Power Industrial Company actively strengthens the Kingdom’s industrial supply chain infrastructure, supporting national manufacturing and localization initiatives.',
     },
   ];
 
@@ -307,7 +308,7 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
             <a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}>
               <i className="bi bi-geo-alt-fill" style={{ color: 'var(--color-green-light)' }}></i>
-              <span>P.O. Box 937, Al-Khobar 31952, Saudi Arabia</span>
+              <span>Prince Naif Street, Cross 13, Al Khobar 34428, KSA</span>
             </a>
             <a href="tel:+966534017242">
               <i className="bi bi-telephone-fill" style={{ color: 'var(--color-green-light)' }}></i>
@@ -319,11 +320,17 @@ export default function App() {
             </a>
           </div>
 
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <span className="top-utility-badge">
-              <i className="bi bi-patch-check-fill"></i> Saudi Aramco &amp; SABIC Spec Compliant
-            </span>
-            <span style={{ color: '#94a3b8', fontSize: '11px' }} className="d-none d-lg-inline-block">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+            <a
+              href="#certifications"
+              onClick={(e) => { e.preventDefault(); scrollToSection('certifications'); }}
+              className="top-utility-badge"
+              style={{ textDecoration: 'none', cursor: 'pointer' }}
+              title="Click to view Official Saudi Aramco Approval Letter"
+            >
+              <i className="bi bi-patch-check-fill"></i> Aramco Vendor: <strong>10121504</strong> &bull; SEC Vendor: <strong>0002017931</strong>
+            </a>
+            <span style={{ color: '#94a3b8', fontSize: '11px' }} className="d-none d-xl-inline-block">
               <i className="bi bi-clock"></i> Sat-Thu: 08:00 AM – 07:30 PM
             </span>
           </div>
@@ -351,7 +358,7 @@ export default function App() {
             </a>
           </div>
 
-          {/* Desktop Navigation Links (No 134 next to products) */}
+          {/* Desktop Navigation Links */}
           <nav className="desktop-nav-wrap">
             <a
               href="#"
@@ -370,7 +377,17 @@ export default function App() {
               About Us
             </a>
 
-            {/* Direct Catalog Link without 134 text */}
+            <a
+              href="#certifications"
+              onClick={(e) => { e.preventDefault(); scrollToSection('certifications'); }}
+              className="nav-link-item"
+              style={{ color: 'var(--color-green)', fontWeight: 700 }}
+            >
+              <i className="bi bi-award-fill" style={{ fontSize: '13px', marginRight: '4px' }}></i>
+              <span>Aramco Approval</span>
+            </a>
+
+            {/* Direct Catalog Link */}
             <a
               href="#catalog"
               onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll('All'); }}
@@ -441,14 +458,6 @@ export default function App() {
             </a>
 
             <a
-              href="#markets"
-              onClick={(e) => { e.preventDefault(); scrollToSection('markets'); }}
-              className="nav-link-item"
-            >
-              Sectors
-            </a>
-
-            <a
               href="#contact"
               onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }}
               className="nav-link-item"
@@ -473,7 +482,7 @@ export default function App() {
 
             {/* Direct WhatsApp Call to Action */}
             <a
-              href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial,%20I%20would%20like%20to%20request%20a%20quotation%20for%20materials."
+              href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial%20Company,%20I%20would%20like%20to%20request%20a%20quotation%20for%20materials."
               target="_blank"
               rel="noopener noreferrer"
               className="header-whatsapp-btn"
@@ -523,7 +532,17 @@ export default function App() {
                   onClick={(e) => { e.preventDefault(); scrollToSection('welcome'); }}
                   style={{ fontWeight: 600, color: 'var(--color-black)', fontSize: '15px' }}
                 >
-                  About Allied Power Industrial
+                  About Allied Power Industrial Company
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#certifications"
+                  onClick={(e) => { e.preventDefault(); scrollToSection('certifications'); }}
+                  style={{ color: 'var(--color-green)', fontWeight: 700, fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <span><i className="bi bi-award-fill" style={{ marginRight: '6px' }}></i> Saudi Aramco Approval Letter (#10121504)</span>
+                  <i className="bi bi-arrow-right"></i>
                 </a>
               </li>
               <li>
@@ -575,7 +594,7 @@ export default function App() {
               </li>
               <li style={{ paddingTop: '10px', borderTop: '1px solid #e2e8f0' }}>
                 <a
-                  href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial,%20I%20would%20like%20to%20inquire%20about%20materials."
+                  href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial%20Company,%20I%20would%20like%20to%20inquire%20about%20materials."
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -612,25 +631,25 @@ export default function App() {
         }}>
           <img
             src="/assets/refinery-night-real.jpg"
-            alt="Allied Power Industrial Facilities"
+            alt="Allied Power Industrial Company Facilities"
             className="hero-slide-bg"
           />
           <div className="hero-overlay-cinematic">
-            <div style={{ maxWidth: '780px', color: '#ffffff' }}>
+            <div style={{ maxWidth: '820px', color: '#ffffff' }}>
               <div className="hero-pill-tag">
                 <i className="bi bi-shield-check" style={{ color: 'var(--color-green-light)', fontSize: '14px' }}></i>
-                <span>Kingdom of Saudi Arabia</span>
+                <span>Aramco Vendor Code: <strong>10121504</strong></span>
                 <span className="badge-red">&bull;</span>
-                <span>Al-Khobar Headquarters</span>
+                <span>SEC Vendor Code: <strong>0002017931</strong></span>
               </div>
 
               <h1 className="hero-clean-title">
-                POWERING INDUSTRY.<br />
+                ALLIED POWER INDUSTRIAL COMPANY<br />
                 <span style={{ color: '#00b862' }}>DELIVERING RELIABILITY.</span>
               </h1>
 
               <p className="hero-clean-subtitle">
-                Allied Power Industrial Company is Saudi Arabia’s premier stocking distributor of certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems.
+                Allied Power Industrial Company is an officially approved Saudi Aramco Vendor (#10121504) &amp; Saudi Electricity Company Vendor (#0002017931), stocking certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems in Al Khobar.
               </p>
 
               <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -642,14 +661,14 @@ export default function App() {
                 </button>
 
                 <button
-                  onClick={() => setIsCartOpen(true)}
+                  onClick={() => scrollToSection('certifications')}
                   className="btn-primary-red"
                 >
-                  <i className="bi bi-file-earmark-text-fill"></i> Request Instant RFQ
+                  <i className="bi bi-award-fill"></i> View Aramco Approval Letter
                 </button>
 
                 <a
-                  href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial,%20I%20would%20like%20to%20inquire%20about%20materials."
+                  href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial%20Company,%20I%20would%20like%20to%20inquire%20about%20materials."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-outline-white"
@@ -671,16 +690,16 @@ export default function App() {
         }}>
           <img
             src="/assets/hero-industrial-clean.jpg"
-            alt="Industrial Electrical Materials Stock"
+            alt="Allied Power Industrial Company Electrical Materials Stock"
             className="hero-slide-bg"
           />
           <div className="hero-overlay-cinematic">
-            <div style={{ maxWidth: '780px', color: '#ffffff' }}>
+            <div style={{ maxWidth: '820px', color: '#ffffff' }}>
               <div className="hero-pill-tag">
                 <i className="bi bi-patch-check-fill" style={{ color: '#ff4757', fontSize: '14px' }}></i>
-                <span>Saudi Aramco, SABIC &amp; SEC Standards</span>
+                <span>Aramco Vendor: <strong>10121504</strong></span>
                 <span className="badge-red">&bull;</span>
-                <span>Ready Stock In Al-Khobar</span>
+                <span>SEC Vendor: <strong>0002017931</strong> &bull; Al Khobar</span>
               </div>
 
               <h1 className="hero-clean-title">
@@ -689,7 +708,7 @@ export default function App() {
               </h1>
 
               <p className="hero-clean-subtitle">
-                Supplying factory-tested electrical equipment with complete Mill Test Certificates (MTC), origin documentation, and hazardous area compliance (UL, ATEX, IECEx) for mega-infrastructure projects across the Kingdom.
+                Allied Power Industrial Company supplies factory-tested electrical equipment with complete Mill Test Certificates (MTC), origin documentation, and hazardous area compliance (UL, ATEX, IECEx) from Prince Naif Street, Cross 13, Al Khobar 34428, KSA.
               </p>
 
               <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -701,17 +720,17 @@ export default function App() {
                 </button>
 
                 <button
-                  onClick={() => scrollToSection('contact')}
+                  onClick={() => setIsCartOpen(true)}
                   className="btn-primary-red"
                 >
-                  <i className="bi bi-send-fill"></i> Submit Project Inquiries
+                  <i className="bi bi-file-earmark-text-fill"></i> Request Instant RFQ
                 </button>
 
                 <button
-                  onClick={() => scrollToSection('brands')}
+                  onClick={() => scrollToSection('certifications')}
                   className="btn-outline-white"
                 >
-                  <i className="bi bi-award-fill"></i> Authorized Brands
+                  <i className="bi bi-patch-check-fill"></i> Vendor Credentials
                 </button>
               </div>
             </div>
@@ -720,17 +739,37 @@ export default function App() {
       </section>
 
       {/* ========================================================
-          3. ULTRA-PREMIUM STATS STRIP
-          (Emerald Green & Vibrant Red Key Metrics)
+          3. ULTRA-PREMIUM STATS & VENDOR CREDENTIALS STRIP
+          (Emerald Green & Vibrant Red Key Metrics + Vendor Codes)
           ======================================================== */}
       <section className="ultra-stats-strip">
         <div style={{
           maxWidth: '1320px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-          gap: '20px'
+          gridTemplateColumns: 'repeat(auto-fit, minmax(210px, 1fr))',
+          gap: '18px'
         }}>
+          <div
+            className="stats-card-premium"
+            style={{ cursor: 'pointer', border: '1px solid rgba(0, 184, 98, 0.4)' }}
+            onClick={() => scrollToSection('certifications')}
+          >
+            <div className="stats-number-green" style={{ fontSize: '26px', letterSpacing: '0.5px' }}>10121504</div>
+            <div className="stats-title-white">Saudi Aramco Vendor Code</div>
+            <div className="stats-desc-subtle">Approved Materials Vendor &bull; E-Ref #0020679</div>
+          </div>
+
+          <div
+            className="stats-card-premium"
+            style={{ cursor: 'pointer', border: '1px solid rgba(255, 71, 87, 0.35)' }}
+            onClick={() => scrollToSection('certifications')}
+          >
+            <div className="stats-number-red" style={{ fontSize: '26px', letterSpacing: '0.5px' }}>0002017931</div>
+            <div className="stats-title-white">Saudi Electric Vendor Code</div>
+            <div className="stats-desc-subtle">SEC Approved Electrical Supplier</div>
+          </div>
+
           <div className="stats-card-premium">
             <div className="stats-number-green">134+</div>
             <div className="stats-title-white">Active Catalog Materials</div>
@@ -738,21 +777,9 @@ export default function App() {
           </div>
 
           <div className="stats-card-premium">
-            <div className="stats-number-red">10+</div>
-            <div className="stats-title-white">Global Tier-1 OEM Brands</div>
-            <div className="stats-desc-subtle">Raychem &bull; Appleton &bull; BURNDY &bull; SEICO</div>
-          </div>
-
-          <div className="stats-card-premium">
-            <div className="stats-number-green">100%</div>
-            <div className="stats-title-white">Factory Test Certificates</div>
-            <div className="stats-desc-subtle">Full MTC &bull; Aramco 9COM specifications</div>
-          </div>
-
-          <div className="stats-card-premium">
             <div className="stats-number-red">24h</div>
             <div className="stats-title-white">Kingdom-Wide Fast Delivery</div>
-            <div className="stats-desc-subtle">Fast delivery all over the Kingdom</div>
+            <div className="stats-desc-subtle">Prince Naif St, Cross 13, Al Khobar</div>
           </div>
         </div>
       </section>
@@ -789,7 +816,7 @@ export default function App() {
               letterSpacing: '0.5px',
               marginBottom: '16px'
             }}>
-              <i className="bi bi-building-check"></i> Eastern Province Stockist &amp; Distributor
+              <i className="bi bi-building-check"></i> Approved Saudi Aramco &amp; SEC Vendor
             </div>
 
             <h2 style={{
@@ -808,7 +835,7 @@ export default function App() {
               color: 'var(--color-text-secondary)',
               marginBottom: '18px'
             }}>
-              Headquartered in Al-Khobar, Saudi Arabia, <strong>Allied Power Industrial (APCO)</strong> is an established supplier of specialized electrical, mechanical, and industrial instrumentation materials. We support major EPC contractors, industrial operators, and maintenance contractors executing high-spec projects across the Kingdom.
+              Headquartered at <strong>Prince Naif Street, Cross 13, Al Khobar 34428, KSA</strong>, <strong>Allied Power Industrial Company</strong> is an officially registered supplier of specialized electrical, mechanical, and industrial instrumentation materials (<strong>Saudi Aramco Vendor Code: 10121504</strong> | <strong>Saudi Electric Vendor Code: 0002017931</strong>). We support major EPC contractors, industrial operators, and maintenance contractors executing high-spec projects across the Kingdom.
             </p>
 
             <p style={{
@@ -830,32 +857,32 @@ export default function App() {
               <div className="about-feature-box">
                 <i className="bi bi-shield-fill-check" style={{ fontSize: '22px', color: 'var(--color-green)', marginTop: '2px' }}></i>
                 <div>
-                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>Saudi Aramco Standards</strong>
-                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Materials fully compliant with Aramco 9COM specifications</span>
+                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>Aramco Vendor: 10121504</strong>
+                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Approved Materials Vendor &bull; 9COM Compliant</span>
                 </div>
               </div>
 
               <div className="about-feature-box">
-                <i className="bi bi-geo-alt-fill" style={{ fontSize: '22px', color: 'var(--color-red)', marginTop: '2px' }}></i>
+                <i className="bi bi-lightning-charge-fill" style={{ fontSize: '22px', color: 'var(--color-red)', marginTop: '2px' }}></i>
                 <div>
-                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>Central Al-Khobar Hub</strong>
-                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Fast delivery all over the Kingdom</span>
+                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>SEC Vendor: 0002017931</strong>
+                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Saudi Electricity Company Approved Vendor</span>
                 </div>
               </div>
 
               <div className="about-feature-box">
-                <i className="bi bi-award-fill" style={{ fontSize: '22px', color: 'var(--color-green)', marginTop: '2px' }}></i>
+                <i className="bi bi-geo-alt-fill" style={{ fontSize: '22px', color: 'var(--color-green)', marginTop: '2px' }}></i>
                 <div>
-                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>Tier-1 Global OEM Lines</strong>
-                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Raychem, Appleton, Crouse-Hinds, BURNDY, SEICO</span>
+                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>Al Khobar 34428 Facility</strong>
+                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Prince Naif Street, Cross 13, Al Khobar, KSA</span>
                 </div>
               </div>
 
               <div className="about-feature-box">
                 <i className="bi bi-receipt-cutoff" style={{ fontSize: '22px', color: 'var(--color-red)', marginTop: '2px' }}></i>
                 <div>
-                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>ZATCA Compliant Invoicing</strong>
-                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>Transparent electronic billing &amp; flexible contractor terms</span>
+                  <strong style={{ display: 'block', fontSize: '14px', color: 'var(--color-black)' }}>CR: 7054403162</strong>
+                  <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>ZATCA Phase-2 Tax Invoicing (VAT: 314807049800003)</span>
                 </div>
               </div>
             </div>
@@ -869,10 +896,10 @@ export default function App() {
               </button>
 
               <button
-                onClick={() => scrollToSection('contact')}
+                onClick={() => scrollToSection('certifications')}
                 className="btn-primary-red"
               >
-                Contact Sales Manager <i className="bi bi-person-lines-fill"></i>
+                View Aramco Approval Letter <i className="bi bi-file-earmark-check-fill"></i>
               </button>
             </div>
           </div>
@@ -916,19 +943,23 @@ export default function App() {
                 marginBottom: '20px',
                 border: '1px solid var(--color-border)'
               }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px', gap: '8px' }}>
+                  <span style={{ color: 'var(--color-text-muted)' }}>Saudi Aramco Vendor Code:</span>
+                  <strong style={{ color: 'var(--color-green)', fontFamily: 'monospace', fontSize: '14px' }}>10121504</strong>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px', gap: '8px' }}>
+                  <span style={{ color: 'var(--color-text-muted)' }}>Saudi Electric Vendor Code:</span>
+                  <strong style={{ color: 'var(--color-red)', fontFamily: 'monospace', fontSize: '14px' }}>0002017931</strong>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px', gap: '8px' }}>
+                  <span style={{ color: 'var(--color-text-muted)' }}>CR Number:</span>
+                  <strong style={{ color: 'var(--color-black)' }}>7054403162</strong>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px', gap: '8px' }}>
                   <span style={{ color: 'var(--color-text-muted)' }}>Headquarters:</span>
-                  <strong style={{ color: 'var(--color-black)' }}>Al-Khobar 31952, KSA</strong>
+                  <strong style={{ color: 'var(--color-black)', textAlign: 'right' }}>Prince Naif St, Cross 13, Al Khobar 34428, KSA</strong>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px' }}>
-                  <span style={{ color: 'var(--color-text-muted)' }}>Warehouse Hub:</span>
-                  <strong style={{ color: 'var(--color-green)' }}>Eastern Province Main Facility</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid #e2e8f0', paddingBottom: '8px' }}>
-                  <span style={{ color: 'var(--color-text-muted)' }}>Catalog Inventory:</span>
-                  <strong style={{ color: 'var(--color-red)' }}>Direct Factory Stock in SAR</strong>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', gap: '8px' }}>
                   <span style={{ color: 'var(--color-text-muted)' }}>Sales Representative:</span>
                   <strong style={{ color: 'var(--color-black)' }}>Farzand Naeem (+966 53 401 7242)</strong>
                 </div>
@@ -950,6 +981,269 @@ export default function App() {
 
               <div style={{ fontSize: '12px', color: 'var(--color-text-muted)', fontStyle: 'italic' }}>
                 Supporting Kingdom Vision 2030 industrial supply chain localization
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ========================================================
+          4B. OFFICIAL SAUDI ARAMCO APPROVAL LETTER & VENDOR CREDENTIALS
+          (Interactive Document Showcase + Downloadable Official PDF)
+          ======================================================== */}
+      <section
+        id="certifications"
+        style={{
+          padding: '85px 20px',
+          background: 'linear-gradient(135deg, #06140d 0%, #0a192f 100%)',
+          color: '#ffffff',
+          borderTop: '3px solid var(--color-green)',
+          borderBottom: '3px solid var(--color-red)'
+        }}
+      >
+        <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
+              background: 'rgba(0, 184, 98, 0.18)',
+              border: '1px solid #00b862',
+              color: '#4ade80',
+              fontSize: '12px',
+              fontWeight: 800,
+              padding: '6px 18px',
+              borderRadius: '50px',
+              textTransform: 'uppercase',
+              letterSpacing: '0.8px',
+              marginBottom: '14px'
+            }}>
+              <i className="bi bi-patch-check-fill" style={{ color: '#00b862', fontSize: '14px' }}></i>
+              <span>Official Government &amp; Enterprise Registrations</span>
+            </div>
+
+            <h2 style={{ fontSize: '36px', fontWeight: 800, color: '#ffffff', margin: '0 0 12px', letterSpacing: '-0.02em' }}>
+              Saudi Aramco <span style={{ color: '#00b862' }}>Approval Letter</span> &amp; Vendor Credentials
+            </h2>
+
+            <p style={{ color: '#cbd5e1', fontSize: '15px', maxWidth: '780px', margin: '0 auto', lineHeight: '25px' }}>
+              <strong>Allied Power Industrial Company</strong> is an officially approved Materials Vendor with <strong>Saudi Aramco (Vendor Code: 10121504)</strong> and <strong>Saudi Electricity Company (Vendor Code: 0002017931)</strong>.
+            </p>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 360px), 1fr))',
+            gap: '40px',
+            alignItems: 'center'
+          }}>
+            {/* Left Column: Vendor Code Cards & Verification Details */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+              {/* Saudi Aramco Vendor Card */}
+              <div style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(0, 184, 98, 0.45)',
+                borderLeft: '5px solid #00b862',
+                borderRadius: '14px',
+                padding: '24px 26px',
+                boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
+                  <div>
+                    <span style={{ fontSize: '11px', fontWeight: 800, color: '#4ade80', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block', marginBottom: '4px' }}>
+                      Saudi Aramco Supplier Registration
+                    </span>
+                    <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#ffffff', margin: 0 }}>
+                      ALLIED POWER INDUSTRIAL COMPANY
+                    </h3>
+                  </div>
+                  <span style={{
+                    background: '#006837',
+                    color: '#ffffff',
+                    fontSize: '11px',
+                    fontWeight: 800,
+                    padding: '4px 12px',
+                    borderRadius: '50px',
+                    border: '1px solid #00b862'
+                  }}>
+                    APPROVED VENDOR
+                  </span>
+                </div>
+
+                <div style={{
+                  marginTop: '18px',
+                  padding: '14px 18px',
+                  background: 'rgba(0, 104, 55, 0.25)',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(0, 184, 98, 0.35)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '10px'
+                }}>
+                  <span style={{ fontSize: '13px', color: '#e2e8f0', fontWeight: 600 }}>
+                    Saudi Aramco Vendor Code:
+                  </span>
+                  <strong style={{ fontSize: '24px', fontWeight: 900, color: '#4ade80', fontFamily: 'monospace', letterSpacing: '1px' }}>
+                    10121504
+                  </strong>
+                </div>
+
+                <div style={{
+                  marginTop: '16px',
+                  display: 'grid',
+                  gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+                  gap: '10px',
+                  fontSize: '12.5px',
+                  color: '#cbd5e1'
+                }}>
+                  <div><span style={{ color: '#94a3b8' }}>E-Reference No.:</span> <strong style={{ color: '#ffffff' }}>0020679</strong></div>
+                  <div><span style={{ color: '#94a3b8' }}>CR Number:</span> <strong style={{ color: '#ffffff' }}>7054403162</strong></div>
+                  <div><span style={{ color: '#94a3b8' }}>Supplier Type:</span> <strong style={{ color: '#ffffff' }}>Materials Vendor</strong></div>
+                  <div><span style={{ color: '#94a3b8' }}>VAT Number:</span> <strong style={{ color: '#ffffff' }}>314807049800003</strong></div>
+                </div>
+              </div>
+
+              {/* Saudi Electricity Company (SEC) Vendor Card */}
+              <div style={{
+                background: 'rgba(255, 255, 255, 0.04)',
+                border: '1px solid rgba(255, 71, 87, 0.45)',
+                borderLeft: '5px solid #ff4757',
+                borderRadius: '14px',
+                padding: '24px 26px',
+                boxShadow: '0 12px 30px rgba(0, 0, 0, 0.25)'
+              }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '12px', flexWrap: 'wrap' }}>
+                  <div>
+                    <span style={{ fontSize: '11px', fontWeight: 800, color: '#fca5a5', textTransform: 'uppercase', letterSpacing: '0.8px', display: 'block', marginBottom: '4px' }}>
+                      Saudi Electricity Company (SEC) Registration
+                    </span>
+                    <h3 style={{ fontSize: '20px', fontWeight: 800, color: '#ffffff', margin: 0 }}>
+                      ALLIED POWER INDUSTRIAL COMPANY
+                    </h3>
+                  </div>
+                  <span style={{
+                    background: '#c8102e',
+                    color: '#ffffff',
+                    fontSize: '11px',
+                    fontWeight: 800,
+                    padding: '4px 12px',
+                    borderRadius: '50px',
+                    border: '1px solid #ff4757'
+                  }}>
+                    SEC VENDOR
+                  </span>
+                </div>
+
+                <div style={{
+                  marginTop: '18px',
+                  padding: '14px 18px',
+                  background: 'rgba(200, 16, 46, 0.22)',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(255, 71, 87, 0.35)',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  flexWrap: 'wrap',
+                  gap: '10px'
+                }}>
+                  <span style={{ fontSize: '13px', color: '#e2e8f0', fontWeight: 600 }}>
+                    Saudi Electric Vendor Code:
+                  </span>
+                  <strong style={{ fontSize: '24px', fontWeight: 900, color: '#ff6b81', fontFamily: 'monospace', letterSpacing: '1px' }}>
+                    0002017931
+                  </strong>
+                </div>
+
+                <div style={{ marginTop: '14px', fontSize: '12.5px', color: '#cbd5e1', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <i className="bi bi-geo-alt-fill" style={{ color: '#ff4757' }}></i>
+                  <span>Headquarters: <strong>Prince Naif Street, Cross 13, Al Khobar 34428, KSA</strong></span>
+                </div>
+              </div>
+
+              {/* Action Buttons for Certificate */}
+              <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '4px' }}>
+                <button
+                  onClick={() => setShowAramcoLetterModal(true)}
+                  className="btn-primary-green"
+                  style={{ flex: 1, justifyContent: 'center', minWidth: '210px' }}
+                >
+                  <i className="bi bi-zoom-in"></i> Inspect Approval Letter
+                </button>
+
+                <a
+                  href="/Saudi_Aramco_Approval_Letter.pdf"
+                  download="Allied_Power_Industrial_Company_Saudi_Aramco_Approval_Letter_10121504.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-outline-white"
+                  style={{ flex: 1, justifyContent: 'center', minWidth: '210px', textDecoration: 'none' }}
+                >
+                  <i className="bi bi-file-earmark-pdf-fill" style={{ color: '#ff4757' }}></i> Download Official PDF
+                </a>
+              </div>
+            </div>
+
+            {/* Right Column: Interactive Certificate Frame */}
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <div
+                onClick={() => setShowAramcoLetterModal(true)}
+                title="Click to inspect full-resolution Saudi Aramco Approval Letter"
+                style={{
+                  background: '#ffffff',
+                  padding: '14px',
+                  borderRadius: '16px',
+                  boxShadow: '0 25px 60px rgba(0, 0, 0, 0.5)',
+                  border: '3px solid #00b862',
+                  maxWidth: '470px',
+                  width: '100%',
+                  cursor: 'pointer',
+                  position: 'relative',
+                  transition: 'transform 0.25s ease, box-shadow 0.25s ease'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-4px)';
+                  e.currentTarget.style.boxShadow = '0 30px 70px rgba(0, 184, 98, 0.35)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)';
+                  e.currentTarget.style.boxShadow = '0 25px 60px rgba(0, 0, 0, 0.5)';
+                }}
+              >
+                <div style={{
+                  background: '#0f172a',
+                  color: '#ffffff',
+                  padding: '10px 14px',
+                  borderRadius: '10px 10px 0 0',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  fontSize: '12px',
+                  fontWeight: 700
+                }}>
+                  <span style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                    <i className="bi bi-patch-check-fill" style={{ color: '#4ade80' }}></i>
+                    Saudi Aramco Approval Letter (Vendor #10121504)
+                  </span>
+                  <span style={{ color: '#4ade80', fontSize: '11px' }}>
+                    <i className="bi bi-arrows-fullscreen"></i> Click to Enlarge
+                  </span>
+                </div>
+
+                <div style={{
+                  border: '1px solid #e2e8f0',
+                  borderTop: 'none',
+                  borderRadius: '0 0 10px 10px',
+                  overflow: 'hidden',
+                  background: '#f8fafc'
+                }}>
+                  <img
+                    src="/aramco_approval_letter.png"
+                    alt="Saudi Aramco Approval Letter - Allied Power Industrial Company - Vendor Code 10121504"
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -1091,9 +1385,9 @@ export default function App() {
                 <span>Turnkey Capabilities</span>
               </div>
 
-              {/* Boldly Visible Allied Power Material Services Heading */}
+              {/* Boldly Visible Allied Power Industrial Company Material Services Heading */}
               <h2 style={{ color: '#ffffff', fontSize: '38px', fontWeight: 800, margin: '6px 0 0', letterSpacing: '-0.02em' }}>
-                Allied Power <span style={{ color: '#00b862' }}>Material Services</span>
+                Allied Power Industrial Company <span style={{ color: '#00b862' }}>Material Services</span>
               </h2>
 
               <p style={{ color: '#94a3b8', fontSize: '14px', marginTop: '8px', maxWidth: '640px' }}>
@@ -1175,7 +1469,7 @@ export default function App() {
       </section>
 
       {/* ========================================================
-          8. BENEFITS / WHY ALLIED POWER INDUSTRIAL
+          8. BENEFITS / WHY ALLIED POWER INDUSTRIAL COMPANY
           ======================================================== */}
       <section id="benefits" className="home-benefits-bg" style={{ padding: '80px 20px' }}>
         <div style={{ maxWidth: '1320px', margin: '0 auto' }}>
@@ -1392,7 +1686,7 @@ export default function App() {
                 color: 'var(--color-black)',
                 margin: 0
               }}>
-                Connect with Allied Power Industrial
+                Connect with Allied Power Industrial Company
               </h2>
               <p style={{ color: 'var(--color-text-secondary)', fontSize: '15px', marginTop: '10px' }}>
                 Contact our Sales Manager or submit your inquiry for prompt formal quotations and technical submittals.
@@ -1415,10 +1709,10 @@ export default function App() {
             }}>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--color-red)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  Designated Sales Contact
+                  Designated Sales Contact &bull; Aramco Vendor: 10121504 &bull; SEC Vendor: 0002017931
                 </span>
                 <h4 style={{ fontSize: '20px', fontWeight: 800, color: 'var(--color-black)', margin: '4px 0' }}>
-                  Farzand Naeem &mdash; Sales Manager
+                  Farzand Naeem &mdash; Sales Manager (Allied Power Industrial Company)
                 </h4>
                 <div style={{ fontSize: '13px', color: 'var(--color-text-secondary)', display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '8px' }}>
                   <span>
@@ -1431,13 +1725,13 @@ export default function App() {
                   </span>
                   <span>
                     <i className="bi bi-geo-alt-fill" style={{ color: 'var(--color-green)', marginRight: '6px' }}></i>
-                    P.O. Box 937, Al-Khobar 31952, KSA
+                    Prince Naif Street, Cross 13, Al Khobar 34428, KSA
                   </span>
                 </div>
               </div>
 
               <a
-                href="https://wa.me/966534017242?text=Hello%20Mr.%20Farzand%20Naeem,%20I%20am%20contacting%20you%20regarding%20Allied%20Power%20Industrial%20materials."
+                href="https://wa.me/966534017242?text=Hello%20Mr.%20Farzand%20Naeem,%20I%20am%20contacting%20you%20regarding%20Allied%20Power%20Industrial%20Company%20materials."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="header-whatsapp-btn"
@@ -1457,7 +1751,7 @@ export default function App() {
                 border: '1px solid #badbcc'
               }}>
                 <i className="bi bi-check-circle-fill" style={{ fontSize: '36px', color: 'var(--color-green)', display: 'block', marginBottom: '10px' }}></i>
-                Thank you! Your inquiry has been sent directly to Allied Power Industrial Sales Team. We will revert with a formal quotation within 24 hours.
+                Thank you! Your inquiry has been sent directly to Allied Power Industrial Company Sales Team. We will revert with a formal quotation within 24 hours.
               </div>
             ) : (
               <form onSubmit={handleFormSubmit} className="footer-connect-form">
@@ -1590,10 +1884,6 @@ export default function App() {
       </section>
 
       {/* ========================================================
-          12. ULTRA-PREMIUM FOOTER
-          (Official Logo, Quick Links, Contacts, Kingdom Vision, Admin Link)
-          ======================================================== */}
-      {/* ========================================================
           12. ULTRA-PREMIUM ENTERPRISE FOOTER
           (Official Logo, Pre-Footer Trust Bar, Quick Links, Contacts, Kingdom Vision, Admin Link)
           ======================================================== */}
@@ -1624,22 +1914,22 @@ export default function App() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#86efac', fontSize: '13px', fontWeight: 700 }}>
               <i className="bi bi-shield-fill-check" style={{ fontSize: '18px', color: 'var(--color-green-light)' }}></i>
-              <span>Saudi Aramco 9COM Specifications</span>
+              <span>Saudi Aramco Vendor Code: 10121504</span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fca5a5', fontSize: '13px', fontWeight: 700 }}>
+              <i className="bi bi-lightning-charge-fill" style={{ fontSize: '18px', color: '#ff4757' }}></i>
+              <span>Saudi Electric Vendor Code: 0002017931</span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#bae6fd', fontSize: '13px', fontWeight: 700 }}>
               <i className="bi bi-patch-check-fill" style={{ fontSize: '18px', color: '#38bdf8' }}></i>
-              <span>SABIC Approved Industrial Supplier</span>
+              <span>SABIC &amp; 9COM Approved Supplier</span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fde68a', fontSize: '13px', fontWeight: 700 }}>
               <i className="bi bi-truck" style={{ fontSize: '18px', color: '#fbbf24' }}></i>
               <span>Fast Delivery All Over the Kingdom</span>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#fca5a5', fontSize: '13px', fontWeight: 700 }}>
-              <i className="bi bi-receipt" style={{ fontSize: '18px', color: '#ff4757' }}></i>
-              <span>ZATCA Phase-2 Tax E-Invoicing</span>
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#d8b4fe', fontSize: '13px', fontWeight: 700 }}>
@@ -1678,22 +1968,22 @@ export default function App() {
               />
             </div>
 
-            <p style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '23px', marginBottom: '18px' }}>
-              Allied Power Industrial Company (APCO) is Saudi Arabia’s premier stocking distributor of certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems.
+            <p style={{ color: '#94a3b8', fontSize: '13px', lineHeight: '23px', marginBottom: '14px' }}>
+              <strong>Allied Power Industrial Company</strong> is Saudi Arabia’s premier stocking distributor of certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems.
             </p>
 
             <div style={{
-              fontSize: '11px',
-              fontWeight: 800,
-              color: '#cbd5e1',
-              letterSpacing: '0.5px',
-              textTransform: 'uppercase',
-              marginBottom: '14px'
+              fontSize: '11.5px',
+              fontWeight: 700,
+              color: '#86efac',
+              marginBottom: '12px',
+              lineHeight: '19px'
             }}>
-              Powering Industry &bull; Driving Progress &bull; Delivering Reliability
+              <div>Saudi Aramco Vendor Code: <strong style={{ color: '#ffffff' }}>10121504</strong></div>
+              <div>Saudi Electric Vendor Code: <strong style={{ color: '#ffffff' }}>0002017931</strong></div>
             </div>
 
-            {/* Saudi Vision 2030 / Saudi Made Miniature Tag */}
+            {/* Address Tag */}
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
@@ -1707,7 +1997,7 @@ export default function App() {
               borderRadius: '50px'
             }}>
               <i className="bi bi-geo-alt-fill" style={{ color: '#00b862' }}></i>
-              <span>Headquarters: Al-Khobar &bull; Fast Delivery All Over the Kingdom</span>
+              <span>Prince Naif Street, Cross 13, Al Khobar 34428, KSA</span>
             </div>
 
             {/* Social Media Channels (Configurable from /admin) */}
@@ -1733,7 +2023,7 @@ export default function App() {
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      title={`${platform.name} — Allied Power Industrial`}
+                      title={`${platform.name} — Allied Power Industrial Company`}
                       style={{
                         width: '36px',
                         height: '36px',
@@ -1827,13 +2117,18 @@ export default function App() {
 
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '11px', fontSize: '13px' }}>
               <li>
+                <a href="#certifications" onClick={(e) => { e.preventDefault(); scrollToSection('certifications'); }} style={{ color: '#4ade80', fontWeight: 700 }}>
+                  &bull; Saudi Aramco Approval Letter (#10121504)
+                </a>
+              </li>
+              <li>
                 <a href="#catalog" onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll('All'); }} style={{ color: '#cbd5e1' }}>
                   &bull; Products Catalog (SAR)
                 </a>
               </li>
               <li>
                 <a href="#welcome" onClick={(e) => { e.preventDefault(); scrollToSection('welcome'); }} style={{ color: '#cbd5e1' }}>
-                  &bull; Logistics Hub &amp; About Us
+                  &bull; About Allied Power Industrial Company
                 </a>
               </li>
               <li>
@@ -1844,11 +2139,6 @@ export default function App() {
               <li>
                 <a href="#offerings" onClick={(e) => { e.preventDefault(); scrollToSection('offerings'); }} style={{ color: '#cbd5e1' }}>
                   &bull; Turnkey Material Services
-                </a>
-              </li>
-              <li>
-                <a href="#markets" onClick={(e) => { e.preventDefault(); scrollToSection('markets'); }} style={{ color: '#cbd5e1' }}>
-                  &bull; Industrial Sectors Served
                 </a>
               </li>
               <li>
@@ -1905,10 +2195,10 @@ export default function App() {
             }}>
               <div>
                 <span style={{ fontSize: '11px', fontWeight: 800, color: 'var(--color-green-light)', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-                  Designated Sales Manager
+                  Allied Power Industrial Company
                 </span>
                 <strong style={{ fontSize: '15px', color: '#ffffff', display: 'block', marginTop: '2px' }}>
-                  Farzand Naeem
+                  Farzand Naeem (Sales Manager)
                 </strong>
               </div>
 
@@ -1924,7 +2214,7 @@ export default function App() {
 
               <div>
                 <i className="bi bi-geo-alt-fill" style={{ color: 'var(--color-green-light)', marginRight: '8px' }}></i>
-                <span>P.O. Box 937, Prince Humud St, Al-Khobar 31952, KSA</span>
+                <span>Prince Naif Street, Cross 13, Al Khobar 34428, KSA</span>
               </div>
 
               <div>
@@ -1934,7 +2224,7 @@ export default function App() {
 
               <div style={{ paddingTop: '6px' }}>
                 <a
-                  href="https://wa.me/966534017242?text=Hello%20Mr.%20Farzand%20Naeem,%20I%20am%20contacting%20you%20regarding%20Allied%20Power%20Industrial%20materials."
+                  href="https://wa.me/966534017242?text=Hello%20Mr.%20Farzand%20Naeem,%20I%20am%20contacting%20you%20regarding%20Allied%20Power%20Industrial%20Company%20materials."
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -1979,7 +2269,7 @@ export default function App() {
             }}
           >
             <div>
-              &copy; {new Date().getFullYear()} Allied Power Industrial Company. All Rights Reserved. &bull; CR: 2051061937 &bull; VAT: 310294829100003
+              &copy; {new Date().getFullYear()} Allied Power Industrial Company. All Rights Reserved. &bull; Aramco Vendor: <strong style={{ color: '#86efac' }}>10121504</strong> &bull; SEC Vendor: <strong style={{ color: '#fca5a5' }}>0002017931</strong> &bull; CR: 7054403162 &bull; VAT: 314807049800003
             </div>
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
@@ -2082,7 +2372,7 @@ export default function App() {
 
       {/* 2. Floating WhatsApp Button */}
       <a
-        href="https://wa.me/966534017242?text=Hello%20Mr.%20Farzand%20Naeem,%20I%20am%20contacting%20Allied%20Power%20Industrial%20regarding%20materials."
+        href="https://wa.me/966534017242?text=Hello%20Mr.%20Farzand%20Naeem,%20I%20am%20contacting%20Allied%20Power%20Industrial%20Company%20regarding%20materials."
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -2145,6 +2435,120 @@ export default function App() {
       {/* ========================================================
           14. MODALS & DRAWERS
           ======================================================== */}
+      {/* Full-Screen Saudi Aramco Approval Letter Lightbox Modal */}
+      {showAramcoLetterModal && (
+        <div
+          onClick={() => setShowAramcoLetterModal(false)}
+          style={{
+            position: 'fixed',
+            inset: 0,
+            backgroundColor: 'rgba(6, 11, 17, 0.9)',
+            backdropFilter: 'blur(8px)',
+            zIndex: 100010,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '20px',
+            overflowY: 'auto'
+          }}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              backgroundColor: '#ffffff',
+              borderRadius: '16px',
+              maxWidth: '820px',
+              width: '100%',
+              maxHeight: '92vh',
+              display: 'flex',
+              flexDirection: 'column',
+              overflow: 'hidden',
+              boxShadow: '0 30px 80px rgba(0, 0, 0, 0.65)',
+              border: '2px solid #00b862'
+            }}
+          >
+            <div style={{
+              backgroundColor: '#0a121c',
+              color: '#ffffff',
+              padding: '14px 22px',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              borderBottom: '3px solid #00b862',
+              flexWrap: 'wrap',
+              gap: '10px'
+            }}>
+              <div>
+                <strong style={{ fontSize: '15px', display: 'block', color: '#ffffff' }}>
+                  <i className="bi bi-patch-check-fill" style={{ color: '#4ade80', marginRight: '8px' }}></i>
+                  Saudi Aramco Approval Letter &mdash; Allied Power Industrial Company
+                </strong>
+                <span style={{ fontSize: '12px', color: '#94a3b8' }}>
+                  Aramco Vendor Code: <strong style={{ color: '#4ade80' }}>10121504</strong> &bull; E-Reference No. 0020679 &bull; CR: 7054403162
+                </span>
+              </div>
+
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <a
+                  href="/Saudi_Aramco_Approval_Letter.pdf"
+                  download="Allied_Power_Industrial_Company_Saudi_Aramco_Approval_Letter_10121504.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    backgroundColor: '#006837',
+                    color: '#ffffff',
+                    padding: '8px 14px',
+                    borderRadius: '8px',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '6px'
+                  }}
+                >
+                  <i className="bi bi-download"></i> Download PDF
+                </a>
+
+                <button
+                  onClick={() => setShowAramcoLetterModal(false)}
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.12)',
+                    color: '#ffffff',
+                    border: 'none',
+                    borderRadius: '8px',
+                    width: '36px',
+                    height: '36px',
+                    cursor: 'pointer',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '16px'
+                  }}
+                >
+                  <i className="bi bi-x-lg"></i>
+                </button>
+              </div>
+            </div>
+
+            <div style={{ padding: '20px', overflowY: 'auto', backgroundColor: '#f1f5f9', textAlign: 'center' }}>
+              <img
+                src="/aramco_approval_letter.png"
+                alt="Saudi Aramco Approval Letter - Allied Power Industrial Company"
+                style={{
+                  maxWidth: '100%',
+                  height: 'auto',
+                  borderRadius: '8px',
+                  boxShadow: '0 10px 30px rgba(0, 0, 0, 0.15)',
+                  margin: '0 auto',
+                  display: 'block'
+                }}
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Product Quick View Modal */}
       {selectedProduct && (
         <ProductModal

@@ -6,9 +6,11 @@ const GENERAL_SETTINGS_KEY = 'allied_general_settings';
 
 const DEFAULT_SETTINGS = {
   companyName: 'Allied Power Industrial Company',
-  crNumber: '2051061937',
-  vatNumber: '310294829100003',
-  address: 'P.O. Box 937, Prince Humud Street, Al-Khobar 31952, Kingdom of Saudi Arabia',
+  aramcoVendorCode: '10121504',
+  secVendorCode: '0002017931',
+  crNumber: '7054403162',
+  vatNumber: '314807049800003',
+  address: 'Prince Naif Street, Cross 13, Al Khobar 34428, KSA',
   salesManagerName: 'Farzand Naeem',
   salesPhone: '+966 53 401 7242',
   salesEmail: 'farzand@alliedpowerindustrial.com',
@@ -29,7 +31,7 @@ export default function GeneralSettings({ onRefreshProducts }) {
     try {
       const stored = localStorage.getItem(GENERAL_SETTINGS_KEY);
       if (stored) {
-        setSettings(JSON.parse(stored));
+        setSettings({ ...DEFAULT_SETTINGS, ...JSON.parse(stored) });
       }
       setSocialLinks(getStoredSocialLinks());
     } catch (err) {
@@ -60,7 +62,7 @@ export default function GeneralSettings({ onRefreshProducts }) {
           Enterprise Settings
         </h1>
         <p style={{ fontSize: '13px', color: '#64748b', margin: 0 }}>
-          Manage corporate credentials, ZATCA tax registrations, sales manager contact details &amp; RFQ prefixes
+          Manage corporate credentials, Saudi Aramco &amp; SEC vendor codes, ZATCA tax registrations, sales manager contact details &amp; RFQ prefixes
         </p>
       </div>
 
@@ -93,10 +95,10 @@ export default function GeneralSettings({ onRefreshProducts }) {
           padding: '24px'
         }}>
           <h3 style={{ fontSize: '16px', fontWeight: 800, color: '#0f172a', marginBottom: '16px' }}>
-            Corporate Identity &amp; Government Registrations
+            Corporate Identity, Vendor Codes &amp; Government Registrations
           </h3>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '16px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '16px' }}>
             <div>
               <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#334155', marginBottom: '6px' }}>
                 Legal Entity Name
@@ -107,6 +109,32 @@ export default function GeneralSettings({ onRefreshProducts }) {
                 value={settings.companyName}
                 onChange={(e) => setSettings({ ...settings, companyName: e.target.value })}
                 style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', backgroundColor: '#ffffff', border: '1px solid #cbd5e1', color: '#0f172a', fontSize: '13px', outline: 'none' }}
+              />
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#006837', marginBottom: '6px' }}>
+                Saudi Aramco Vendor Code
+              </label>
+              <input
+                type="text"
+                required
+                value={settings.aramcoVendorCode || '10121504'}
+                onChange={(e) => setSettings({ ...settings, aramcoVendorCode: e.target.value })}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', backgroundColor: '#f0fdf4', border: '1px solid #86efac', color: '#006837', fontWeight: 800, fontSize: '13px', outline: 'none' }}
+              />
+            </div>
+
+            <div>
+              <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#c8102e', marginBottom: '6px' }}>
+                Saudi Electric (SEC) Vendor Code
+              </label>
+              <input
+                type="text"
+                required
+                value={settings.secVendorCode || '0002017931'}
+                onChange={(e) => setSettings({ ...settings, secVendorCode: e.target.value })}
+                style={{ width: '100%', padding: '10px 14px', borderRadius: '8px', backgroundColor: '#fef2f2', border: '1px solid #fecaca', color: '#c8102e', fontWeight: 800, fontSize: '13px', outline: 'none' }}
               />
             </div>
 

@@ -16,7 +16,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Allied Power Industrial (Mr. Farzand Naeem),\n\nI would like to request an official quotation for:\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Brand: ${product.brand}\n• Quantity: ${quantity}\n• Listed Price: ${product.price} SAR\n\nPlease advise stock availability and commercial terms.`
+    `Hello Allied Power Industrial Company (Mr. Farzand Naeem),\n\nI would like to request an official quotation for:\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Brand: ${product.brand}\n• Quantity: ${quantity}\n• Listed Price: ${product.price} SAR\n\nPlease advise stock availability and commercial terms.`
   );
 
   return (

@@ -138,7 +138,7 @@ export default function CatalogSection({
             lineHeight: '48px',
             marginBottom: '14px'
           }}>
-            Allied Power Industrial Catalog
+            Allied Power Industrial Company Catalog
           </h2>
           <p style={{
             color: 'var(--color-text-secondary)',
@@ -148,7 +148,7 @@ export default function CatalogSection({
             textAlign: 'center',
             lineHeight: '26px'
           }}>
-            Explore our complete portfolio of <strong style={{ color: 'var(--color-green)' }}>certified industrial electrical &amp; mechanical materials</strong> in stock at Al-Khobar. Fully compliant with Saudi Aramco, SABIC, SEC, and international industry specifications.
+            Explore our complete portfolio of <strong style={{ color: 'var(--color-green)' }}>certified industrial electrical &amp; mechanical materials</strong> in stock at Al-Khobar. Fully compliant with Saudi Aramco (Vendor #10121504), Saudi Electricity Company (Vendor #0002017931), SABIC, and international industry specifications.
           </p>
         </div>
 
@@ -396,7 +396,7 @@ export default function CatalogSection({
           >
             {paginatedProducts.map((product) => {
               const waQuoteMsg = encodeURIComponent(
-                `Hello Allied Power Industrial (Mr. Farzand Naeem),\n\nI would like to inquire about this product:\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Brand: ${product.brand}\n• Price: ${product.price} SAR\n\nPlease let me know availability and technical submittal.`
+                `Hello Allied Power Industrial Company (Mr. Farzand Naeem),\n\nI would like to inquire about this product:\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Brand: ${product.brand}\n• Price: ${product.price} SAR\n\nPlease let me know availability and technical submittal.`
               );
 
               return (

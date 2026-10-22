@@ -126,11 +126,11 @@ export function generateRfqPdfBlob(rfq) {
   stream += `0.85 0.88 0.92 RG 0.5 w 40 ${boxY - boxHeight} 250 ${boxHeight} re S\n`;
   stream += `0 0.408 0.216 rg 40 ${boxY - boxHeight} 3 ${boxHeight} re f\n`;
   stream += `BT /F2 7.5 Tf 0 0.408 0.216 rg 48 ${boxY - 12} Td (STOCKIST / WAREHOUSE LOGISTICS) Tj ET\n`;
-  stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 48 ${boxY - 23} Td (Allied Power Industrial Company) Tj ET\n`;
-  stream += `BT /F1 7 Tf 0.25 0.3 0.35 rg 48 ${boxY - 33} Td (Sales Contact: Farzand Naeem (+966 53 401 7242)) Tj ET\n`;
-  stream += `BT /F1 7 Tf 0.25 0.3 0.35 rg 48 ${boxY - 43} Td (Facility: Prince Naif St, Al-Khobar Warehouse Hub) Tj ET\n`;
-  stream += `BT /F1 7 Tf 0.25 0.3 0.35 rg 48 ${boxY - 52} Td (Email: farzand@alliedpowerindustrial.com) Tj ET\n`;
-  stream += `BT /F2 7 Tf 0 0.408 0.216 rg 48 ${boxY - 61} Td (Fast Delivery: All Over the Kingdom of Saudi Arabia) Tj ET\n`;
+  stream += `BT /F2 8.5 Tf 0.05 0.08 0.12 rg 48 ${boxY - 22} Td (Allied Power Industrial Company) Tj ET\n`;
+  stream += `BT /F2 6.8 Tf 0 0.408 0.216 rg 48 ${boxY - 31} Td (Aramco Vendor: 10121504  |  SEC Vendor: 0002017931) Tj ET\n`;
+  stream += `BT /F1 6.8 Tf 0.25 0.3 0.35 rg 48 ${boxY - 40} Td (Sales Contact: Farzand Naeem (+966 53 401 7242)) Tj ET\n`;
+  stream += `BT /F1 6.8 Tf 0.25 0.3 0.35 rg 48 ${boxY - 49} Td (Address: Prince Naif St, Cross 13, Al Khobar 34428, KSA) Tj ET\n`;
+  stream += `BT /F1 6.8 Tf 0.25 0.3 0.35 rg 48 ${boxY - 58} Td (Email: farzand@alliedpowerindustrial.com) Tj ET\n`;
 
   // Buyer Box (Right) - Full company name, customer name, contact & destination
   const buyerCompanyLines = wrapText(rfq.company || 'Corporate Enterprise Client', 38);
