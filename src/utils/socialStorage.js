@@ -37,6 +37,13 @@ export function saveSocialLinks(links) {
     if (typeof window !== 'undefined') {
       window.dispatchEvent(new Event('allied_social_updated'));
     }
+    if (typeof fetch !== 'undefined') {
+      fetch('/api.php?action=save_social', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ social: links })
+      }).catch(() => {});
+    }
   } catch (err) {
     console.error('Error saving social links:', err);
   }

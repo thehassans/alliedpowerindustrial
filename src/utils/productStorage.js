@@ -34,15 +34,63 @@ export function getCatalogProducts() {
   }
 }
 
-export function saveCatalogProducts(products) {
+export function saveCatalogProducts(products, skipServerSync = false) {
   try {
     localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
     // Dispatch custom event so public catalog components update immediately
     window.dispatchEvent(new Event('allied_products_updated'));
+
+    if (!skipServerSync && typeof fetch !== 'undefined') {
+      fetch('/api.php?action=save_products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ products })
+      })
+        .then(res => res.ok ? res.json() : null)
+        .then(data => {
+          if (data && data.ok && Array.isArray(data.products)) {
+            localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(data.products));
+            window.dispatchEvent(new Event('allied_products_updated'));
+          }
+        })
+        .catch(() => {
+          // Silent fallback on static hosts like Vercel where PHP is not active
+        });
+    }
     return true;
   } catch (err) {
     console.error('Error saving products:', err);
     return false;
+  }
+}
+
+export async function syncServerDatabase() {
+  if (typeof fetch === 'undefined') return;
+  try {
+    const res = await fetch('/api.php?action=sync', { cache: 'no-store' });
+    if (!res.ok) return;
+    const contentType = res.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) return;
+    const data = await res.json();
+    if (!data || !data.ok) return;
+
+    if (Array.isArray(data.products) && data.products.length > 0) {
+      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(data.products));
+      window.dispatchEvent(new Event('allied_products_updated'));
+    }
+    if (Array.isArray(data.rfqs) && data.rfqs.length > 0) {
+      localStorage.setItem('allied_rfq_records', JSON.stringify(data.rfqs));
+      window.dispatchEvent(new Event('allied_rfqs_updated'));
+    }
+    if (data.social && typeof data.social === 'object') {
+      localStorage.setItem('allied_social_links', JSON.stringify(data.social));
+      window.dispatchEvent(new Event('allied_social_updated'));
+    }
+    if (data.settings && typeof data.settings === 'object') {
+      localStorage.setItem('allied_general_settings', JSON.stringify(data.settings));
+    }
+  } catch {
+    // Graceful fallback when running offline or on static host
   }
 }
 
@@ -105,6 +153,13 @@ export function resetCatalogToDefault() {
   try {
     localStorage.removeItem(PRODUCTS_STORAGE_KEY);
     window.dispatchEvent(new Event('allied_products_updated'));
+    if (typeof fetch !== 'undefined') {
+      fetch('/api.php?action=save_products', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reset: true })
+      }).catch(() => {});
+    }
     return ALLIED_PRODUCTS;
   } catch (err) {
     console.error('Error resetting catalog:', err);

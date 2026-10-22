@@ -128,6 +128,13 @@ export function saveRfqRecord(rfqData) {
 
     const updated = [newRecord, ...existing];
     localStorage.setItem(RFQ_STORAGE_KEY, JSON.stringify(updated));
+    if (typeof fetch !== 'undefined') {
+      fetch('/api.php?action=save_rfqs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rfqs: updated })
+      }).catch(() => {});
+    }
     return newRecord;
   } catch (err) {
     console.error('Error saving RFQ to localStorage:', err);
@@ -140,6 +147,13 @@ export function updateRfqStatus(id, newStatus) {
     const existing = getStoredRfqs();
     const updated = existing.map(item => item.id === id ? { ...item, status: newStatus } : item);
     localStorage.setItem(RFQ_STORAGE_KEY, JSON.stringify(updated));
+    if (typeof fetch !== 'undefined') {
+      fetch('/api.php?action=save_rfqs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rfqs: updated })
+      }).catch(() => {});
+    }
     return updated;
   } catch (err) {
     console.error('Error updating RFQ status:', err);
@@ -152,6 +166,13 @@ export function deleteRfqRecord(id) {
     const existing = getStoredRfqs();
     const updated = existing.filter(item => item.id !== id);
     localStorage.setItem(RFQ_STORAGE_KEY, JSON.stringify(updated));
+    if (typeof fetch !== 'undefined') {
+      fetch('/api.php?action=save_rfqs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ rfqs: updated })
+      }).catch(() => {});
+    }
     return updated;
   } catch (err) {
     console.error('Error deleting RFQ:', err);

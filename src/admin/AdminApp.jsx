@@ -7,7 +7,7 @@ import SeoSettings from './SeoSettings';
 import GeneralSettings from './GeneralSettings';
 import RfqDocumentModal from '../components/RfqDocumentModal';
 import { getStoredRfqs } from '../utils/rfqStorage';
-import { getCatalogProducts } from '../utils/productStorage';
+import { getCatalogProducts, syncServerDatabase } from '../utils/productStorage';
 
 export default function AdminApp({ onBackToSite }) {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -37,7 +37,15 @@ export default function AdminApp({ onBackToSite }) {
   useEffect(() => {
     if (isAuthenticated) {
       loadData();
+      syncServerDatabase();
     }
+    const handleSync = () => loadData();
+    window.addEventListener('allied_products_updated', handleSync);
+    window.addEventListener('allied_rfqs_updated', handleSync);
+    return () => {
+      window.removeEventListener('allied_products_updated', handleSync);
+      window.removeEventListener('allied_rfqs_updated', handleSync);
+    };
   }, [isAuthenticated]);
 
   const handleLogout = () => {

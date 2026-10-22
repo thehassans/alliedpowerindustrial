@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ALLIED_CATEGORIES, ALLIED_BRANDS } from '../data/alliedProducts';
-import { getCatalogProducts } from '../utils/productStorage';
+import { getCatalogProducts, syncServerDatabase } from '../utils/productStorage';
 
 export default function CatalogSection({
   selectedCategory: propCategory,
@@ -17,12 +17,13 @@ export default function CatalogSection({
   const [itemsPerPage, setItemsPerPage] = useState(16);
   const [toastMessage, setToastMessage] = useState('');
 
-  // Sync with storage updates
+  // Sync with storage updates & cPanel server database
   useEffect(() => {
     const handleSync = () => {
       setProducts(getCatalogProducts());
     };
     window.addEventListener('allied_products_updated', handleSync);
+    syncServerDatabase();
     return () => window.removeEventListener('allied_products_updated', handleSync);
   }, []);
 
@@ -78,7 +79,7 @@ export default function CatalogSection({
     }
 
     return result;
-  }, [searchTerm, activeCategory, selectedBrand, sortBy]);
+  }, [products, searchTerm, activeCategory, selectedBrand, sortBy]);
 
   // Pagination
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
