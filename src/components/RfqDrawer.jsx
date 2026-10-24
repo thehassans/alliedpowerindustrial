@@ -401,7 +401,7 @@ export default function RfqDrawer({
                         alt={item.name}
                         style={{ width: '48px', height: '48px', objectFit: 'contain', background: '#fff', borderRadius: '6px', padding: '2px', border: '1px solid #e2e8f0' }}
                         onError={(e) => {
-                          e.target.src = 'https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png';
+                          e.target.src = '/wp-content/uploads/2024/09/RAYCHEM.png';
                         }}
                       />
 

@@ -113,7 +113,7 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
                   objectFit: 'contain'
                 }}
                 onError={(e) => {
-                  e.target.src = 'https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png';
+                  e.target.src = '/wp-content/uploads/2024/09/RAYCHEM.png';
                 }}
               />
             </div>

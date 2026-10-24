@@ -10,9 +10,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1250.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/s-l400.png",
+    "image": "/wp-content/uploads/2025/09/s-l400.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/s-l400.png"
+      "/wp-content/uploads/2025/09/s-l400.png"
     ],
     "description": "100 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X",
     "fullDescription": "100 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X",
@@ -34,9 +34,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2250.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/61R3Xu3mNsL.__AC_SX300_SY300_QL70_FMwebp_.webp",
+    "image": "/wp-content/uploads/2025/09/61R3Xu3mNsL.__AC_SX300_SY300_QL70_FMwebp_.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/61R3Xu3mNsL.__AC_SX300_SY300_QL70_FMwebp_.webp"
+      "/wp-content/uploads/2025/09/61R3Xu3mNsL.__AC_SX300_SY300_QL70_FMwebp_.webp"
     ],
     "description": "APPLETON ACP15034CD 150A CLAMP RING PLUG 3W4P ST2",
     "fullDescription": "APPLETON ACP15034CD 150A CLAMP RING PLUG 3W4P ST2",
@@ -58,9 +58,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2400.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/IMG_47534454_Appleton_ADR20034_HR.jpg",
+    "image": "/wp-content/uploads/2025/09/IMG_47534454_Appleton_ADR20034_HR.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/IMG_47534454_Appleton_ADR20034_HR.jpg"
+      "/wp-content/uploads/2025/09/IMG_47534454_Appleton_ADR20034_HR.jpg"
     ],
     "description": "Powertite Grounding Style 2 Receptacle, Number Of Poles: 4, Number Of Wires: 3, Wire Size: 2/0 AWG – 250 MCM, Amperage",
     "fullDescription": "Powertite Grounding Style 2 Receptacle, Number Of Poles: 4, Number Of Wires: 3, Wire Size: 2/0 AWG – 250 MCM, Amperage",
@@ -82,9 +82,9 @@ export const ALLIED_PRODUCTS = [
     "price": 585.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-2.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-2.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-2.jpg"
+      "/wp-content/uploads/2025/09/17-KV-2.jpg"
     ],
     "description": "A 17.5 kV 3-core outdoor heat-shrink cable termination for polymeric cables with a conductor size of 16–25 mm², part of TE’s Raychem EPKT-17A3XOH3 family",
     "fullDescription": "A 17.5 kV 3-core outdoor heat-shrink cable termination for polymeric cables with a conductor size of 16–25 mm², part of TE’s Raychem EPKT-17A3XOH3 family",
@@ -106,9 +106,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2200.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/71nykwrSDBL-1.jpg",
+    "image": "/wp-content/uploads/2025/09/71nykwrSDBL-1.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/71nykwrSDBL-1.jpg"
+      "/wp-content/uploads/2025/09/71nykwrSDBL-1.jpg"
     ],
     "description": "150A, 600VAC/250VDC, 4P3W, Style 2 Grounding, Powertite Receptacle, NEMA 4X",
     "fullDescription": "Appleton Powertite Series ADR15034 150A 4P3W heavy duty pin & sleeve receptacle with spring-loaded door and threaded screw cover. Designed for reliable power supply in extreme petrochemical, drilling rig, and refinery environments. Copper-free aluminum housing with epoxy finish, make-first break-last grounding, and NEMA 4X ingress protection.",
@@ -131,9 +131,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1300.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/ACP1044CD.webp",
+    "image": "/wp-content/uploads/2024/09/ACP1044CD.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/ACP1044CD.webp"
+      "/wp-content/uploads/2024/09/ACP1044CD.webp"
     ],
     "description": "100A, 600VAC/250VDC, 4P4W, Style 1 Grounding, Powertite Pin & Sleeve, NEMA 4X",
     "fullDescription": "Appleton Powertite Series ACP1044CD 100A 4P4W Pin & Sleeve Plug engineered for heavy-duty industrial and hazardous environment power connections. Built with copper-free aluminum epoxy powder coated housing, positive polarization, make-first break-last grounding, and full NEMA 4X watertight protection. Cable Range: 0.875″ – 1.906″.",
@@ -158,10 +158,10 @@ export const ALLIED_PRODUCTS = [
     "price": 1300.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/appadr1044.jpg",
+    "image": "/wp-content/uploads/2024/09/appadr1044.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/appadr1044.jpg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/Capture-1.jpg"
+      "/wp-content/uploads/2024/09/appadr1044.jpg",
+      "/wp-content/uploads/2024/09/Capture-1.jpg"
     ],
     "description": "100A, 600VAC/250VDC, 4P4W, Style 1 Grounding, Powertite Receptacle, NEMA 4X",
     "fullDescription": "Appleton Powertite Series ADR1044 100A 4P4W Receptacle with automatic spring-closing cover, designed for secure and reliable connection with ACP1044CD plugs in harsh industrial facilities.",
@@ -184,9 +184,9 @@ export const ALLIED_PRODUCTS = [
     "price": 130.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE33.webp",
+    "image": "/wp-content/uploads/2024/12/AEE33.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE33.webp"
+      "/wp-content/uploads/2024/12/AEE33.webp"
     ],
     "description": "1″ Feed-Thru Hub, 30A Powertite Receptacle Mounting Box, Copper-Free Alum",
     "fullDescription": "Appleton AEE33 Powertite Series back box specifically manufactured to mount 30 Amp pin & sleeve receptacles. Constructed of corrosion-resistant copper-free aluminum with architectural epoxy coating, provided with 1″ conduit hub. NEMA 4X rated for indoor and outdoor installations.",
@@ -209,9 +209,9 @@ export const ALLIED_PRODUCTS = [
     "price": 130.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE23.png",
+    "image": "/wp-content/uploads/2024/12/AEE23.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE23.png"
+      "/wp-content/uploads/2024/12/AEE23.png"
     ],
     "description": "3/4″ Hub Size, 30 Amp Mounting Box.",
     "fullDescription": "3/4″ Hub Size, 30 Amp Mounting Box.",
@@ -233,9 +233,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2250.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/s-l1600.webp",
+    "image": "/wp-content/uploads/2024/12/s-l1600.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/s-l1600.webp"
+      "/wp-content/uploads/2024/12/s-l1600.webp"
     ],
     "description": "Positive Polarization, Locking Screw Type; Epoxy Powder Coated Copper-Free Aluminum Material; 1.875 Inch min. Cable Outer Diameter; 2.5 Inch Max. Cable Outer Diameter; 4 Wire(S); 600 Volt AC 50/400 Hertz, 250 Volt DC Voltage Rating",
     "fullDescription": "Positive Polarization, Locking Screw Type; Epoxy Powder Coated Copper-Free Aluminum Material; 1.875 Inch min. Cable Outer Diameter; 2.5 Inch Max. Cable Outer Diameter; 4 Wire(S); 600 Volt AC 50/400 Hertz, 250 Volt DC Voltage Rating",
@@ -257,9 +257,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2800.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-25-at-5.42.38-PM.jpeg",
+    "image": "/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-25-at-5.42.38-PM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-25-at-5.42.38-PM.jpeg"
+      "/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-25-at-5.42.38-PM.jpeg"
     ],
     "description": "Appleton ATX FNB218BUSA Explosion-Proof Fluorescent Light Fixture\n\nBrand: Appleton (by Emerson)Model / Part Number: FNB218BUSAType: FLn SeriesCountry of Origin: Made in Romania\n\nProduct Description:\n\nThe Appleton ATX FNB218BUSA is a high-quality explosion-proof and dust-ignition-proof fluorescent lighting fixture designed for use in hazardous areas. It provides reliable and safe illumination in en...",
     "fullDescription": "Appleton ATX FNB218BUSA Explosion-Proof Fluorescent Light Fixture\n\nBrand: Appleton (by Emerson)Model / Part Number: FNB218BUSAType: FLn SeriesCountry of Origin: Made in Romania\n\nProduct Description:\n\nThe Appleton ATX FNB218BUSA is a high-quality explosion-proof and dust-ignition-proof fluorescent lighting fixture designed for use in hazardous areas. It provides reliable and safe illumination in environments where explosive gases, vapors, or dust may be present. Ideal for refineries, chemical plants, offshore platforms, and other industrial installations requiring ATEX/IECEx certified lighting.\n\nTechnical Specifications:\n\nLamp Type: 2 × 18W fluorescent tubes\n\nVoltage: 110–254V AC/DC\n\nFrequency: 50/60 Hz\n\nPower Tolerance: ±10%\n\nMounting Type: Ceiling or wall mount (depending on accessories)\n\nCertification:\n\nATEX Certified\n\nIECEx Certified\n\nCE Marked\n\nEnclosure Type: FLn (Non-metallic corrosion-resistant body)\n\nIngress Protection: IP66 / IP67 (Dust-tight and water-resistant)\n\nBody Material: Glass-fiber reinforced polyester (GRP)\n\nDiffuser Material: Polycarbonate, high impact resistant\n\nCable Entry: Standard M20/M25 (depends on configuration)\n\nAmbient Temperature Range: -20°C to +55°C\n\nApplication: Zone 1, Zone 2 (Gas) and Zone 21, Zone 22 (Dust) hazardous areas\n\nKey Features:\n\nCertified for use in hazardous and explosive atmospheres (ATEX / IECEx).\n\nCorrosion-resistant and UV-stabilized body for long service life.\n\nWide voltage range suitable for global applications.\n\nEasy lamp replacement and maintenance-friendly design.\n\nHigh impact and weather resistance suitable for harsh environments.\n\nTypical Applications:\n\nOil & Gas plants\n\nOffshore platforms\n\nChemical & petrochemical industries\n\nPower generation facilities\n\nStorage areas for hazardous materials",
@@ -281,9 +281,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/plug-1_clean.png",
+    "image": "/wp-content/uploads/2026/09/plug-1_clean.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/plug-1_clean.png"
+      "/wp-content/uploads/2026/09/plug-1_clean.png"
     ],
     "description": "The Appleton Emerson EDS150-F4W is a high-performance explosionproof dead-end control station designed for reliable switching operations in hazardous industrial environments. Built for maximum durability, this model supports 20 Amp, 120–277 VAC applications and offers superior safety for Class I and Class II hazardous locations.\n\nEngineered with Appleton’s proven industrial design, the EDS150-F4W ...",
     "fullDescription": "The Appleton Emerson EDS150-F4W is a high-performance explosionproof dead-end control station designed for reliable switching operations in hazardous industrial environments. Built for maximum durability, this model supports 20 Amp, 120–277 VAC applications and offers superior safety for Class I and Class II hazardous locations.\n\nEngineered with Appleton’s proven industrial design, the EDS150-F4W comes with a 4-pole configuration, precision-machined components, and rugged housing suitable for oil & gas, petrochemical, marine, and manufacturing facilities. The unit is available with multiple hub size options for easy wiring and installation flexibility.\n\nThis switch is ideal for on/off control, motor loads, and lighting systems, ensuring long service life, corrosion resistance, and dependable field performance.\n\nPacked with keywords such as Appleton, Emerson, EDS Series, hazardous area switch, explosionproof control station, and dead-end hub, this description is optimized for strong visibility on WordPress and Google search.",
@@ -305,9 +305,9 @@ export const ALLIED_PRODUCTS = [
     "price": 18.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/109x339_pli-burndy-ya27_jpg.webp",
+    "image": "/wp-content/uploads/2025/01/109x339_pli-burndy-ya27_jpg.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/109x339_pli-burndy-ya27_jpg.webp"
+      "/wp-content/uploads/2025/01/109x339_pli-burndy-ya27_jpg.webp"
     ],
     "description": "BURNDY® YA27 One-Hole Long Barrel Lug is an 3/0 AWG ORANGE lug with 1/2″ bolt size",
     "fullDescription": "BURNDY® YA27 One-Hole Long Barrel Lug is an 3/0 AWG ORANGE lug with 1/2″ bolt size",
@@ -329,9 +329,9 @@ export const ALLIED_PRODUCTS = [
     "price": 25.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/YA27-2N.webp",
+    "image": "/wp-content/uploads/2025/01/YA27-2N.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/YA27-2N.webp"
+      "/wp-content/uploads/2025/01/YA27-2N.webp"
     ],
     "description": "BURNDY YA27-2N 2 HOLE LUG TERMINAL, 3/0 STR AWG N150 ORANGE DIE 14.",
     "fullDescription": "BURNDY YA27-2N 2 HOLE LUG TERMINAL, 3/0 STR AWG N150 ORANGE DIE 14.",
@@ -353,9 +353,9 @@ export const ALLIED_PRODUCTS = [
     "price": 135.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/Burndy_SKU_Braid_515.webp",
+    "image": "/wp-content/uploads/2024/10/Burndy_SKU_Braid_515.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/Burndy_SKU_Braid_515.webp"
+      "/wp-content/uploads/2024/10/Burndy_SKU_Braid_515.webp"
     ],
     "description": "• Flat extra flexible, tinned, pure copper braid\n\n• Unplated, seamless, pure copper ferrules formed into a rectangular shape on each end\n\nMade of flat extra flexible, tinned, pure copper braid, with unplated, seamless, pure copper ferrules formed into a rectangular shape on each end.",
     "fullDescription": "• Flat extra flexible, tinned, pure copper braid\n\n• Unplated, seamless, pure copper ferrules formed into a rectangular shape on each end\n\nMade of flat extra flexible, tinned, pure copper braid, with unplated, seamless, pure copper ferrules formed into a rectangular shape on each end.",
@@ -375,9 +375,9 @@ export const ALLIED_PRODUCTS = [
     "price": 38.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/ya31-2n.webp",
+    "image": "/wp-content/uploads/2025/01/ya31-2n.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/ya31-2n.webp"
+      "/wp-content/uploads/2025/01/ya31-2n.webp"
     ],
     "description": "Electro-Tin Plated Copper Material; Red Color; 5.69 Inch Overall Length; 2 Inch Barrel Length; Copper Conductor Material; UL 468A/B, CSA Approval; 600 Volt to 35 Kilovolt Voltage Rating; 350 kcmil Stranded Conductor Size; 1/2 Inch Stud Size",
     "fullDescription": "Electro-Tin Plated Copper Material; Red Color; 5.69 Inch Overall Length; 2 Inch Barrel Length; Copper Conductor Material; UL 468A/B, CSA Approval; 600 Volt to 35 Kilovolt Voltage Rating; 350 kcmil Stranded Conductor Size; 1/2 Inch Stud Size",
@@ -399,10 +399,10 @@ export const ALLIED_PRODUCTS = [
     "price": 290.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.38.15-AM.jpeg",
+    "image": "/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.38.15-AM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.38.15-AM.jpeg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.38.15-AM-1.jpeg"
+      "/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.38.15-AM.jpeg",
+      "/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.38.15-AM-1.jpeg"
     ],
     "description": "Product Description (SEO Optimized)\n\nThe CC-TH-70-25-UL Exothermic Mould by SEICO is a premium-quality graphite exothermic welding mould designed to produce permanent, high-conductivity electrical connections for grounding and bonding systems. Engineered for reliability, this mould is suitable for joining conductors in lightning protection, earthing networks, substations, petrochemical plants, oil...",
     "fullDescription": "Product Description (SEO Optimized)\n\nThe CC-TH-70-25-UL Exothermic Mould by SEICO is a premium-quality graphite exothermic welding mould designed to produce permanent, high-conductivity electrical connections for grounding and bonding systems. Engineered for reliability, this mould is suitable for joining conductors in lightning protection, earthing networks, substations, petrochemical plants, oil & gas facilities, power generation stations, telecommunications, and industrial electrical installations.\n\nManufactured from high-density precision graphite, the SEICO CC-TH-70-25-UL mould provides excellent thermal resistance and can be reused for hundreds of exothermic welds when properly maintained. Exothermic welding creates a molecular bond between conductors, resulting in a corrosion-resistant, low-resistance connection that will not loosen over time and carries fault current more effectively than mechanical connectors.\n\nThis mould is widely used in projects requiring UL-compliant grounding connections, offering superior electrical performance, long service life, and maintenance-free operation in harsh industrial environments.\n\nKey Features\n\n• High-quality reusable graphite exothermic welding mould\n\n• Produces permanent molecular electrical connections\n\n• Low electrical resistance and high current carrying capacity\n\n• Corrosion-resistant and maintenance-free connections\n\n• Suitable for grounding, bonding, and lightning protection systems\n\n• Long service life with hundreds of welding cycles\n\n• Precision-machined for consistent weld quality\n\n• Designed for industrial, utility, and oil & gas applications\n\n• Compatible with SEICO exothermic welding materials\n\n• Ideal for UL-standard grounding installations\n\nApplications\n\n• Oil & Gas Plants\n\n• Petrochemical Facilities\n\n• Refineries\n\n• Power Generation Plants\n\n• Electrical Substations\n\n• Transmission & Distribution Networks\n\n• Telecommunications Towers\n\n• Solar Power Projects\n\n• Wind Farms\n\n• Railway Electrification\n\n• Industrial Earthing Systems\n\n• Lightning Protection Systems\n\nSEO Search Tags\n\nCC-TH-70-25-UL, SEICO Exothermic Mould, Exothermic Welding Mould, Graphite Welding Mould, Grounding Mould, Earthing Mould, Exothermic Weld Mould, UL Exothermic Mould, Ground Rod Welding, Cable to Cable Weld, Cable to Ground Rod Connection, Electrical Grounding Accessories, Earthing System Components, Lightning Protection Accessories, Permanent Ground Connection, Industrial Grounding Products, Power Plant Grounding, Petrochemical Grounding, Oil and Gas Earthing, Electrical Bonding System, Graphite Mould, Grounding Equipment Saudi Arabia, SEICO Grounding Products, Exothermic Connection, Grounding Solutions, Electrical Earthing Accessories, Maintenance Free Ground Connection, High Conductivity Weld Connection, Industrial Electrical Accessories.",
@@ -426,10 +426,10 @@ export const ALLIED_PRODUCTS = [
     "price": 65.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/Capture-2.jpg",
+    "image": "/wp-content/uploads/2024/09/Capture-2.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/Capture-2.jpg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/Capture1.jpg"
+      "/wp-content/uploads/2024/09/Capture-2.jpg",
+      "/wp-content/uploads/2024/09/Capture1.jpg"
     ],
     "description": "CONCRETE SURFACE MARKER POST 305X305X76MM",
     "fullDescription": "CONCRETE SURFACE MARKER POST 305X305X76MM",
@@ -451,9 +451,9 @@ export const ALLIED_PRODUCTS = [
     "price": 15.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/LT75G.jpeg",
+    "image": "/wp-content/uploads/2024/10/LT75G.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/LT75G.jpeg"
+      "/wp-content/uploads/2024/10/LT75G.jpeg"
     ],
     "description": "CROUSE HINDS – Liq.Tight St.Connector MI With Alu Lug 3/4,\n\nPART NUMBER : LT75G",
     "fullDescription": "CROUSE HINDS – Liq.Tight St.Connector MI With Alu Lug 3/4,\n\nPART NUMBER : LT75G",
@@ -475,10 +475,10 @@ export const ALLIED_PRODUCTS = [
     "price": 1250.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/cb-acp1034cd-3_1800x1800.webp",
+    "image": "/wp-content/uploads/2024/12/cb-acp1034cd-3_1800x1800.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/cb-acp1034cd-3_1800x1800.webp",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/cb-acp1034cd-3_1800x1800.webp"
+      "/wp-content/uploads/2024/12/cb-acp1034cd-3_1800x1800.webp",
+      "/wp-content/uploads/2024/12/cb-acp1034cd-3_1800x1800.webp"
     ],
     "description": "POWERTITE GROUNDING STYLE 2 CLAMPING RING PLUG, NUMBER OF POLES: 4, NUMBER OF WIRES: 3, WIRE SIZE: 4 – 1 AWG (BUILDING), 4 – 2 AWG (EXTRA FLEX), AMPERAGE RATING: 100 AMP, VOLTAGE RATING: 600 VAC AT 50 – 400 HZ, 250 VDC, PHASE: 3 PH, MAT",
     "fullDescription": "POWERTITE GROUNDING STYLE 2 CLAMPING RING PLUG, NUMBER OF POLES: 4, NUMBER OF WIRES: 3, WIRE SIZE: 4 – 1 AWG (BUILDING), 4 – 2 AWG (EXTRA FLEX), AMPERAGE RATING: 100 AMP, VOLTAGE RATING: 600 VAC AT 50 – 400 HZ, 250 VDC, PHASE: 3 PH, MAT",
@@ -500,9 +500,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2400.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/images-1.jpg",
+    "image": "/wp-content/uploads/2025/09/images-1.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/images-1.jpg"
+      "/wp-content/uploads/2025/09/images-1.jpg"
     ],
     "description": "200 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 4-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X.",
     "fullDescription": "200 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 4-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X.",
@@ -524,9 +524,9 @@ export const ALLIED_PRODUCTS = [
     "price": 550.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/acp3034bc.webp",
+    "image": "/wp-content/uploads/2024/12/acp3034bc.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/acp3034bc.webp"
+      "/wp-content/uploads/2024/12/acp3034bc.webp"
     ],
     "description": "30 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.390″ – 1.375″. NEMA 4X",
     "fullDescription": "30 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.390″ – 1.375″. NEMA 4X",
@@ -548,9 +548,9 @@ export const ALLIED_PRODUCTS = [
     "price": 780.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ACP6034BC.jpg",
+    "image": "/wp-content/uploads/2024/12/ACP6034BC.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ACP6034BC.jpg"
+      "/wp-content/uploads/2024/12/ACP6034BC.jpg"
     ],
     "description": "60 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X. NEC/CEC: Class I, Division 1 and 2, Groups B, C, D Class II, Division 1 and 2, Groups F, G Class III NEMA 3, 3R, 4, 4",
     "fullDescription": "60 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X. NEC/CEC: Class I, Division 1 and 2, Groups B, C, D Class II, Division 1 and 2, Groups F, G Class III NEMA 3, 3R, 4, 4",
@@ -572,9 +572,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/appacp6044bc.jpg",
+    "image": "/wp-content/uploads/2024/10/appacp6044bc.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/appacp6044bc.jpg"
+      "/wp-content/uploads/2024/10/appacp6044bc.jpg"
     ],
     "description": "60 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 4-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X",
     "fullDescription": "60 Amp, Pin & Sleeve Clamping Ring Plug, 4-Pole, 4-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X",
@@ -596,9 +596,9 @@ export const ALLIED_PRODUCTS = [
     "price": 60.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/images.jpg",
+    "image": "/wp-content/uploads/2026/10/images.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/images.jpg"
+      "/wp-content/uploads/2026/10/images.jpg"
     ],
     "description": "Product Description\n\nThe DB-50 Drain Breather by OZ-GEDNEY is a high-performance hazardous area conduit accessory designed to provide effective drainage and ventilation in electrical conduit systems installed in demanding industrial environments. It helps prevent the accumulation of moisture caused by condensation inside conduit systems while allowing air circulation to reduce pressure differences...",
     "fullDescription": "Product Description\n\nThe DB-50 Drain Breather by OZ-GEDNEY is a high-performance hazardous area conduit accessory designed to provide effective drainage and ventilation in electrical conduit systems installed in demanding industrial environments. It helps prevent the accumulation of moisture caused by condensation inside conduit systems while allowing air circulation to reduce pressure differences. This significantly extends the service life of electrical equipment by minimizing corrosion, insulation deterioration, and moisture-related failures.\n\nManufactured from durable, corrosion-resistant materials, the OZ-GEDNEY DB-50 Drain Breather is suitable for use in oil & gas plants, refineries, petrochemical facilities, offshore platforms, power generation plants, chemical industries, marine applications, and other hazardous locations where reliable conduit protection is essential.\n\nThe DB-50 is engineered for easy installation in rigid threaded conduit systems and is compatible with explosion-proof electrical installations requiring dependable moisture control and long-term performance.\n\nKey Features\n\n• Designed for hazardous and industrial electrical installations\n\n• Allows drainage of accumulated condensation from conduit systems\n\n• Provides ventilation to equalize internal conduit pressure\n\n• Helps prevent corrosion and moisture damage\n\n• Heavy-duty corrosion-resistant construction\n\n• Suitable for rigid threaded conduit systems\n\n• Reliable performance in harsh industrial environments\n\n• Long service life with minimal maintenance\n\n• Ideal for oil & gas, petrochemical, marine, and heavy industrial facilities\n\nApplications\n\n• Oil & Gas Refineries\n\n• Petrochemical Plants\n\n• Offshore Platforms\n\n• Power Plants\n\n• Chemical Processing Facilities\n\n• Hazardous Area Electrical Installations\n\n• Industrial Manufacturing Plants\n\n• Marine & Coastal Installations\n\n• Explosion-Proof Conduit Systems\n\nProduct Keywords (SEO)\n\nDB-50 Drain Breather, OZ-GEDNEY DB-50, Oz Gedney Drain Breather, Explosion Proof Drain Breather, Hazardous Area Drain Breather, Conduit Drain Breather, Electrical Conduit Drain, Conduit Vent, Drain Vent Fitting, Hazardous Location Conduit Accessories, Industrial Drain Breather, Moisture Drain Fitting, Explosion Proof Conduit Accessories, Oil and Gas Electrical Accessories, Petrochemical Electrical Fittings, Corrosion Resistant Drain Breather, Rigid Conduit Accessories, Hazardous Area Electrical Products, Industrial Electrical Fittings, Condensation Drain for Conduit, Electrical Conduit Vent, Explosion Proof Conduit Drain, Industrial Drain Vent, Hazardous Area Drain Vent, OZ-GEDNEY Accessories.\n\nMeta Description\n\nBuy the OZ-GEDNEY DB-50 Drain Breather for hazardous area electrical conduit systems. Designed to drain condensation, provide ventilation, prevent corrosion, and improve the reliability of explosion-proof conduit installations in oil & gas, petrochemical, marine, and industrial applications.\n\nSearch Tags\n\nDB-50, DB50, OZ-GEDNEY, Oz Gedney, Drain Breather, Drain Vent, Conduit Drain, Conduit Breather, Explosion Proof Accessories, Hazardous Area Accessories, Conduit Fittings, Electrical Fittings, Industrial Electrical Products, Oil and Gas Equipment, Petrochemical Electrical, Rigid Conduit, Hazardous Location, Drain Fitting, Vent Fitting, Moisture Protection, Condensation Drain, Explosion Proof Fittings, Industrial Conduit Accessories.",
@@ -622,9 +622,9 @@ export const ALLIED_PRODUCTS = [
     "price": 45.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-3.14.04-PM.jpeg",
+    "image": "/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-3.14.04-PM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-3.14.04-PM.jpeg"
+      "/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-3.14.04-PM.jpeg"
     ],
     "description": "Duct Sealing Compound is an asbestos free, non-toxic general sealing compound for use in indoor or outdoor applications. Common uses include sealing around electrical boxes, flashings, and mast service entries. It is permanently soft and will adhere to most clean dry surfaces.",
     "fullDescription": "Duct Sealing Compound is an asbestos free, non-toxic general sealing compound for use in indoor or outdoor applications. Common uses include sealing around electrical boxes, flashings, and mast service entries. It is permanently soft and will adhere to most clean dry surfaces.",
@@ -646,9 +646,9 @@ export const ALLIED_PRODUCTS = [
     "price": 150.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/11Y364-A3020-1_v2.jpeg",
+    "image": "/wp-content/uploads/2024/10/11Y364-A3020-1_v2.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/11Y364-A3020-1_v2.jpeg"
+      "/wp-content/uploads/2024/10/11Y364-A3020-1_v2.jpeg"
     ],
     "description": "Appleton U-Line Interchanger ECP Standard Plug, Number Of Poles: 3, Number Of Wires: 2, Amperage Rating: 20 AMP, Voltage Rating: 250 VAC, Material: Copperfree (Less Than 4/10 Of 1 PCT) Aluminum, Nema Rating: NEMA 7BCD, 9G, Plug Cable Diameter: 0",
     "fullDescription": "Appleton U-Line Interchanger ECP Standard Plug, Number Of Poles: 3, Number Of Wires: 2, Amperage Rating: 20 AMP, Voltage Rating: 250 VAC, Material: Copperfree (Less Than 4/10 Of 1 PCT) Aluminum, Nema Rating: NEMA 7BCD, 9G, Plug Cable Diameter: 0",
@@ -670,9 +670,9 @@ export const ALLIED_PRODUCTS = [
     "price": 150.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/photo-1.jpg",
+    "image": "/wp-content/uploads/2024/10/photo-1.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/photo-1.jpg"
+      "/wp-content/uploads/2024/10/photo-1.jpg"
     ],
     "description": "20 Amp, 125 Volt, NEMA 5-20P, 3 Pole, 2 Wire, Plug, Straight Blade, Industrial Grade, Grounding",
     "fullDescription": "20 Amp, 125 Volt, NEMA 5-20P, 3 Pole, 2 Wire, Plug, Straight Blade, Industrial Grade, Grounding",
@@ -694,9 +694,9 @@ export const ALLIED_PRODUCTS = [
     "price": 478.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-4.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-4.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-4.jpg"
+      "/wp-content/uploads/2025/09/17-KV-4.jpg"
     ],
     "description": "A heat-shrinkable, medium-voltage termination kit by Raychem (TE Connectivity) designed for outdoor service on single-core polymeric cables (35–70 mm²) rated up to 17.5 kV, offering robust insulation and sealing performance.",
     "fullDescription": "A heat-shrinkable, medium-voltage termination kit by Raychem (TE Connectivity) designed for outdoor service on single-core polymeric cables (35–70 mm²) rated up to 17.5 kV, offering robust insulation and sealing performance.",
@@ -718,9 +718,9 @@ export const ALLIED_PRODUCTS = [
     "price": 284.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-7.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-7.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-7.jpg"
+      "/wp-content/uploads/2025/09/17-KV-7.jpg"
     ],
     "description": "High-performance indoor heat-shrink termination kit for single-core polymeric cables (95–240 mm²), rated for 11–17 kV applications—designed for fast, reliable installation and robust environmental protection.",
     "fullDescription": "High-performance indoor heat-shrink termination kit for single-core polymeric cables (95–240 mm²), rated for 11–17 kV applications—designed for fast, reliable installation and robust environmental protection.",
@@ -742,9 +742,9 @@ export const ALLIED_PRODUCTS = [
     "price": 579.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-8.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-8.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-8.jpg"
+      "/wp-content/uploads/2025/09/17-KV-8.jpg"
     ],
     "description": "A medium-voltage, single-core heat-shrink termination kit for outdoor use, designed for polymeric cables in the 95–240 mm² conductor size range at up to 17.5 kV",
     "fullDescription": "A medium-voltage, single-core heat-shrink termination kit for outdoor use, designed for polymeric cables in the 95–240 mm² conductor size range at up to 17.5 kV",
@@ -766,9 +766,9 @@ export const ALLIED_PRODUCTS = [
     "price": 784.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-10.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-10.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-10.jpg"
+      "/wp-content/uploads/2025/09/17-KV-10.jpg"
     ],
     "description": "A heat-shrink termination kit for three-core polymeric (plastic) insulated cables, rated up to 17.5 kV, designed for outdoor use with an 800 mm tail length",
     "fullDescription": "A heat-shrink termination kit for three-core polymeric (plastic) insulated cables, rated up to 17.5 kV, designed for outdoor use with an 800 mm tail length",
@@ -790,9 +790,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS2129 is a heavy-duty single gang dead-end control station engineered for reliable switching in harsh industrial and commercial environments. Designed for maximum safety and performance, this model provides dependable control of lighting, motors, and other electrical equipment.\n\nBuilt with durable materials and precise electrical components, the EDS2129 features a dead-end...",
     "fullDescription": "The Eaton Crouse-Hinds EDS2129 is a heavy-duty single gang dead-end control station engineered for reliable switching in harsh industrial and commercial environments. Designed for maximum safety and performance, this model provides dependable control of lighting, motors, and other electrical equipment.\n\nBuilt with durable materials and precise electrical components, the EDS2129 features a dead-end configuration, making it ideal for terminating conduit runs without feed-through capability. The specified hub size allows secure conduit entry, while the defined number of poles ensures proper functionality for your application.\n\nRated for 20 Amp service and operating across 120–277 Vac, the Eaton Crouse-Hinds EDS2129 offers exceptional versatility and is suitable for a wide range of voltage systems. Its rugged construction ensures long-term use in demanding or hazardous locations.\n\nOptimized with industry-leading safety, reliability, and corrosion resistance, this control station is a top choice for electrical contractors, plant engineers, and industrial facility maintenance teams.\n\nManufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS2129\n\nDevice Type: Single Gang Dead-End Control Station\n\nAmp Rating: 20 Amp\n\nVoltage Range: 120–277 Vac\n\nHub Size: [insert hub size if available]\n\nNumber of Poles: [insert number of poles if available]\n\nConfiguration: Dead-End (no feed-through)\n\nMaterial: Corrosion-resistant, industrial-grade construction\n\nApplications: Lighting control, motor control, equipment switching\n\nEnvironmental Use: Suitable for harsh or hazardous locations (depending on enclosure clas\n\nEaton Crouse-Hinds EDS2129\n\nSingle gang dead-end control station\n\n20 Amp industrial switch\n\n120–277 Vac control device\n\nHazardous location switch\n\nEDS series control station\n\nCrouse-Hinds electrical control station\n\nIndustrial hub size control unit\n\nMulti-pole industrial switch",
@@ -814,9 +814,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS2130 is a robust single gang dead-end control station engineered for reliable switching in harsh and demanding industrial environments. Built with durability and safety in mind, this unit delivers superior performance for lighting, motor, and equipment control applications.\n\nThe EDS2130 model features a dead-end configuration, meaning it is designed for installations wher...",
     "fullDescription": "The Eaton Crouse-Hinds EDS2130 is a robust single gang dead-end control station engineered for reliable switching in harsh and demanding industrial environments. Built with durability and safety in mind, this unit delivers superior performance for lighting, motor, and equipment control applications.\n\nThe EDS2130 model features a dead-end configuration, meaning it is designed for installations where the conduit run terminates at the device. The specified hub size provides secure conduit entry, while the number of poles ensures the proper switching capability required for your system.\n\nWith a heavy-duty construction and wide 120–277 VAC operating range, this Eaton Crouse-Hinds control station supports 20 Amp circuits and is ideal for industrial, commercial, petrochemical, and outdoor environments requiring dependable operation and corrosion-resistant components.\n\nOptimized for SEO and professional cataloging, this product description enhances visibility for users searching for Eaton Crouse-Hinds EDS series control stations, dead-end enclosures, and industrial electrical switching devices.\n\nManufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS2130\n\nDevice Type: Single Gang Dead-End Control Station\n\nAmp Rating: 20 Amp\n\nVoltage Range: 120–277 VAC\n\nHub Size: [Insert hub size here]\n\nNumber of Poles: [Insert number of poles here]\n\nConfiguration: Dead-End (no feed-through)\n\nMaterial/Construction: Industrial-grade, corrosion-resistant housing\n\nApplications: Lighting control, motor control, equipment switching\n\nMounting: Standard single-gang installation\n\nEnvironment: Suitable for harsh or hazardous locations (per enclosure rating)\n\nEaton Crouse-Hinds EDS2130\n\nEDS2130 control station\n\nSingle gang dead-end switch\n\nIndustrial dead-end control box\n\n20A 120–277V industrial switch\n\nHub size electrical enclosure\n\nNumber of poles control station\n\nHeavy-duty Eaton Crouse-Hinds switch",
@@ -838,9 +838,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS2140 is a high-performance single gang dead-end control station engineered for dependable operation in industrial and hazardous environments. Designed with durability and safety in mind, this control device provides reliable switching for lighting, motor, or equipment applications.\n\nThis model features a dead-end configuration, meaning it is installed at the end of a cond...",
     "fullDescription": "The Eaton Crouse-Hinds EDS2140 is a high-performance single gang dead-end control station engineered for dependable operation in industrial and hazardous environments. Designed with durability and safety in mind, this control device provides reliable switching for lighting, motor, or equipment applications.\n\nThis model features a dead-end configuration, meaning it is installed at the end of a conduit system where no further wiring extensions are needed. Its precise hub size supports secure conduit entry, and the specified number of poles ensures proper electrical control for a wide range of systems.\n\nBuilt from rugged, corrosion-resistant materials, the Eaton Crouse-Hinds EDS2140 delivers long-lasting performance in demanding commercial, manufacturing, and outdoor installations.\n\nOptimized for professional use, this control station is an ideal choice for facilities requiring trusted, industrial-grade electrical components.\n\nManufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS2140\n\nDevice Type: Single Gang Dead-End Control Station\n\nHub Size: [Insert hub size here]\n\nNumber of Poles: [Insert number of poles here]\n\nAmp Rating: [Insert amp rating if known]\n\nVoltage Rating: [Insert voltage rating if known]\n\nConfiguration: Dead-End (no feed-through capability)\n\nEnclosure Compatibility: EDS/EDSC series assemblies\n\nMaterial Construction: Corrosion-resistant, industrial-grade components\n\nApplications: Lighting control, motor control, equipment switching\n\nSuitable Environments: Harsh, industrial, hazardous, or outdoor locations\n\nEaton Crouse-Hinds EDS2140\n\nEDS2140 control station\n\nSingle gang dead-end switch\n\nIndustrial electrical control device\n\nHazardous location control station\n\nCrouse-Hinds dead-end switch\n\nElectrical control box with hub size\n\nMulti-pole control station",
@@ -862,9 +862,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS218 is a rugged single gang dead-end control station engineered for safe and reliable operation in demanding industrial environments. Designed for precision and durability, this control unit supports a wide range of lighting and motor-control applications.\n\nBuilt with corrosion-resistant materials, the EDS218 delivers dependable performance even in harsh or hazardous loca...",
     "fullDescription": "The Eaton Crouse-Hinds EDS218 is a rugged single gang dead-end control station engineered for safe and reliable operation in demanding industrial environments. Designed for precision and durability, this control unit supports a wide range of lighting and motor-control applications.\n\nBuilt with corrosion-resistant materials, the EDS218 delivers dependable performance even in harsh or hazardous locations. The defined hub size ensures secure conduit entry, while the specified number of poles provides correct switching functionality for both simple and complex electrical systems.\n\nWith its dead-end configuration, the EDS218 is perfect for installations where the conduit run terminates at the device without feed-through wiring. Eaton Crouse-Hinds’ industry-leading engineering ensures long service life, exceptional reliability, and compliance with industrial safety standards.\n\nEngineered for professional-grade use, the EDS218 is the trusted choice for electrical contractors, industrial plants, refineries, and commercial facilities requiring maximum performance in demanding conditions.\n\nManufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS218\n\nDevice Type: Single Gang Dead-End Control Station\n\nConfiguration: Dead-End (No feed-through)\n\nHub Size: [Insert hub size]\n\nNumber of Poles: [Insert number of poles]\n\nMaterial: Industrial-grade, corrosion-resistant construction\n\nMounting: Single gang\n\nApplications: Motor control, lighting control, industrial switch control\n\nSuitable Environments: Harsh, corrosive, and hazardous areas (depending on enclosure class)\n\nCertifications: [Add if known – e.g., UL/CSA]\n\nBrand: Eaton Crouse-Hinds",
@@ -886,9 +886,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS3129 is a high-performance single gang dead-end control station engineered for reliable operation in industrial and hazardous environments. Designed with precision and built from rugged, corrosion-resistant materials, this control station ensures long-lasting durability in demanding applications.\n\nThe dead-end configuration eliminates feed-through wiring, making it ideal ...",
     "fullDescription": "The Eaton Crouse-Hinds EDS3129 is a high-performance single gang dead-end control station engineered for reliable operation in industrial and hazardous environments. Designed with precision and built from rugged, corrosion-resistant materials, this control station ensures long-lasting durability in demanding applications.\n\nThe dead-end configuration eliminates feed-through wiring, making it ideal for locations where the control station terminates the conduit run. The model’s specified hub size provides a secure and straightforward conduit connection, while the defined number of poles supports proper electrical switching functionality for your system.\n\nTrusted for safety and performance, the Eaton Crouse-Hinds EDS3129 delivers consistent control for lighting, motors, and other electrical equipment—making it a preferred solution in oil & gas facilities, industrial plants, chemical processing sites, and outdoor installations.\n\nBrand / Manufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS3129\n\nDevice Type: Single Gang Dead-End Control Station\n\nAmp Rating: 20 Amp (typical for EDS series unless otherwise noted)\n\nVoltage Rating: 120–277 Vac (typical for EDS control switches)\n\nHub Size: [Insert hub size here if available]\n\nNumber of Poles: [Insert number of poles here]\n\nConfiguration: Dead-End (no feed-through)\n\nMounting: Single gang enclosure\n\nMaterial: Industrial-grade, corrosion-resistant metal\n\nApplications: Motor control, lighting control, industrial switching\n\nSuitable Environments: Harsh, wet, corrosive, and hazardous locations (Classified areas depending on enclosure)\n\nEaton Crouse-Hinds EDS3129\n\nSingle gang dead-end control station\n\nIndustrial electrical switch\n\nDead-end control device\n\nHazardous location switch\n\nConduit hub control station\n\nNumber of poles switch\n\nHub size electrical switch\n\nEDS series control station",
@@ -910,9 +910,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS3130 is a robust single gang dead-end control station designed for safe, dependable operation in demanding industrial and hazardous-location environments. Built with the quality and durability Eaton Crouse-Hinds products are known for, this control device provides long-lasting performance for equipment, lighting, and power control applications.\n\nThe dead-end configuration...",
     "fullDescription": "The Eaton Crouse-Hinds EDS3130 is a robust single gang dead-end control station designed for safe, dependable operation in demanding industrial and hazardous-location environments. Built with the quality and durability Eaton Crouse-Hinds products are known for, this control device provides long-lasting performance for equipment, lighting, and power control applications.\n\nThe dead-end configuration makes the EDS3130 ideal for terminating conduit runs where no additional feed-through is needed. Its specified hub size ensures easy conduit connection, while the configured number of poles supports accurate switching control for your electrical system.\n\nEngineered for reliability, the EDS3130 is suitable for heavy-duty applications, offering rugged construction, corrosion resistance, and compatibility with a wide range of industrial environments.\n\nThis model is widely used in chemical plants, refineries, manufacturing sites, and other areas where safety and performance are critical.\n\nManufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS3130\n\nDevice Type: Single Gang Dead-End Control Station\n\nHub Size: [Insert hub size here]\n\nNumber of Poles: [Insert number of poles here]\n\nConfiguration: Dead-End (no feed-through)\n\nEnclosure: Heavy-duty, corrosion-resistant construction\n\nSwitch Type: Industrial control / hazardous location compatible\n\nApplications: Lighting control, motor control, equipment switching\n\nMounting: Single gang installation\n\nCertifications: [Add UL/CSA/Class I Division ratings if applicable]\n\nEaton Crouse-Hinds EDS3130\n\nEDS3130 control station\n\nSingle gang dead-end electrical box\n\nIndustrial hazardous location switch\n\nCrouse-Hinds dead-end control station\n\nHeavy-duty industrial control switch\n\nHub size electrical control station\n\nNumber of poles switch assembly",
@@ -934,9 +934,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS3140 is a high-performance single gang dead-end control station engineered for reliable switching in industrial, commercial, and hazardous environments. Built with the durability and safety Eaton Crouse-Hinds is known for, this control device is designed to withstand harsh conditions while ensuring stable and dependable operation.\n\nThis model features a dead-end configura...",
     "fullDescription": "The Eaton Crouse-Hinds EDS3140 is a high-performance single gang dead-end control station engineered for reliable switching in industrial, commercial, and hazardous environments. Built with the durability and safety Eaton Crouse-Hinds is known for, this control device is designed to withstand harsh conditions while ensuring stable and dependable operation.\n\nThis model features a dead-end configuration, making it ideal for terminating a conduit run when no further feed-through connection is required. The specified hub size provides quick, secure installation, while the defined number of poles ensures proper electrical control for your system’s requirements.\n\nThe EDS3140 is widely used for equipment control, lighting circuits, and heavy-duty industrial applications where quality, safety, and long service life are essential.\n\nOptimized for maximum performance, this unit is a trusted solution for maintenance teams, contractors, and facility engineers who demand premium electrical components.\n\nManufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS3140\n\nDevice Type: Single Gang Dead-End Control Station\n\nHub Size: [insert hub size if available]\n\nNumber of Poles: [insert number of poles if available]\n\nConfiguration: Dead-End (non feed-through)\n\nEnclosure Type: Industrial-grade, corrosion-resistant design\n\nApplication: Lighting, motors, equipment control, industrial circuits\n\nCertifications: [insert UL/CSA/Class ratings if applicable]\n\nEaton Crouse-Hinds EDS3140\n\nCrouse-Hinds control station\n\nSingle gang dead-end switch\n\nIndustrial control device\n\nHazardous location switch\n\nEDS series control station\n\nElectrical control box with hub size\n\nMulti-pole industrial switch",
@@ -958,9 +958,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
+    "image": "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
+      "/wp-content/uploads/2025/11/dead-end-single-eaton.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDS3129 is a high-performance single gang dead-end control station engineered for reliable operation in industrial and hazardous environments. Designed with precision and built from rugged, corrosion-resistant materials, this control station ensures long-lasting durability in demanding applications.\n\nThe dead-end configuration eliminates feed-through wiring, making it ideal ...",
     "fullDescription": "The Eaton Crouse-Hinds EDS3129 is a high-performance single gang dead-end control station engineered for reliable operation in industrial and hazardous environments. Designed with precision and built from rugged, corrosion-resistant materials, this control station ensures long-lasting durability in demanding applications.\n\nThe dead-end configuration eliminates feed-through wiring, making it ideal for locations where the control station terminates the conduit run. The model’s specified hub size provides a secure and straightforward conduit connection, while the defined number of poles supports proper electrical switching functionality for your system.\n\nTrusted for safety and performance, the Eaton Crouse-Hinds EDS3129 delivers consistent control for lighting, motors, and other electrical equipment—making it a preferred solution in oil & gas facilities, industrial plants, chemical processing sites, and outdoor installations.\n\nBrand / Manufacturer: Eaton Crouse-Hinds\n\nModel Number: EDS3129\n\nDevice Type: Single Gang Dead-End Control Station\n\nAmp Rating: 20 Amp (typical for EDS series unless otherwise noted)\n\nVoltage Rating: 120–277 Vac (typical for EDS control switches)\n\nHub Size: [Insert hub size here if available]\n\nNumber of Poles: [Insert number of poles here]\n\nConfiguration: Dead-End (no feed-through)\n\nMounting: Single gang enclosure\n\nMaterial: Industrial-grade, corrosion-resistant metal\n\nApplications: Motor control, lighting control, industrial switching\n\nSuitable Environments: Harsh, wet, corrosive, and hazardous locations (Classified areas depending on enclosure)\n\nEaton Crouse-Hinds EDS3129\n\nSingle gang dead-end control station\n\nIndustrial electrical switch\n\nDead-end control device\n\nHazardous location switch\n\nConduit hub control station\n\nNumber of poles switch\n\nHub size electrical switch\n\nEDS series control station",
@@ -982,9 +982,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg",
+    "image": "/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg"
+      "/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDSC-2129 is a durable Single Gang Feed-Thru EDS snap switch control station control station featuring a 1-Pole, 20 Amp switch with a ¾” hub size, ideal for hazardous and industrial applications.\n\nThe Eaton Crouse-Hinds EDSC2129 is an industrial-grade control station designed for harsh environments where reliability and safety are essential. Built with heavy-duty cast constr...",
     "fullDescription": "The Eaton Crouse-Hinds EDSC-2129 is a durable Single Gang Feed-Thru EDS snap switch control station control station featuring a 1-Pole, 20 Amp switch with a ¾” hub size, ideal for hazardous and industrial applications.\n\nThe Eaton Crouse-Hinds EDSC2129 is an industrial-grade control station designed for harsh environments where reliability and safety are essential. Built with heavy-duty cast construction, this Single Gang Feed-Thru unit features a 1-Pole, 20 Amp switch and a ¾-inch NPT hub, making it suitable for lighting circuits, motor control, and general industrial switching.\n\nEngineered for hazardous locations, the unit provides explosionproof protection, dust-ignition resistance, and long-term durability even in corrosive or outdoor areas. Eaton’s Crouse-Hinds series is recognized worldwide for superior quality and performance in challenging conditions.\n\nSpecification\nDetails\n\nBrand\nEaton Crouse-Hinds\n\nModel Number\nEDSC2129\n\nConfiguration\nSingle Gang – Feed-Thru\n\nNumber of Poles\n1-Pole\n\nAmpere Rating\n20 Amp\n\nVoltage Rating\n120–277 Vac (depending on wiring)\n\nHub Size\n¾” NPT\n\nMaterial\nHeavy-duty cast aluminum\n\nEnclosure Rating\nExplosionproof / Dust-ignitionproof\n\nMounting Style\nFeed-Thru, Surface Mount\n\nApplication Use\nLighting control, motor control, switching circuits\n\nCertifications\nUL Listed, CSA Certified\n\nEnvironment\nSuitable for hazardous and industrial locations\n\nOil & Gas facilities\n\nPetrochemical and chemical plants\n\nMining and heavy industry\n\nMarine & offshore platforms\n\nIndustrial manufacturing units\n\nWarehouses and refineries\n\nEaton Crouse-Hinds EDSC2129, EDSC2129 20 Amp, 1-pole control station, Single Gang Feed-Thru switch, explosionproof switch, hazardous location control device, Eaton Crouse Hinds 20A switch, ¾” hub control station, industrial control equipment, feed-thru control enclosure, heavy-duty electrical switch.\n\nEaton Crouse-HindsEDSC-212920 Amp Switch1-Pole Control StationSingle Gang Feed-ThruExplosionproof ControlHazardous Location ElectricalIndustrial Control Equipment",
@@ -1006,9 +1006,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg",
+    "image": "/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg"
+      "/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg"
     ],
     "description": "The Eaton Crouse-Hinds EDSC2130 is a Single Gang Feed-Thru control station equipped with a 3-way, 20 Amp switch and a ¾-inch NPT hub, designed for safe and reliable operation in industrial and hazardous locations.\n\nThe Eaton Crouse-Hinds EDSC2130 is a rugged industrial control station designed for demanding applications in hazardous areas. This model features a 3-way, 20 Amp switch and a ¾-inch hu...",
     "fullDescription": "The Eaton Crouse-Hinds EDSC2130 is a Single Gang Feed-Thru control station equipped with a 3-way, 20 Amp switch and a ¾-inch NPT hub, designed for safe and reliable operation in industrial and hazardous locations.\n\nThe Eaton Crouse-Hinds EDSC2130 is a rugged industrial control station designed for demanding applications in hazardous areas. This model features a 3-way, 20 Amp switch and a ¾-inch hub, making it suitable for multi-location lighting control and general electrical switching.\n\nIts Single Gang Feed-Thru configuration allows wiring to enter and exit the enclosure, simplifying installation in complex electrical systems. Built with a heavy-duty cast aluminum housing, the EDSC2130 provides excellent protection against dust, moisture, impact, and corrosive environments.\n\nThis control station is commonly used across oil and gas facilities, manufacturing plants, offshore platforms, and chemical processing sites where certified and dependable equipment is required.\n\nSpecification\nDetails\n\nBrand\nEaton Crouse-Hinds\n\nModel\nEDSC2130\n\nStyle\nSingle Gang – Feed-Thru\n\nSwitch Type\n3-Way Switch\n\nAmpere Rating\n20 Amp\n\nHub Size\n¾” NPT\n\nVoltage Rating\n120–277 Vac\n\nHousing Material\nCast Aluminum\n\nEnclosure Rating\nExplosionproof / Dust-Ignitionproof\n\nMounting Type\nFeed-Thru / Surface Mount\n\nApplications\nMulti-point lighting control, industrial switching\n\nCertifications\nUL Listed, CSA Certified\n\nOil & Gas refineries\n\nPetrochemical plants\n\nChemical processing units\n\nIndustrial factories\n\nOffshore and marine facilities\n\nHazardous or explosive environments\n\nEaton Crouse-Hinds EDSC2130, EDSC2130 3-way switch, ¾ inch hub control station, Single Gang Feed-Thru switch, 20 Amp industrial switch, explosionproof switch station, hazardous area control station, Crouse-Hinds feed-thru enclosure, industrial electrical switch",
@@ -1030,9 +1030,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg",
+    "image": "/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg"
+      "/wp-content/uploads/2025/11/feed-thru-eaton-single.jpeg"
     ],
     "description": "The EDSC218 by Eaton Crouse-Hinds is a Single Gang Feed-Thru control station with a 2-pole, 20 Amp switch and ¾” NPT hub. Designed for industrial and hazardous locations, this unit delivers reliable and safe electrical switching.\n\nThe Eaton Crouse-Hinds EDSC218 is a strong and durable control station made for tough industrial environments. It comes with a 2-pole, 20 Amp switch and a ¾-inch hub siz...",
     "fullDescription": "The EDSC218 by Eaton Crouse-Hinds is a Single Gang Feed-Thru control station with a 2-pole, 20 Amp switch and ¾” NPT hub. Designed for industrial and hazardous locations, this unit delivers reliable and safe electrical switching.\n\nThe Eaton Crouse-Hinds EDSC218 is a strong and durable control station made for tough industrial environments. It comes with a 2-pole, 20 Amp switch and a ¾-inch hub size, making it suitable for lighting, motor control, and general electrical switching.\n\nThis Single Gang Feed-Thru design allows wiring to pass through the enclosure, making installation easier in many applications. The enclosure is built from heavy-duty cast aluminum, providing long-lasting protection in hazardous, dusty, wet, or corrosive areas.\n\nThis model is commonly used in oil & gas plants, factories, chemical areas, mining sites, and other industrial locations requiring safe and reliable control equipment.\n\nSpecification\nDetails\n\nBrand\nEaton Crouse-Hinds\n\nModel\nEDSC218\n\nType\nSingle Gang – Feed-Thru\n\nNumber of Poles\n2-Pole\n\nAmpere Rating\n20 Amp\n\nHub Size\n¾” NPT\n\nVoltage Rating\n120–277 Vac\n\nMaterial\nCast aluminum housing\n\nEnclosure Rating\nExplosionproof / Dust-Ignitionproof\n\nMounting Style\nFeed-Thru, Surface Mount\n\nApplication\nLighting control, motor control, switching circuits\n\nCertifications\nUL Listed, CSA Certified\n\nPetrochemical plants\n\nIndustrial factories\n\nMarine and offshore sites\n\nChemical plants\n\nHeavy industrial areas\n\nEaton Crouse-Hinds EDSC218, EDSC218 control station, 2-pole 20A switch, Single Gang Feed-Thru, explosionproof switch, hazardous location control station, ¾ inch hub, industrial switch unit, Crouse-Hinds feed-thru station, industrial electrical equipment.",
@@ -1054,9 +1054,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/Image_c37266eb-145a-491a-a48f-d5216a89e970.webp",
+    "image": "/wp-content/uploads/2025/11/Image_c37266eb-145a-491a-a48f-d5216a89e970.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/11/Image_c37266eb-145a-491a-a48f-d5216a89e970.webp"
+      "/wp-content/uploads/2025/11/Image_c37266eb-145a-491a-a48f-d5216a89e970.webp"
     ],
     "description": "Emerson Appleton EDS150-F1 explosion-proof tumbler switch — 20A, 120–277V, 1-pole, ½” dead-end hub; factory-sealed switch\n\nEmerson Appleton EDS150-F1\n\nAppleton EDS150-F1 switch\n\nExplosion-proof tumbler switch\n\nAppleton hazardous location switch\n\n20A explosion-proof switch\n\n1-pole XP switch Appleton\n\nDead-end tumbler switch\n\nClass I II III hazardous switch\n\nAppleton factory-sealed switch\n\nItem Code...",
     "fullDescription": "Emerson Appleton EDS150-F1 explosion-proof tumbler switch — 20A, 120–277V, 1-pole, ½” dead-end hub; factory-sealed switch\n\nEmerson Appleton EDS150-F1\n\nAppleton EDS150-F1 switch\n\nExplosion-proof tumbler switch\n\nAppleton hazardous location switch\n\n20A explosion-proof switch\n\n1-pole XP switch Appleton\n\nDead-end tumbler switch\n\nClass I II III hazardous switch\n\nAppleton factory-sealed switch\n\nItem Code: Emerson Appleton EDS150-F1\n\nType: Factory-sealed explosion-proof tumbler switch\n\nCurrent Rating: 20A\n\nVoltage Rating: 120–277 VAC\n\nPoles: 1-pole\n\nHub Size: ½” dead-end hub\n\nConstruction: Heavy-duty malleable iron body\n\nFinish: Triple-coat corrosion-resistant (zinc electroplate, chromate, epoxy)\n\nActuator: Front lever tumbler\n\nHP Rating: 1 HP @ 120V / 2 HP @ 240V\n\nHazardous Location Rating: Class I (B, C, D), Class II (E, F, G), Class III\n\nEnclosure Rating: NEMA 7CD, 9EFG\n\nSafety Feature: Pad-lockable ON/OFF positions\n\nMounting: Surface mount with external mounting lugs\n\nGrounding: Internal ground screw\n\nApplication: Ideal for lighting and power switching in hazardous industrial environments.",
@@ -1078,11 +1078,11 @@ export const ALLIED_PRODUCTS = [
     "price": 25.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-10.15.51-AM.jpeg",
+    "image": "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-10.15.51-AM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-10.15.51-AM.jpeg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Im26-09-27-at-10.15.51-AM.jpeg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-10.15.51-AM.jpeg"
+      "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-10.15.51-AM.jpeg",
+      "/wp-content/uploads/2026/09/WhatsApp-Im26-09-27-at-10.15.51-AM.jpeg",
+      "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-27-at-10.15.51-AM.jpeg"
     ],
     "description": "Carbon Steel Material; Goldgalv Finish; A1200 and A1400 Series Channel Used on; 1-5/8 Inch Channel Width; Blank Configuration; UL, CSA, Arra, NEC Applicable Standard; 1-5/8 Inch Channel Depth; 12/14 Gauge Channel Thickness; GOLDGALV[R] Brand\n\nUPC: 61601312205\n\nPart Number: A804",
     "fullDescription": "Carbon Steel Material; Goldgalv Finish; A1200 and A1400 Series Channel Used on; 1-5/8 Inch Channel Width; Blank Configuration; UL, CSA, Arra, NEC Applicable Standard; 1-5/8 Inch Channel Depth; 12/14 Gauge Channel Thickness; GOLDGALV[R] Brand\n\nUPC: 61601312205\n\nPart Number: A804",
@@ -1104,9 +1104,9 @@ export const ALLIED_PRODUCTS = [
     "price": 175.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-11-at-2.22.54-PM.jpeg",
+    "image": "/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-11-at-2.22.54-PM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-11-at-2.22.54-PM.jpeg"
+      "/wp-content/uploads/2026/03/WhatsApp-Image-2026-03-11-at-2.22.54-PM.jpeg"
     ],
     "description": "FIBER GLASS MARKER POST SIZE 120 × 120 × 1400MM THICKNESS 6MM COLOR ORANGE WITH GI SHEET WARNING SIGN PLATE SIZE 480 × 90MM & ARROW 90 × 90MM THICKNESS 1.5MM HOLE 8MM (UNDERGROUND TELEPHONE CABLE COLOR YELLOW & BLACK – WRITE ENGLISH & ARABIC SCREEN PRINT) (1 PCS 5.5 KG ARAMCO STANDARD)",
     "fullDescription": "FIBER GLASS MARKER POST SIZE 120 × 120 × 1400MM THICKNESS 6MM COLOR ORANGE WITH GI SHEET WARNING SIGN PLATE SIZE 480 × 90MM & ARROW 90 × 90MM THICKNESS 1.5MM HOLE 8MM (UNDERGROUND TELEPHONE CABLE COLOR YELLOW & BLACK – WRITE ENGLISH & ARABIC SCREEN PRINT) (1 PCS 5.5 KG ARAMCO STANDARD)",
@@ -1128,10 +1128,10 @@ export const ALLIED_PRODUCTS = [
     "price": 145.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/Screenshot-2026-09-30-191536-1.png",
+    "image": "/wp-content/uploads/2026/10/Screenshot-2026-09-30-191536-1.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/Screenshot-2026-09-30-191536-1.png",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/Screenshot-2026-09-30-191536.png"
+      "/wp-content/uploads/2026/10/Screenshot-2026-09-30-191536-1.png",
+      "/wp-content/uploads/2026/10/Screenshot-2026-09-30-191536.png"
     ],
     "description": "Fiberglass Tape 3″ x 3mm x 30m, non-adhesive, high-strength plain weave fiberglass tape designed for demanding industrial applications. It offers excellent resistance to heat, chemicals, moisture, and general industrial conditions, making it suitable for insulation, reinforcement, wrapping, sealing support, and other industrial uses.\n\nProduct Features:\n\nMaterial: Fiberglass\n\nWidth: 3 inches\n\nThick...",
     "fullDescription": "Fiberglass Tape 3″ x 3mm x 30m, non-adhesive, high-strength plain weave fiberglass tape designed for demanding industrial applications. It offers excellent resistance to heat, chemicals, moisture, and general industrial conditions, making it suitable for insulation, reinforcement, wrapping, sealing support, and other industrial uses.\n\nProduct Features:\n\nMaterial: Fiberglass\n\nWidth: 3 inches\n\nThickness: 3mm\n\nLength: 30 meters\n\nType: Non-adhesive\n\nWeave: High-strength plain weave\n\nHeat resistant\n\nChemical resistant\n\nMoisture resistant\n\nSuitable for industrial applications\n\nDurable and reliable for demanding environments\n\nSearch Tags\n\nfiberglass tape, fiberglass tape 3 inch, 3 inch fiberglass tape, 3mm fiberglass tape, 30m fiberglass tape, non adhesive fiberglass tape, non adhesive tape, heat resistant tape, chemical resistant tape, moisture resistant tape, high strength fiberglass tape, plain weave fiberglass tape, industrial fiberglass tape, industrial insulation tape, fiberglass insulation tape, heat resistant fiberglass tape, industrial tape, fiberglass cloth tape, fiberglass fabric tape, reinforcement tape, high temperature tape, fiberglass reinforcing tape, 3\" x 3mm x 30m, fiberglass tape 3 x 3mm, industrial insulation material",
@@ -1153,11 +1153,11 @@ export const ALLIED_PRODUCTS = [
     "price": 55.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/Capture.jpg",
+    "image": "/wp-content/uploads/2024/09/Capture.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/Capture.jpg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/E2.jpg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-2.38.21-PM.jpeg"
+      "/wp-content/uploads/2024/09/Capture.jpg",
+      "/wp-content/uploads/2024/09/E2.jpg",
+      "/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-2.38.21-PM.jpeg"
     ],
     "description": "High-strength tinned copper alloy U-bolt ground rod clamp for 5/8″ and 3/4″ copperbonded rods, accommodating 70 mm² to 120 mm² stranded copper conductors, UL 467 Listed for direct burial.",
     "fullDescription": "Heavy-duty U-bolt ground rod mechanical connector manufactured from corrosion-resistant tinned copper bronze alloy. Designed to bond a single 70 mm² to 120 mm² stranded copper conductor directly to 5/8″ or 3/4″ earthing rods. UL 467 listed, suitable for direct burial in earth and concrete installations compliant with Saudi Aramco 9COM specifications.",
@@ -1180,9 +1180,9 @@ export const ALLIED_PRODUCTS = [
     "price": 175.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-24-at-10.15.20-AM.jpeg",
+    "image": "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-24-at-10.15.20-AM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-24-at-10.15.20-AM.jpeg"
+      "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-24-at-10.15.20-AM.jpeg"
     ],
     "description": "LOCTITE® 577 is a high-performance anaerobic pipe thread sealant designed for sealing and locking metal threaded pipe fittings and connections. It is a reliable industrial sealing solution that prevents leakage of gases, liquids, oils, hydraulic fluids, and process chemicals in threaded assemblies. The product cures in the absence of air between close-fitting metal surfaces, creating a strong, fle...",
     "fullDescription": "LOCTITE® 577 is a high-performance anaerobic pipe thread sealant designed for sealing and locking metal threaded pipe fittings and connections. It is a reliable industrial sealing solution that prevents leakage of gases, liquids, oils, hydraulic fluids, and process chemicals in threaded assemblies. The product cures in the absence of air between close-fitting metal surfaces, creating a strong, flexible seal that withstands vibration, pressure fluctuations, and temperature changes.\n\nThis Henkel LOCTITE® 577 thread sealant is specially developed for use on tapered and parallel metal pipe threads, providing excellent sealing performance without the need for PTFE tape, hemp, or traditional sealing materials. It fills the gaps between threaded components, preventing corrosion, loosening, and leakage while allowing easy assembly and future disassembly with standard hand tools.\n\nIdeal for oil & gas, petrochemical, industrial, mechanical, hydraulic, pneumatic, and maintenance applications, LOCTITE® 577 provides dependable sealing for valves, pumps, compressors, pipe fittings, instrumentation connections, and industrial piping systems. It is suitable for use on common metal substrates including steel, stainless steel, brass, and other metal threaded fittings.\n\nProduct Features & Benefits:\n\nHigh-performance anaerobic pipe thread sealant for metal threads\n\nPrevents leakage in threaded pipe connections and fittings\n\nReplaces PTFE tape and traditional thread sealing methods\n\nExcellent resistance to vibration, shock, and pressure changes\n\nProtects against corrosion and thread damage\n\nProvides instant low-pressure sealing after assembly\n\nSuitable for hydraulic, pneumatic, and industrial piping systems\n\nReliable performance in harsh industrial environments\n\nEasy application with controlled curing properties\n\nSuitable for maintenance, repair, and new installation projects\n\nSupplied in 50 ml bottle packaging\n\nApplications:\n\nOil & Gas pipeline equipment\n\nPetrochemical and refinery systems\n\nIndustrial process piping\n\nHydraulic and pneumatic systems\n\nPumps and valve assemblies\n\nCompressors and machinery\n\nInstrumentation and control systems\n\nMaintenance and repair applications\n\nMetal threaded pipe fittings and connectors\n\nTechnical Keywords for Website SEO / Search:\n\nLOCTITE 577, Loctite 577 Pipe Thread Sealant, Henkel Loctite Thread Sealant, 50ml Loctite Sealant, Anaerobic Pipe Thread Sealant, Metal Thread Sealant, High Performance Thread Sealant, Industrial Pipe Sealant, Hydraulic Thread Sealant, Pneumatic Thread Sealant, Pipe Fitting Sealant, Leak Prevention Sealant, Thread Sealing Compound, Oil and Gas Thread Sealant, Industrial Maintenance Chemicals, Valve Thread Sealant, Stainless Steel Thread Sealant, Chemical Resistant Pipe Sealant, Pressure Resistant Thread Sealant, Henkel Industrial Adhesive, Loctite Industrial Products, Oilfield Maintenance Sealant, Mechanical Thread Sealer.",
@@ -1204,9 +1204,9 @@ export const ALLIED_PRODUCTS = [
     "price": 120.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-28-at-5.25.48-PM.jpeg",
+    "image": "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-28-at-5.25.48-PM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-28-at-5.25.48-PM.jpeg"
+      "/wp-content/uploads/2026/09/WhatsApp-Image-2026-09-28-at-5.25.48-PM.jpeg"
     ],
     "description": "MOLYSLIP COPASLIP High-Temperature Anti-Seize Compound (500g) is a premium copper-based anti-seize lubricant designed to protect threaded fasteners, bolts, nuts, studs, flanges, gaskets, and metal components from seizure, galling, corrosion, rust, and wear under extreme operating conditions. Formulated with high-purity copper particles and advanced anti-seize additives, COPASLIP provides long-last...",
     "fullDescription": "MOLYSLIP COPASLIP High-Temperature Anti-Seize Compound (500g) is a premium copper-based anti-seize lubricant designed to protect threaded fasteners, bolts, nuts, studs, flanges, gaskets, and metal components from seizure, galling, corrosion, rust, and wear under extreme operating conditions. Formulated with high-purity copper particles and advanced anti-seize additives, COPASLIP provides long-lasting lubrication and ensures easy assembly and disassembly of components exposed to high temperatures, moisture, chemicals, and harsh industrial environments.\n\nWith an exceptional operating temperature range of -40°C to +1100°C, this high-performance anti-seize compound prevents thread seizure, reduces friction, and protects against corrosion caused by water, salt, steam, and aggressive chemicals. It is ideal for applications in oil & gas, petrochemical plants, refineries, power generation, marine, mining, steel plants, automotive, heavy equipment, cement industries, and general industrial maintenance.\n\nMOLYSLIP COPASLIP is suitable for use on stainless steel, carbon steel, alloy steel, cast iron, copper, brass, and other metallic components. It is commonly applied to bolts, nuts, threaded connections, exhaust systems, turbines, heat exchangers, pressure vessels, pumps, compressors, valves, pipe flanges, manifolds, spark plugs, brake components, and high-temperature assemblies where reliable anti-seize protection is essential.\n\nThis 500g anti-seize compound helps reduce maintenance costs, minimizes equipment downtime, prevents thread damage, and extends the service life of critical components. It provides outstanding resistance to oxidation, corrosion, moisture, vibration, and high-pressure conditions, making it the preferred choice for industrial maintenance professionals.\n\nSEO Keywords\n\nMOLYSLIP COPASLIP, COPASLIP 500g, Copper Anti-Seize Compound, High Temperature Anti-Seize Grease, Copper Grease, Thread Lubricant, Anti-Seize Paste, Industrial Lubricant, Bolt Anti-Seize, Nut Lubricant, High Temperature Grease, Corrosion Protection Compound, Thread Protection Paste, Copper Assembly Paste, Industrial Maintenance Lubricant, Oil & Gas Anti-Seize, Petrochemical Lubricant, Refinery Maintenance Compound, Valve Lubricant, Flange Bolt Lubricant, Stainless Steel Anti-Seize, Heavy Duty Anti-Seize Compound, High Temperature Copper Grease, Anti-Galling Compound, Extreme Temperature Lubricant, Industrial Copper Paste, 500g Copper Grease, MRO Lubricants, Saudi Arabia Industrial Lubricants.",
@@ -1228,9 +1228,9 @@ export const ALLIED_PRODUCTS = [
     "price": 406.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-5.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-5.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-5.jpg"
+      "/wp-content/uploads/2025/09/17-KV-5.jpg"
     ],
     "description": "Heat-shrinkable TE Connectivity Raychem EPKT 17B3XIH2 kit for terminating 35–70 mm² three-core XLPE/EPR cables rated 11–17 kV in indoor environments.",
     "fullDescription": "Heat-shrinkable TE Connectivity Raychem EPKT 17B3XIH2 kit for terminating 35–70 mm² three-core XLPE/EPR cables rated 11–17 kV in indoor environments.",
@@ -1252,9 +1252,9 @@ export const ALLIED_PRODUCTS = [
     "price": 663.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-6.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-6.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-6.jpg"
+      "/wp-content/uploads/2025/09/17-KV-6.jpg"
     ],
     "description": "Heat-shrinkable TE Connectivity Raychem EPKT 17B3XOH3  kit for terminating 35–70 mm² three-core XLPE/EPR cables rated 11–17 kV in indoor environments.",
     "fullDescription": "Heat-shrinkable TE Connectivity Raychem EPKT 17B3XOH3  kit for terminating 35–70 mm² three-core XLPE/EPR cables rated 11–17 kV in indoor environments.",
@@ -1276,9 +1276,9 @@ export const ALLIED_PRODUCTS = [
     "price": 325.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE36.jpg",
+    "image": "/wp-content/uploads/2024/12/AEE36.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE36.jpg"
+      "/wp-content/uploads/2024/12/AEE36.jpg"
     ],
     "description": "Mounting Box, Aluminum, for Powertite 30A & 100A Receptacle, 1″ Hub",
     "fullDescription": "Mounting Box, Aluminum, for Powertite 30A & 100A Receptacle, 1″ Hub",
@@ -1300,9 +1300,9 @@ export const ALLIED_PRODUCTS = [
     "price": 170.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-02-at-10.01.13-AM-1-1.jpeg",
+    "image": "/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-02-at-10.01.13-AM-1-1.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-02-at-10.01.13-AM-1-1.jpeg"
+      "/wp-content/uploads/2025/10/WhatsApp-Image-2025-10-02-at-10.01.13-AM-1-1.jpeg"
     ],
     "description": "OCAL TOUCH UP PAINT PVC Patching Compound, 0.47 LTR/Can , PATCH-G , THOMAS & BETTS",
     "fullDescription": "OCAL TOUCH UP PAINT PVC Patching Compound, 0.47 LTR/Can , PATCH-G , THOMAS & BETTS",
@@ -1324,9 +1324,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/12G184_AS01.jpg",
+    "image": "/wp-content/uploads/2025/09/12G184_AS01.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/12G184_AS01.jpg"
+      "/wp-content/uploads/2025/09/12G184_AS01.jpg"
     ],
     "description": "Pin & Sleeve Connector Body, 30A, 4-Pole, 3-Wire",
     "fullDescription": "Pin & Sleeve Connector Body, 30A, 4-Pole, 3-Wire",
@@ -1348,9 +1348,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1700.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/s-l400.jpg",
+    "image": "/wp-content/uploads/2024/09/s-l400.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/s-l400.jpg"
+      "/wp-content/uploads/2024/09/s-l400.jpg"
     ],
     "description": "100 Amp, 600V AC / 250V DC, 4-Pole 3-Wire Powertite Series Pin & Sleeve female cable connector body, NEMA 4X watertight enclosure.",
     "fullDescription": "Heavy-duty industrial 100A 4P3W watertight pin & sleeve connector body engineered for harsh offshore, petrochemical, and industrial environments. Features copper-free aluminum housing, neoprene bushing, and positive locking ring.",
@@ -1373,9 +1373,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/d5392be0a1d7b82117ab8740c7580a0761f05bfe-large.jpg",
+    "image": "/wp-content/uploads/2025/09/d5392be0a1d7b82117ab8740c7580a0761f05bfe-large.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/d5392be0a1d7b82117ab8740c7580a0761f05bfe-large.jpg"
+      "/wp-content/uploads/2025/09/d5392be0a1d7b82117ab8740c7580a0761f05bfe-large.jpg"
     ],
     "description": "Features: Connector/plug Cable Dia: 0.39 To 1.37in, Grounding Style: Shell, Number Of Poles: 4, Enclosure: NEMA, NEMA Rating: 4x",
     "fullDescription": "Features: Connector/plug Cable Dia: 0.39 To 1.37in, Grounding Style: Shell, Number Of Poles: 4, Enclosure: NEMA, NEMA Rating: 4x",
@@ -1397,9 +1397,9 @@ export const ALLIED_PRODUCTS = [
     "price": 950.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ARC6034BC.webp",
+    "image": "/wp-content/uploads/2024/12/ARC6034BC.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ARC6034BC.webp"
+      "/wp-content/uploads/2024/12/ARC6034BC.webp"
     ],
     "description": "60 Amp, Pin & Sleeve Connector Body Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X",
     "fullDescription": "60 Amp, Pin & Sleeve Connector Body Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X",
@@ -1421,10 +1421,10 @@ export const ALLIED_PRODUCTS = [
     "price": 950.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ARC6044BC.jpg",
+    "image": "/wp-content/uploads/2024/12/ARC6044BC.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ARC6044BC.jpg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ARC6044-.png"
+      "/wp-content/uploads/2024/12/ARC6044BC.jpg",
+      "/wp-content/uploads/2024/12/ARC6044-.png"
     ],
     "description": "Connector/plug Cable Dia: 0.39 To 1.37in, Grounding Style: Shell, Number Of Poles: 4, Enclosure: NEMA, NEMA Rating: 4x",
     "fullDescription": "Connector/plug Cable Dia: 0.39 To 1.37in, Grounding Style: Shell, Number Of Poles: 4, Enclosure: NEMA, NEMA Rating: 4x",
@@ -1446,9 +1446,9 @@ export const ALLIED_PRODUCTS = [
     "price": 325.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE56.jpg",
+    "image": "/wp-content/uploads/2024/12/AEE56.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AEE56.jpg"
+      "/wp-content/uploads/2024/12/AEE56.jpg"
     ],
     "description": "Pin & Sleeve Mounting Box, 60 Amp, 1-1/2″ Hub",
     "fullDescription": "Pin & Sleeve Mounting Box, 60 Amp, 1-1/2″ Hub",
@@ -1470,9 +1470,9 @@ export const ALLIED_PRODUCTS = [
     "price": 550.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AJA510.png",
+    "image": "/wp-content/uploads/2024/12/AJA510.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/AJA510.png"
+      "/wp-content/uploads/2024/12/AJA510.png"
     ],
     "description": "1-1/2″ Hub Size, 60, 100 & 150 Amp Pin & Sleeve Mounting Box",
     "fullDescription": "1-1/2″ Hub Size, 60, 100 & 150 Amp Pin & Sleeve Mounting Box",
@@ -1494,10 +1494,10 @@ export const ALLIED_PRODUCTS = [
     "price": 1250.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR-1034.jpg",
+    "image": "/wp-content/uploads/2024/12/ADR-1034.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR-1034.jpg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR-1034-1-1.webp"
+      "/wp-content/uploads/2024/12/ADR-1034.jpg",
+      "/wp-content/uploads/2024/12/ADR-1034-1-1.webp"
     ],
     "description": "100 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X\nPowertite Grounding Style 2 Receptacle, Number Of Poles: 4, Number Of Wires: 3,Wire Size: 4 – 1 AWG (Building), 4 – 2 AWG (Extra Flex), Amperage Rating: 100 AMP, Voltage Rating: 600 VAC At 50 – 400 HZ, 250 VDC, Phase: 3 PH,",
     "fullDescription": "100 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X\nPowertite Grounding Style 2 Receptacle, Number Of Poles: 4, Number Of Wires: 3,Wire Size: 4 – 1 AWG (Building), 4 – 2 AWG (Extra Flex), Amperage Rating: 100 AMP, Voltage Rating: 600 VAC At 50 – 400 HZ, 250 VDC, Phase: 3 PH,",
@@ -1519,9 +1519,9 @@ export const ALLIED_PRODUCTS = [
     "price": 2400.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/31tk0GLrSuL.jpg_BO30255255255_UF900850_SR191010000C_QL100_.jpg",
+    "image": "/wp-content/uploads/2025/09/31tk0GLrSuL.jpg_BO30255255255_UF900850_SR191010000C_QL100_.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/31tk0GLrSuL.jpg_BO30255255255_UF900850_SR191010000C_QL100_.jpg"
+      "/wp-content/uploads/2025/09/31tk0GLrSuL.jpg_BO30255255255_UF900850_SR191010000C_QL100_.jpg"
     ],
     "description": "Pin & Sleeve Receptacle, 200A, 4W4P, Style 1 **Receptacle Only**",
     "fullDescription": "Pin & Sleeve Receptacle, 200A, 4W4P, Style 1 **Receptacle Only**",
@@ -1543,10 +1543,10 @@ export const ALLIED_PRODUCTS = [
     "price": 550.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR3034BC.png",
+    "image": "/wp-content/uploads/2024/12/ADR3034BC.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR3034BC.png",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR3034BC-.png"
+      "/wp-content/uploads/2024/12/ADR3034BC.png",
+      "/wp-content/uploads/2024/12/ADR3034BC-.png"
     ],
     "description": "30 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.390″ – 1.375″. NEMA 4X",
     "fullDescription": "30 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.390″ – 1.375″. NEMA 4X",
@@ -1568,9 +1568,9 @@ export const ALLIED_PRODUCTS = [
     "price": 730.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/appleton_adr6034.jpg",
+    "image": "/wp-content/uploads/2024/12/appleton_adr6034.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/appleton_adr6034.jpg"
+      "/wp-content/uploads/2024/12/appleton_adr6034.jpg"
     ],
     "description": "60 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X",
     "fullDescription": "60 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X",
@@ -1592,9 +1592,9 @@ export const ALLIED_PRODUCTS = [
     "price": 780.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR6044.jpg",
+    "image": "/wp-content/uploads/2024/12/ADR6044.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/12/ADR6044.jpg"
+      "/wp-content/uploads/2024/12/ADR6044.jpg"
     ],
     "description": "60 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 4-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X.",
     "fullDescription": "60 Amp, Pin & Sleeve Receptacle Only, 4-Pole, 4-Wire, 250V DC, 600V AC. Cable Size: 0.500″ – 1.375″. NEMA 4X.",
@@ -1616,11 +1616,11 @@ export const ALLIED_PRODUCTS = [
     "price": 120.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/3905tb_bg1_720x540_xr3ndp.webp",
+    "image": "/wp-content/uploads/2024/10/3905tb_bg1_720x540_xr3ndp.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/3905tb_bg1_720x540_xr3ndp.webp",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/9paa00000137668_720x540_pwv4oz.webp",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/3902.jpg"
+      "/wp-content/uploads/2024/10/3905tb_bg1_720x540_xr3ndp.webp",
+      "/wp-content/uploads/2024/10/9paa00000137668_720x540_pwv4oz.webp",
+      "/wp-content/uploads/2024/10/3902.jpg"
     ],
     "description": "Thomas & Betts 3905-TB heavy duty bronze pipe grounding clamp for 4″ to 5″ (100–125 mm) pipes, conductor range 25 mm² to 95 mm² (4 AWG – 3/0 AWG).",
     "fullDescription": "Cast high-conductivity bronze pipe ground clamp engineered for secure earthing connection to metal water pipes, conduits, and structural piping ranging from 4″ to 5″ nominal outer diameter. Accommodates copper conductors from 25 mm² to 95 mm². UL 467 listed for grounding and bonding.",
@@ -1643,9 +1643,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1700.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/268267320.jpg",
+    "image": "/wp-content/uploads/2025/09/268267320.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/268267320.jpg"
+      "/wp-content/uploads/2025/09/268267320.jpg"
     ],
     "description": "100 Amp, Pin & Sleeve Connector Body Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X",
     "fullDescription": "100 Amp, Pin & Sleeve Connector Body Only, 4-Pole, 3-Wire, 250V DC, 600V AC. Cable Size: 0.875″ – 1.906″. NEMA 4X",
@@ -1667,11 +1667,11 @@ export const ALLIED_PRODUCTS = [
     "price": 65.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.31-AM.jpeg",
+    "image": "/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.31-AM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.31-AM.jpeg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.32-AM.jpeg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.32-AM-1.jpeg"
+      "/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.31-AM.jpeg",
+      "/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.32-AM.jpeg",
+      "/wp-content/uploads/2024/09/WhatsApp-Image-2024-06-24-at-11.57.32-AM-1.jpeg"
     ],
     "description": "Raychem RPG electro-tinned high conductivity electrolytic copper end ferrules (bootlace) for 300 mm² conductors, IEC 60228 compliant.",
     "fullDescription": "Premium grade electro-tinned electrolytic copper bootlace ferrule engineered by Raychem RPG for terminating 300 mm² flexible and stranded power cables into switchgear, circuit breakers, and control terminal blocks without strand fraying.",
@@ -1694,9 +1694,9 @@ export const ALLIED_PRODUCTS = [
     "price": 165.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-2.47.08-PM.jpeg",
+    "image": "/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-2.47.08-PM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-2.47.08-PM.jpeg"
+      "/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-2.47.08-PM.jpeg"
     ],
     "description": "WOODEN CABLE MARKER POST SIZE: 100 × 100 × 1370MM LONG (TWO COAT PRIMER & TWO COAT WHITE PAINT) WITH GI SHEET WARNING SIGN PLATE “UG ELECTRIC CABLE” SIZE 90 × 480MM & DOUBLE POINTED ARROW SIZE 90 × 90MM THICKNESS 1.5MM SS 304 SCREW & WASHER (YELLOW & BLACK COLOR SCREEN PRINT) (1 PCS 6.80 KG ARAMCO STANDARD)",
     "fullDescription": "WOODEN CABLE MARKER POST SIZE: 100 × 100 × 1370MM LONG (TWO COAT PRIMER & TWO COAT WHITE PAINT) WITH GI SHEET WARNING SIGN PLATE “UG ELECTRIC CABLE” SIZE 90 × 480MM & DOUBLE POINTED ARROW SIZE 90 × 90MM THICKNESS 1.5MM SS 304 SCREW & WASHER (YELLOW & BLACK COLOR SCREEN PRINT) (1 PCS 6.80 KG ARAMCO STANDARD)",
@@ -1718,9 +1718,9 @@ export const ALLIED_PRODUCTS = [
     "price": 453.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV.jpg"
+      "/wp-content/uploads/2025/09/17-KV.jpg"
     ],
     "description": "Raychem EPKT-17A1XO is a single-core, outdoor, medium-voltage heat-shrink termination kit (for 12/17.5 kV polymeric cables) designed for conductor sizes of 16–25 mm²",
     "fullDescription": "Raychem EPKT-17A1XO is a single-core, outdoor, medium-voltage heat-shrink termination kit (for 12/17.5 kV polymeric cables) designed for conductor sizes of 16–25 mm²",
@@ -1742,9 +1742,9 @@ export const ALLIED_PRODUCTS = [
     "price": 233.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-3.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-3.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-3.jpg"
+      "/wp-content/uploads/2025/09/17-KV-3.jpg"
     ],
     "description": "Medium-voltage heat-shrink termination kit designed for single-core, XLPE or EPR insulated cables rated 17.5 kV (35–70 mm²), providing reliable stress control and environmental protection for indoor installations.",
     "fullDescription": "Medium-voltage heat-shrink termination kit designed for single-core, XLPE or EPR insulated cables rated 17.5 kV (35–70 mm²), providing reliable stress control and environmental protection for indoor installations.",
@@ -1766,9 +1766,9 @@ export const ALLIED_PRODUCTS = [
     "price": 954.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg"
+      "/wp-content/uploads/2025/09/17-KV-12.jpg"
     ],
     "description": "The EPKT-17D3XOH3 is a heat-shrinkable cable termination designed for 3-core, polymeric insulated cables with conductor sizes ranging from 300 to 400 mm², suitable for medium voltage applications up to 17.5 kV.",
     "fullDescription": "The EPKT-17D3XOH3 is a heat-shrinkable cable termination designed for 3-core, polymeric insulated cables with conductor sizes ranging from 300 to 400 mm², suitable for medium voltage applications up to 17.5 kV.",
@@ -1790,9 +1790,9 @@ export const ALLIED_PRODUCTS = [
     "price": 824.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-9.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-9.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-9.jpg"
+      "/wp-content/uploads/2025/09/24KV-9.jpg"
     ],
     "description": "The Raychem EPKT-24D1XO is a heat-shrinkable cable termination designed for 24 kV systems, accommodating conductor sizes from 240 to 300 mm². It ensures secure and durable connections for medium-voltage applications",
     "fullDescription": "The Raychem EPKT-24D1XO is a heat-shrinkable cable termination designed for 24 kV systems, accommodating conductor sizes from 240 to 300 mm². It ensures secure and durable connections for medium-voltage applications",
@@ -1814,9 +1814,9 @@ export const ALLIED_PRODUCTS = [
     "price": 574.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-10.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-10.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-10.jpg"
+      "/wp-content/uploads/2025/09/24KV-10.jpg"
     ],
     "description": "The Raychem EPKT-24D3XIH2 is a high-performance 24 kV 3-core indoor heat-shrink termination, designed for polymeric cables with conductor sizes ranging from 240 to 300 mm². It utilizes Raychem’s SCTM stress control technology and red non-tracking HVOT tubing,",
     "fullDescription": "The Raychem EPKT-24D3XIH2 is a high-performance 24 kV 3-core indoor heat-shrink termination, designed for polymeric cables with conductor sizes ranging from 240 to 300 mm². It utilizes Raychem’s SCTM stress control technology and red non-tracking HVOT tubing,",
@@ -1838,9 +1838,9 @@ export const ALLIED_PRODUCTS = [
     "price": 484.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-12.jpg"
+      "/wp-content/uploads/2025/09/24KV-12.jpg"
     ],
     "description": "The Raychem EPKT-24E1XI is a 24 kV indoor heat-shrink termination kit designed for 1-core PEX-insulated cables with conductor sizes ranging from 400 to 630 mm²",
     "fullDescription": "The Raychem EPKT-24E1XI is a 24 kV indoor heat-shrink termination kit designed for 1-core PEX-insulated cables with conductor sizes ranging from 400 to 630 mm²",
@@ -1862,9 +1862,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1000.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-13.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-13.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-13.jpg"
+      "/wp-content/uploads/2025/09/24KV-13.jpg"
     ],
     "description": "The Raychem EPKT-24E1XO is a medium voltage heat-shrink termination designed for 24 kV outdoor applications",
     "fullDescription": "The Raychem EPKT-24E1XO is a medium voltage heat-shrink termination designed for 24 kV outdoor applications",
@@ -1886,9 +1886,9 @@ export const ALLIED_PRODUCTS = [
     "price": 807.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-14.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-14.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-14.jpg"
+      "/wp-content/uploads/2025/09/24KV-14.jpg"
     ],
     "description": "The Raychem EPKT-24F1X1 is a 24 kV heat shrink termination kit designed for 1-core polymeric cables with conductor sizes ranging from 800 to 1000 mm²",
     "fullDescription": "The Raychem EPKT-24F1X1 is a 24 kV heat shrink termination kit designed for 1-core polymeric cables with conductor sizes ranging from 800 to 1000 mm²",
@@ -1910,9 +1910,9 @@ export const ALLIED_PRODUCTS = [
     "price": 954.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-26.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-26.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-26.jpg"
+      "/wp-content/uploads/2025/09/24KV-26.jpg"
     ],
     "description": "The Raychem EPKT-36D3XIH3 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
     "fullDescription": "The Raychem EPKT-36D3XIH3 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
@@ -1934,9 +1934,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1204.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-27.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-27.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-27.jpg"
+      "/wp-content/uploads/2025/09/24KV-27.jpg"
     ],
     "description": "The Raychem EPKT-36D3XIH3 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
     "fullDescription": "The Raychem EPKT-36D3XIH3 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
@@ -1958,9 +1958,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1534.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-28.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-28.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-28.jpg"
+      "/wp-content/uploads/2025/09/24KV-28.jpg"
     ],
     "description": "The Raychem EPKT-36D3XOH3 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
     "fullDescription": "The Raychem EPKT-36D3XOH3 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
@@ -1982,9 +1982,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1712.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-29.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-29.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-29.jpg"
+      "/wp-content/uploads/2025/09/24KV-29.jpg"
     ],
     "description": "The Raychem EPKT-36D3XOH4 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
     "fullDescription": "The Raychem EPKT-36D3XOH4 is a high-performance heat shrink termination kit designed for 33 kV 3-core outdoor polymeric cables. It utilizes Raychem’s SCTM stress control technology and HVOT tubing for enhanced environmental protection.",
@@ -2006,9 +2006,9 @@ export const ALLIED_PRODUCTS = [
     "price": 670.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-30.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-30.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-30.jpg"
+      "/wp-content/uploads/2025/09/24KV-30.jpg"
     ],
     "description": "The Raychem EPKT-36E1XI is a high-performance indoor heat shrink termination designed for 33 kV polymeric cables with conductor sizes ranging from 240 to 500 mm². Utilizing Raychem’s SCTM stress control technology, it ensures reliable electrical insulation and sealing, even in challenging environmental conditions.",
     "fullDescription": "The Raychem EPKT-36E1XI is a high-performance indoor heat shrink termination designed for 33 kV polymeric cables with conductor sizes ranging from 240 to 500 mm². Utilizing Raychem’s SCTM stress control technology, it ensures reliable electrical insulation and sealing, even in challenging environmental conditions.",
@@ -2030,9 +2030,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1237.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-31.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-31.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-31.jpg"
+      "/wp-content/uploads/2025/09/24KV-31.jpg"
     ],
     "description": "The Raychem EPKT-36E1XO is a high-performance medium voltage cable termination kit designed for 33 kV applications. It accommodates conductor sizes ranging from 240 to 500 mm² and is suitable for both armored and unarmored, single-core cables with polymeric or MIND paper insulation.",
     "fullDescription": "The Raychem EPKT-36E1XO is a high-performance medium voltage cable termination kit designed for 33 kV applications. It accommodates conductor sizes ranging from 240 to 500 mm² and is suitable for both armored and unarmored, single-core cables with polymeric or MIND paper insulation.",
@@ -2054,9 +2054,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1491.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-34.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-34.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-34.jpg"
+      "/wp-content/uploads/2025/09/24KV-34.jpg"
     ],
     "description": "The Raychem EPKT-36E3X1H4 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
     "fullDescription": "The Raychem EPKT-36E3X1H4 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
@@ -2078,9 +2078,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1727.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-36.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-36.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-36.jpg"
+      "/wp-content/uploads/2025/09/24KV-36.jpg"
     ],
     "description": "The Raychem EPKT-36E3XOH3  is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
     "fullDescription": "The Raychem EPKT-36E3XOH3  is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
@@ -2102,9 +2102,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1950.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-35.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-35.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-35.jpg"
+      "/wp-content/uploads/2025/09/24KV-35.jpg"
     ],
     "description": "The Raychem EPKT-36E3XOH4 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
     "fullDescription": "The Raychem EPKT-36E3XOH4 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
@@ -2126,9 +2126,9 @@ export const ALLIED_PRODUCTS = [
     "price": 487.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-9.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-9.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-9.jpg"
+      "/wp-content/uploads/2025/09/17-KV-9.jpg"
     ],
     "description": "High-voltage (up to 17.5 kV) indoor heat-shrink cable termination kit for three-core XLPE insulated cables (95–240 mm²), offering excellent insulation, sealing, and stress control",
     "fullDescription": "High-voltage (up to 17.5 kV) indoor heat-shrink cable termination kit for three-core XLPE insulated cables (95–240 mm²), offering excellent insulation, sealing, and stress control",
@@ -2150,9 +2150,9 @@ export const ALLIED_PRODUCTS = [
     "price": 264.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV.jpg"
+      "/wp-content/uploads/2025/09/24KV.jpg"
     ],
     "description": "Raychem TE Connectivity EPKT-24B1XI offers reliable insulation and protection with premium heat shrink technology, designed for long-lasting performance in demanding environments.",
     "fullDescription": "Raychem TE Connectivity EPKT-24B1XI offers reliable insulation and protection with premium heat shrink technology, designed for long-lasting performance in demanding environments.",
@@ -2174,9 +2174,9 @@ export const ALLIED_PRODUCTS = [
     "price": 375.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-4.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-4.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-4.jpg"
+      "/wp-content/uploads/2025/09/24KV-4.jpg"
     ],
     "description": "Original Raychem TE Connectivity (Germany) EPKT-24C1XI cable termination kit, engineered for reliable electrical insulation and long-lasting performance in demanding applications.",
     "fullDescription": "Original Raychem TE Connectivity (Germany) EPKT-24C1XI cable termination kit, engineered for reliable electrical insulation and long-lasting performance in demanding applications.",
@@ -2198,9 +2198,9 @@ export const ALLIED_PRODUCTS = [
     "price": 394.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-8.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-8.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-8.jpg"
+      "/wp-content/uploads/2025/09/24KV-8.jpg"
     ],
     "description": "Reliable medium-voltage termination kit designed by Raychem TE Germany for secure and long-lasting cable connections. Ideal for industrial and utility applications.",
     "fullDescription": "Reliable medium-voltage termination kit designed by Raychem TE Germany for secure and long-lasting cable connections. Ideal for industrial and utility applications.",
@@ -2222,9 +2222,9 @@ export const ALLIED_PRODUCTS = [
     "price": 876.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png",
+    "image": "/wp-content/uploads/2024/09/RAYCHEM.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png"
+      "/wp-content/uploads/2024/09/RAYCHEM.png"
     ],
     "description": "The Raychem TE Connectivity EPKT-36D3XIH2 is a premium medium-voltage cable termination kit from TE Germany, designed for reliable performance, insulation, and long-lasting protection in demanding environments.",
     "fullDescription": "The Raychem TE Connectivity EPKT-36D3XIH2 is a premium medium-voltage cable termination kit from TE Germany, designed for reliable performance, insulation, and long-lasting protection in demanding environments.",
@@ -2246,9 +2246,9 @@ export const ALLIED_PRODUCTS = [
     "price": 868.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-6.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-6.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-6.jpg"
+      "/wp-content/uploads/2025/09/24KV-6.jpg"
     ],
     "description": "Reliable Raychem TE EPKT-24C3XOH3 cable termination kit designed in Germany for durable, safe, and efficient electrical connections. Ideal for industrial and power distribution applications.",
     "fullDescription": "Reliable Raychem TE EPKT-24C3XOH3 cable termination kit designed in Germany for durable, safe, and efficient electrical connections. Ideal for industrial and power distribution applications.",
@@ -2270,9 +2270,9 @@ export const ALLIED_PRODUCTS = [
     "price": 530.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-7.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-7.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-7.jpg"
+      "/wp-content/uploads/2025/09/24KV-7.jpg"
     ],
     "description": "The Raychem TE Connectivity EPKT-24C3XIH2 is a reliable cable termination kit designed for medium-voltage applications, ensuring excellent insulation, durability, and long-term performance.",
     "fullDescription": "The Raychem TE Connectivity EPKT-24C3XIH2 is a reliable cable termination kit designed for medium-voltage applications, ensuring excellent insulation, durability, and long-term performance.",
@@ -2294,9 +2294,9 @@ export const ALLIED_PRODUCTS = [
     "price": 516.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg"
+      "/wp-content/uploads/2025/09/17-KV-12.jpg"
     ],
     "description": "High-performance Raychem TE end cap designed for reliable sealing and insulation of cable ends, ensuring long-lasting protection in harsh environments.",
     "fullDescription": "High-performance Raychem TE end cap designed for reliable sealing and insulation of cable ends, ensuring long-lasting protection in harsh environments.",
@@ -2318,9 +2318,9 @@ export const ALLIED_PRODUCTS = [
     "price": 554.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-1.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-1.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-1.jpg"
+      "/wp-content/uploads/2025/09/24KV-1.jpg"
     ],
     "description": "Raychem TE Connectivity EPKT-24B1XO is a reliable medium-voltage heat shrink termination kit designed for superior insulation, protection, and long-lasting cable performance.",
     "fullDescription": "Raychem TE Connectivity EPKT-24B1XO is a reliable medium-voltage heat shrink termination kit designed for superior insulation, protection, and long-lasting cable performance.",
@@ -2342,9 +2342,9 @@ export const ALLIED_PRODUCTS = [
     "price": 443.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-2.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-2.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-2.jpg"
+      "/wp-content/uploads/2025/09/24KV-2.jpg"
     ],
     "description": "Original TE Connectivity Raychem Germany EPKT-24B3XIH2 cable termination kit, engineered for reliable medium-voltage insulation and long-lasting performance.",
     "fullDescription": "Original TE Connectivity Raychem Germany EPKT-24B3XIH2 cable termination kit, engineered for reliable medium-voltage insulation and long-lasting performance.",
@@ -2366,9 +2366,9 @@ export const ALLIED_PRODUCTS = [
     "price": 670.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-5.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-5.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-5.jpg"
+      "/wp-content/uploads/2025/09/24KV-5.jpg"
     ],
     "description": "The Raychem TE EPKT-24C1XO is a reliable medium-voltage cable termination kit designed for superior electrical insulation and long-lasting performance. Trusted for industrial and utility applications.",
     "fullDescription": "The Raychem TE EPKT-24C1XO is a reliable medium-voltage cable termination kit designed for superior electrical insulation and long-lasting performance. Trusted for industrial and utility applications.",
@@ -2390,9 +2390,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1227.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-15.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-15.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-15.jpg"
+      "/wp-content/uploads/2025/09/24KV-15.jpg"
     ],
     "description": "High-quality Raychem TE Germany EPKT-24F1XO cable termination kit, designed for reliable insulation, sealing, and long-term performance in electrical connections.",
     "fullDescription": "High-quality Raychem TE Germany EPKT-24F1XO cable termination kit, designed for reliable insulation, sealing, and long-term performance in electrical connections.",
@@ -2414,9 +2414,9 @@ export const ALLIED_PRODUCTS = [
     "price": 497.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-16.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-16.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-16.jpg"
+      "/wp-content/uploads/2025/09/24KV-16.jpg"
     ],
     "description": "High-quality Raychem TE Germany EPKT-36C1F1 heat shrink termination kit, designed for reliable 36kV cable connections with superior insulation and durability.",
     "fullDescription": "High-quality Raychem TE Germany EPKT-36C1F1 heat shrink termination kit, designed for reliable 36kV cable connections with superior insulation and durability.",
@@ -2438,9 +2438,9 @@ export const ALLIED_PRODUCTS = [
     "price": 946.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-17.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-17.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-17.jpg"
+      "/wp-content/uploads/2025/09/24KV-17.jpg"
     ],
     "description": "gh-performance Raychem TE EPKT-36C1XO outdoor heat shrink termination kit for medium voltage cables, ensuring reliable insulation and long-lasting protection.",
     "fullDescription": "gh-performance Raychem TE EPKT-36C1XO outdoor heat shrink termination kit for medium voltage cables, ensuring reliable insulation and long-lasting protection.",
@@ -2462,9 +2462,9 @@ export const ALLIED_PRODUCTS = [
     "price": 688.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-18.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-18.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-18.jpg"
+      "/wp-content/uploads/2025/09/24KV-18.jpg"
     ],
     "description": "Premium Raychem TE Germany outdoor termination kit designed for reliable 36kV cable insulation and long-lasting performance in harsh conditions.",
     "fullDescription": "Premium Raychem TE Germany outdoor termination kit designed for reliable 36kV cable insulation and long-lasting performance in harsh conditions.",
@@ -2486,9 +2486,9 @@ export const ALLIED_PRODUCTS = [
     "price": 750.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-19.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-19.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-19.jpg"
+      "/wp-content/uploads/2025/09/24KV-19.jpg"
     ],
     "description": "The Raychem TE EPKT-36C3XIH3 is a premium German-engineered termination kit designed for reliable, long-lasting performance in medium-voltage cable applications. Built for durability and efficiency",
     "fullDescription": "The Raychem TE EPKT-36C3XIH3 is a premium German-engineered termination kit designed for reliable, long-lasting performance in medium-voltage cable applications. Built for durability and efficiency",
@@ -2510,9 +2510,9 @@ export const ALLIED_PRODUCTS = [
     "price": 882.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-20.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-20.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-20.jpg"
+      "/wp-content/uploads/2025/09/24KV-20.jpg"
     ],
     "description": "High-performance Raychem TE Germany outdoor termination kit designed for 36kV 3-core cables, ensuring reliable insulation, sealing, and long-term protection in harsh environments.",
     "fullDescription": "High-performance Raychem TE Germany outdoor termination kit designed for 36kV 3-core cables, ensuring reliable insulation, sealing, and long-term protection in harsh environments.",
@@ -2534,9 +2534,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1227.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-22.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-22.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-22.jpg"
+      "/wp-content/uploads/2025/09/24KV-22.jpg"
     ],
     "description": "Raychem TE Connectivity EPKT-36C3XOH3 is a premium German-engineered cable termination kit designed for reliable performance, durability, and safety in medium-voltage applications.",
     "fullDescription": "Raychem TE Connectivity EPKT-36C3XOH3 is a premium German-engineered cable termination kit designed for reliable performance, durability, and safety in medium-voltage applications.",
@@ -2558,9 +2558,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1365.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-21.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-21.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-21.jpg"
+      "/wp-content/uploads/2025/09/24KV-21.jpg"
     ],
     "description": "Raychem TE Connectivity EPKT-36C3XOH4 is a premium German-engineered cable termination kit designed for reliable performance, durability, and safety in medium-voltage applications.",
     "fullDescription": "Raychem TE Connectivity EPKT-36C3XOH4 is a premium German-engineered cable termination kit designed for reliable performance, durability, and safety in medium-voltage applications.",
@@ -2582,9 +2582,9 @@ export const ALLIED_PRODUCTS = [
     "price": 546.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png",
+    "image": "/wp-content/uploads/2024/09/RAYCHEM.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png"
+      "/wp-content/uploads/2024/09/RAYCHEM.png"
     ],
     "description": "High-performance Raychem TE Germany EPKT-36D1XI termination kit, designed for reliable insulation and sealing of medium-voltage cables. Ensures durability, safety, and long service life in demanding environments.",
     "fullDescription": "High-performance Raychem TE Germany EPKT-36D1XI termination kit, designed for reliable insulation and sealing of medium-voltage cables. Ensures durability, safety, and long service life in demanding environments.",
@@ -2606,9 +2606,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1118.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-24.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-24.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-24.jpg"
+      "/wp-content/uploads/2025/09/24KV-24.jpg"
     ],
     "description": "High-performance Raychem TE Germany EPKT-36D1XO outdoor heat shrink termination kit, designed for 36kV cables with excellent insulation, durability, and long service life.",
     "fullDescription": "High-performance Raychem TE Germany EPKT-36D1XO outdoor heat shrink termination kit, designed for 36kV cables with excellent insulation, durability, and long service life.",
@@ -2630,9 +2630,9 @@ export const ALLIED_PRODUCTS = [
     "price": 510.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-11.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-11.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-11.jpg"
+      "/wp-content/uploads/2025/09/17-KV-11.jpg"
     ],
     "description": "Premium Raychem TE Germany heat shrink tube, model EPKT-17D1X0, designed for reliable insulation and protection in electrical applications.",
     "fullDescription": "Premium Raychem TE Germany heat shrink tube, model EPKT-17D1X0, designed for reliable insulation and protection in electrical applications.",
@@ -2654,9 +2654,9 @@ export const ALLIED_PRODUCTS = [
     "price": 250.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-11.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-11.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-11.jpg"
+      "/wp-content/uploads/2025/09/17-KV-11.jpg"
     ],
     "description": "Premium Raychem TE Germany heat shrink terminal, part number EPKT-17D1X1, ensures secure electrical connections with reliable insulation and durability.",
     "fullDescription": "Premium Raychem TE Germany heat shrink terminal, part number EPKT-17D1X1, ensures secure electrical connections with reliable insulation and durability.",
@@ -2678,9 +2678,9 @@ export const ALLIED_PRODUCTS = [
     "price": 560.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg"
+      "/wp-content/uploads/2025/09/17-KV-12.jpg"
     ],
     "description": "Premium Raychem TE Germany heat shrink tube, part number EPKT-17D3X1H2, designed for reliable insulation and protection of electrical connections.",
     "fullDescription": "Premium Raychem TE Germany heat shrink tube, part number EPKT-17D3X1H2, designed for reliable insulation and protection of electrical connections.",
@@ -2702,9 +2702,9 @@ export const ALLIED_PRODUCTS = [
     "price": 532.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg"
+      "/wp-content/uploads/2025/09/17-KV-12.jpg"
     ],
     "description": "High-quality Raychem TE Germany heat shrink kit, model EPKT-17E1X1, designed for reliable insulation and protection of electrical connections.",
     "fullDescription": "High-quality Raychem TE Germany heat shrink kit, model EPKT-17E1X1, designed for reliable insulation and protection of electrical connections.",
@@ -2726,9 +2726,9 @@ export const ALLIED_PRODUCTS = [
     "price": 877.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg"
+      "/wp-content/uploads/2025/09/17-KV-12.jpg"
     ],
     "description": "Premium Raychem TE Germany heat shrink tubing, part EPKT-17E1XO, designed for reliable insulation and protection in electrical and industrial applications.",
     "fullDescription": "Premium Raychem TE Germany heat shrink tubing, part EPKT-17E1XO, designed for reliable insulation and protection in electrical and industrial applications.",
@@ -2750,9 +2750,9 @@ export const ALLIED_PRODUCTS = [
     "price": 982.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-12.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-12.jpg"
+      "/wp-content/uploads/2025/09/17-KV-12.jpg"
     ],
     "description": "Premium Raychem TE Germany heat shrink tubing, part EPKT-17F1XO, designed for reliable insulation and protection in electrical and industrial applications.",
     "fullDescription": "Premium Raychem TE Germany heat shrink tubing, part EPKT-17F1XO, designed for reliable insulation and protection in electrical and industrial applications.",
@@ -2774,9 +2774,9 @@ export const ALLIED_PRODUCTS = [
     "price": 736.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-3.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-3.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-3.jpg"
+      "/wp-content/uploads/2025/09/24KV-3.jpg"
     ],
     "description": "Original Raychem TE Connectivity Germany cable termination kit, designed for reliable insulation and long-lasting performance in medium-voltage applications.",
     "fullDescription": "Original Raychem TE Connectivity Germany cable termination kit, designed for reliable insulation and long-lasting performance in medium-voltage applications.",
@@ -2798,10 +2798,10 @@ export const ALLIED_PRODUCTS = [
     "price": 290.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.34.03-AM.jpeg",
+    "image": "/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.34.03-AM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.34.03-AM.jpeg",
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.34.03-AM-1.jpeg"
+      "/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.34.03-AM.jpeg",
+      "/wp-content/uploads/2026/10/WhatsApp-Image-2026-10-05-at-10.34.03-AM-1.jpeg"
     ],
     "description": "Product Description (SEO Optimized)\n\nThe SEICO CC-TH-70-70-UL Exothermic Welding Mould is a high-quality graphite mould designed for creating permanent, low-resistance electrical connections using the exothermic welding (thermite) process. This mould is engineered for Copper-to-Copper (CC) conductor connections with 70 mm² x 70 mm² cable sizes, ensuring reliable bonding for grounding, earthing, li...",
     "fullDescription": "Product Description (SEO Optimized)\n\nThe SEICO CC-TH-70-70-UL Exothermic Welding Mould is a high-quality graphite mould designed for creating permanent, low-resistance electrical connections using the exothermic welding (thermite) process. This mould is engineered for Copper-to-Copper (CC) conductor connections with 70 mm² x 70 mm² cable sizes, ensuring reliable bonding for grounding, earthing, lightning protection, and power distribution systems.\n\nManufactured from premium-grade graphite, the mould delivers excellent thermal resistance, dimensional accuracy, and extended service life, making it suitable for repeated field use. It produces molecularly bonded connections that provide superior electrical conductivity, outstanding mechanical strength, and exceptional corrosion resistance compared to conventional mechanical connectors.\n\nThe CC-TH-70-70-UL mould is widely used in oil & gas plants, petrochemical facilities, power generation, substations, renewable energy projects, telecommunications, railways, industrial plants, and commercial grounding systems. It is compatible with standard exothermic welding materials and accessories, offering safe, maintenance-free, and long-lasting electrical connections that meet demanding industrial standards.\n\nKey Features\n\n• Premium graphite exothermic welding mould\n\n• Copper-to-Copper (CC) cable connection\n\n• Suitable for 70 mm² × 70 mm² conductors\n\n• Permanent molecular electrical bond\n\n• Extremely low electrical resistance\n\n• High mechanical strength\n\n• Corrosion and oxidation resistant\n\n• Long service life with multiple weld cycles\n\n• Fast and reliable field installation\n\n• Ideal for grounding and lightning protection systems\n\n• Compatible with standard exothermic welding cartridges and ignition accessories\n\nApplications\n\n• Electrical grounding systems\n\n• Earthing networks\n\n• Lightning protection installations\n\n• Oil & Gas facilities\n\n• Petrochemical plants\n\n• Power generation stations\n\n• Electrical substations\n\n• Renewable energy projects\n\n• Telecommunications towers\n\n• Railway infrastructure\n\n• Industrial plants\n\n• Commercial electrical installations\n\nSearchable SEO Tags\n\nSEICO CC-TH-70-70-UL, SEICO exothermic mould, exothermic welding mould, graphite mould, thermite welding mould, copper to copper mould, CC mould, 70mm2 exothermic mould, 70×70 graphite mould, grounding mould, earthing mould, electrical grounding accessories, exothermic welding accessories, thermoweld mould, grounding system products, lightning protection accessories, copper conductor mould, permanent electrical connection, graphite welding mould, UL exothermic mould, SEICO grounding products, earthing accessories Saudi Arabia, industrial grounding equipment, substation grounding, oil and gas grounding products, petrochemical grounding, electrical bonding mould, copper cable welding mould, exothermic connection mould, high conductivity grounding, maintenance free grounding, Allied Power Industrial Company, APCO Saudi Arabia.",
@@ -2825,9 +2825,9 @@ export const ALLIED_PRODUCTS = [
     "price": 9.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-3.14.38-PM-Photoroom.png",
+    "image": "/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-3.14.38-PM-Photoroom.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-3.14.38-PM-Photoroom.png"
+      "/wp-content/uploads/2024/09/WhatsApp-Image-2024-09-13-at-3.14.38-PM-Photoroom.png"
     ],
     "description": "Industrial engraved directional route arrow marker plate for underground utility and cable marker posts, UV and chemical resistant.",
     "fullDescription": "Standard directional single/double arrow identification plate manufactured from high-impact UV-stabilized acrylic/aluminum composite for industrial pipeline and buried electrical cable marker posts. Custom text engraving available per project drawings and Aramco SAES specifications.",
@@ -2850,9 +2850,9 @@ export const ALLIED_PRODUCTS = [
     "price": 50.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-2.58.36-PM.jpeg",
+    "image": "/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-2.58.36-PM.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-2.58.36-PM.jpeg"
+      "/wp-content/uploads/2025/09/WhatsApp-Image-2025-09-06-at-2.58.36-PM.jpeg"
     ],
     "description": "Copper Two-Hole Lug, Standard Barrel, Peep Hole, Max 35kV, Wire Size 500 kcmil, 3/8 Inch Bolt Size, 1 Inch Hole Spacing, Tin Plated, Die Code 87, Die Color Code Brown",
     "fullDescription": "Copper Two-Hole Lug, Standard Barrel, Peep Hole, Max 35kV, Wire Size 500 kcmil, 3/8 Inch Bolt Size, 1 Inch Hole Spacing, Tin Plated, Die Code 87, Die Color Code Brown",
@@ -2874,9 +2874,9 @@ export const ALLIED_PRODUCTS = [
     "price": 3500.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2026/03/Capture.jpg",
+    "image": "/wp-content/uploads/2026/03/Capture.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2026/03/Capture.jpg"
+      "/wp-content/uploads/2026/03/Capture.jpg"
     ],
     "description": "Product Details\n\nCatalog Page2347\n\nBrandTRICO\nProduct TypeDesiccant Breathers\nParticle Size3 micron\nOverall Diameter2-1/2 in\nOverall Height5-5/8 in\nTop Cap Diameter2-1/2 in\nMaximum Temperature Rating200 °F\nThread GenderMale\nThread Size3/8″\nThread TypeBSPP; BSPT; NPT\nBody MaterialABS Plastic\nTop Cap MaterialABS Plastic\nIncludesO-Ring\nUNSPSC0\nCountry of OriginUSA (subject to change)\n\nProduct Descrip...",
     "fullDescription": "Product Details\n\nCatalog Page2347\n\nBrandTRICO\nProduct TypeDesiccant Breathers\nParticle Size3 micron\nOverall Diameter2-1/2 in\nOverall Height5-5/8 in\nTop Cap Diameter2-1/2 in\nMaximum Temperature Rating200 °F\nThread GenderMale\nThread Size3/8″\nThread TypeBSPP; BSPT; NPT\nBody MaterialABS Plastic\nTop Cap MaterialABS Plastic\nIncludesO-Ring\nUNSPSC0\nCountry of OriginUSA (subject to change)\n\nProduct Description\n\nThese desiccant breathers prevent moisture and contaminants from entering oil reservoirs in machinery and equipment operating in extremely humid conditions. They control air flow in and out of oil reservoirs and prolong the life of the breather by only allowing air to pass when needed. These desiccant breathers are used in extreme operating conditions such as paper mills, steam cleaning rooms, mines, and quarries.",
@@ -2898,9 +2898,9 @@ export const ALLIED_PRODUCTS = [
     "price": 348.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-1.jpg",
+    "image": "/wp-content/uploads/2025/09/17-KV-1.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/17-KV-1.jpg"
+      "/wp-content/uploads/2025/09/17-KV-1.jpg"
     ],
     "description": "The TE Connectivity (Raychem) part EPKT-17A3XIH2 is a 3-core medium-voltage heat-shrink termination kit, designed for indoor use on 16–25 mm² polymeric (XLPE/EPR) cables, rated up to approximately 17.5 kV",
     "fullDescription": "The TE Connectivity (Raychem) part EPKT-17A3XIH2 is a 3-core medium-voltage heat-shrink termination kit, designed for indoor use on 16–25 mm² polymeric (XLPE/EPR) cables, rated up to approximately 17.5 kV",
@@ -2922,9 +2922,9 @@ export const ALLIED_PRODUCTS = [
     "price": 80.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/appleton-ecdb50b-drain-breather.jpg",
+    "image": "/wp-content/uploads/2024/10/appleton-ecdb50b-drain-breather.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/10/appleton-ecdb50b-drain-breather.jpg"
+      "/wp-content/uploads/2024/10/appleton-ecdb50b-drain-breather.jpg"
     ],
     "description": "Universal Drain or Breather, 1/2 Inch, Raintight, Explosion-Proof, Stainless Steel, For Automatic Water Drainage or Continuous Ventilation\nAppleton’s ECBD Universal Drain/Breathers when installed in bottom of housing, functions as a drain for water formed by condensation within system. Installed in top of housing, it serves as a breather, providing ventilation to minimize condensation and prevent ...",
     "fullDescription": "Universal Drain or Breather, 1/2 Inch, Raintight, Explosion-Proof, Stainless Steel, For Automatic Water Drainage or Continuous Ventilation\nAppleton’s ECBD Universal Drain/Breathers when installed in bottom of housing, functions as a drain for water formed by condensation within system. Installed in top of housing, it serves as a breather, providing ventilation to minimize condensation and prevent mildew formation.",
@@ -2946,9 +2946,9 @@ export const ALLIED_PRODUCTS = [
     "price": 22.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/ya-26-2n.webp",
+    "image": "/wp-content/uploads/2025/01/ya-26-2n.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/ya-26-2n.webp"
+      "/wp-content/uploads/2025/01/ya-26-2n.webp"
     ],
     "description": "2/0 AWG CU, One Hole, 1/2 Stud Size, Long Barrel, Internal Chamfer, Tin Plated, UL/CSA, 90?C, Up to 35kV,BLACK Color Code, 13 Die Index.",
     "fullDescription": "2/0 AWG CU, One Hole, 1/2 Stud Size, Long Barrel, Internal Chamfer, Tin Plated, UL/CSA, 90?C, Up to 35kV,BLACK Color Code, 13 Die Index.",
@@ -2970,9 +2970,9 @@ export const ALLIED_PRODUCTS = [
     "price": 30.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/109x341_pli-burndy-ya272n_jpg.webp",
+    "image": "/wp-content/uploads/2024/09/109x341_pli-burndy-ya272n_jpg.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/109x341_pli-burndy-ya272n_jpg.webp"
+      "/wp-content/uploads/2024/09/109x341_pli-burndy-ya272n_jpg.webp"
     ],
     "description": "BURNDY YA272N 3/0 AWG copper compression terminal lug, 2-Hole, 1/2″ stud size, 1-3/4″ hole spacing, long barrel, tin plated, Orange Die 14.",
     "fullDescription": "BURNDY HYLUG YA272N uninsulated copper compression terminal lug engineered for terminating 3/0 AWG stranded copper conductors. Features 2-hole NEMA tongue with 1/2″ stud holes spaced at 1-3/4″ center-to-center. Long barrel design allows double crimping for heavy duty industrial connections. Electro-tin plated for corrosion resistance.",
@@ -2995,9 +2995,9 @@ export const ALLIED_PRODUCTS = [
     "price": 35.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/s-l400.png",
+    "image": "/wp-content/uploads/2024/09/s-l400.png",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/s-l400.png"
+      "/wp-content/uploads/2024/09/s-l400.png"
     ],
     "description": "BURNDY YA282N 4/0 AWG copper compression terminal lug, 2-Hole, 1/2″ stud size, 1-3/4″ hole spacing, long barrel, tin plated, Purple Die 15.",
     "fullDescription": "BURNDY HYLUG YA282N heavy duty 2-hole long barrel compression lug for 4/0 AWG copper conductors. Incorporates standard NEMA 1-3/4″ center spacing with 1/2″ bolt holes. Precision chamfered internal barrel facilitates easy wire insertion. Electro-tin plated.",
@@ -3020,9 +3020,9 @@ export const ALLIED_PRODUCTS = [
     "price": 45.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/YA30-2N.jpg",
+    "image": "/wp-content/uploads/2024/09/YA30-2N.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/YA30-2N.jpg"
+      "/wp-content/uploads/2024/09/YA30-2N.jpg"
     ],
     "description": "BURNDY YA302N 300 kcmil copper compression terminal lug, 2-Hole, 1/2″ stud size, 1-3/4″ hole spacing, long barrel, tin plated, White Die 17.",
     "fullDescription": "BURNDY HYLUG YA302N long barrel compression terminal lug for 300 kcmil copper cables. Features 2-hole NEMA flat pad with 1/2″ bolt holes spaced at 1-3/4″. Electro-tin plated pure electrolytic copper ensures optimum conductivity and zero overheating.",
@@ -3045,9 +3045,9 @@ export const ALLIED_PRODUCTS = [
     "price": 38.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/BUR_YA312TC38_IMAGE_515.webp",
+    "image": "/wp-content/uploads/2025/01/BUR_YA312TC38_IMAGE_515.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/BUR_YA312TC38_IMAGE_515.webp"
+      "/wp-content/uploads/2025/01/BUR_YA312TC38_IMAGE_515.webp"
     ],
     "description": "350 kcmil CU, Two Hole, 1/2 Stud Size, 1-3/4 Hole Spacing, Long\n\nBarrel Internal Chamfer, Tin Plated, UL/CSA, 90°C, Up to 35kV,\n\nRed Color Code, 18 or 324 Die Index.",
     "fullDescription": "350 kcmil CU, Two Hole, 1/2 Stud Size, 1-3/4 Hole Spacing, Long\n\nBarrel Internal Chamfer, Tin Plated, UL/CSA, 90°C, Up to 35kV,\n\nRed Color Code, 18 or 324 Die Index.",
@@ -3069,9 +3069,9 @@ export const ALLIED_PRODUCTS = [
     "price": 60.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/YA282LN_Photo_ColorRGB_515.webp",
+    "image": "/wp-content/uploads/2025/01/YA282LN_Photo_ColorRGB_515.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/YA282LN_Photo_ColorRGB_515.webp"
+      "/wp-content/uploads/2025/01/YA282LN_Photo_ColorRGB_515.webp"
     ],
     "description": "500 kcmil CU, Two Hole, 1/2 Stud Size, 1-3/4 Hole Spacing, Standard Barrel, Inspection Window, Internal Chamfer, Tin Plated, UL/CSA, 90°C, Up to 35kV, Brown Color Code, 20 or 299 Die Index.",
     "fullDescription": "500 kcmil CU, Two Hole, 1/2 Stud Size, 1-3/4 Hole Spacing, Standard Barrel, Inspection Window, Internal Chamfer, Tin Plated, UL/CSA, 90°C, Up to 35kV, Brown Color Code, 20 or 299 Die Index.",
@@ -3093,9 +3093,9 @@ export const ALLIED_PRODUCTS = [
     "price": 80.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/burndy-ya362n.webp",
+    "image": "/wp-content/uploads/2025/01/burndy-ya362n.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/burndy-ya362n.webp"
+      "/wp-content/uploads/2025/01/burndy-ya362n.webp"
     ],
     "description": "Copper Compression Lug, 2 Hole w/o Inspection Window, 600 kcmil, 1/2″\n\nStud, 1-3/4″ Stud Hole Spacing, Long Barrel, Tin Plated.",
     "fullDescription": "Copper Compression Lug, 2 Hole w/o Inspection Window, 600 kcmil, 1/2″\n\nStud, 1-3/4″ Stud Hole Spacing, Long Barrel, Tin Plated.",
@@ -3117,9 +3117,9 @@ export const ALLIED_PRODUCTS = [
     "price": 110.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/burndy-ya442n.webp",
+    "image": "/wp-content/uploads/2025/01/burndy-ya442n.webp",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/01/burndy-ya442n.webp"
+      "/wp-content/uploads/2025/01/burndy-ya442n.webp"
     ],
     "description": "1000 kcmil CU, Two Hole, 1/2 Stud Size, 1-3/4 Hole Spacing, Standard Barrel, Inspection Window, Internal Chamfer, Tin Plated, UL/CSA, 90°C, Up to 35kV, White Color Code, 27 Die Index.",
     "fullDescription": "1000 kcmil CU, Two Hole, 1/2 Stud Size, 1-3/4 Hole Spacing, Standard Barrel, Inspection Window, Internal Chamfer, Tin Plated, UL/CSA, 90°C, Up to 35kV, White Color Code, 27 Die Index.",
@@ -3141,9 +3141,9 @@ export const ALLIED_PRODUCTS = [
     "price": 16.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/YA4C-N.jpeg",
+    "image": "/wp-content/uploads/2024/09/YA4C-N.jpeg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/YA4C-N.jpeg"
+      "/wp-content/uploads/2024/09/YA4C-N.jpeg"
     ],
     "description": "BURNDY YA4CN 4 AWG copper compression terminal lug, 1-Hole, 1/2″ stud size, long barrel, electro-tin plated, Gray Die 8.",
     "fullDescription": "BURNDY HYLUG YA4CN long barrel copper compression lug for #4 AWG conductors. Designed with 1-hole 1/2″ stud configuration for switchgear, motor lead, and transformer terminations. Electro-tin plated for protection against atmospheric corrosion.",
@@ -3166,9 +3166,9 @@ export const ALLIED_PRODUCTS = [
     "price": 160.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/BUR_YAZ402N_IMAGE_1200.jpg",
+    "image": "/wp-content/uploads/2024/09/BUR_YAZ402N_IMAGE_1200.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2024/09/BUR_YAZ402N_IMAGE_1200.jpg"
+      "/wp-content/uploads/2024/09/BUR_YAZ402N_IMAGE_1200.jpg"
     ],
     "description": "BURNDY YAZ402N 800 kcmil heavy duty copper compression terminal lug with inspection window, 2-Hole, 1/2″ stud, 1-3/4″ spacing, Orange Die 25.",
     "fullDescription": "BURNDY HYLUG YAZ402N extra heavy duty copper compression terminal for 800 kcmil large power cables. Features inspection window to verify complete cable insertion, 2-hole NEMA 1-3/4″ spacing for 1/2″ hardware, long barrel, and pure electrolytic copper construction.",
@@ -3191,9 +3191,9 @@ export const ALLIED_PRODUCTS = [
     "price": 957.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-11.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-11.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-11.jpg"
+      "/wp-content/uploads/2025/09/24KV-11.jpg"
     ],
     "description": "The Raychem EPKT-24D3XOH3 is a high-performance indoor heat-shrink termination designed for 240–300 mm² 3-core polymeric cables operating at 24 kV.",
     "fullDescription": "The Raychem EPKT-24D3XOH3 is a high-performance indoor heat-shrink termination designed for 240–300 mm² 3-core polymeric cables operating at 24 kV.",
@@ -3215,9 +3215,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1148.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-32.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-32.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-32.jpg"
+      "/wp-content/uploads/2025/09/24KV-32.jpg"
     ],
     "description": "The Raychem EPKT-36E3XIH2 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
     "fullDescription": "The Raychem EPKT-36E3XIH2 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
@@ -3239,9 +3239,9 @@ export const ALLIED_PRODUCTS = [
     "price": 1254.0,
     "currency": "SAR",
     "inStock": true,
-    "image": "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-33.jpg",
+    "image": "/wp-content/uploads/2025/09/24KV-33.jpg",
     "images": [
-      "https://alliedpowerindustrial.com/wp-content/uploads/2025/09/24KV-33.jpg"
+      "/wp-content/uploads/2025/09/24KV-33.jpg"
     ],
     "description": "The Raychem EPKT-36E3XIH3 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",
     "fullDescription": "The Raychem EPKT-36E3XIH3 is a medium-voltage heat-shrink cable termination designed for 33 kV systems, accommodating 3-core polymeric cables with conductor sizes ranging from 240 to 500 mm². It ensures reliable sealing and insulation, even in harsh environmental conditions.",

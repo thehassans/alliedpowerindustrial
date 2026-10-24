@@ -3,21 +3,38 @@ import { ALLIED_PRODUCTS, ALLIED_CATEGORIES, ALLIED_BRANDS } from '../data/allie
 
 const PRODUCTS_STORAGE_KEY = 'allied_custom_products';
 
+function normalizeImageUrl(url) {
+  if (!url || typeof url !== 'string') return '/wp-content/uploads/2024/09/RAYCHEM.png';
+  return url.replace(/^https?:\/\/(www\.)?alliedpowerindustrial\.com\/wp-content\/uploads\//i, '/wp-content/uploads/');
+}
+
+function normalizeProductItem(item) {
+  if (!item || typeof item !== 'object') return item;
+  return {
+    ...item,
+    image: normalizeImageUrl(item.image),
+    images: Array.isArray(item.images) ? item.images.map(normalizeImageUrl) : [normalizeImageUrl(item.image)],
+  };
+}
+
 export function getCatalogProducts() {
   try {
     const raw = localStorage.getItem(PRODUCTS_STORAGE_KEY);
     if (!raw) {
-      return ALLIED_PRODUCTS;
+      return ALLIED_PRODUCTS.map(normalizeProductItem);
     }
     const parsed = JSON.parse(raw);
     if (Array.isArray(parsed) && parsed.length > 0) {
-      // Ensure existing cached products have full descriptions from ALLIED_PRODUCTS if empty
-      return parsed.map(item => {
+      // Ensure existing cached products have full descriptions and normalized local image paths
+      return parsed.map(rawItem => {
+        const item = normalizeProductItem(rawItem);
         const base = ALLIED_PRODUCTS.find(p => p.sku === item.sku || p.id === item.id);
         if (base) {
           return {
             ...item,
             name: base.name || item.name,
+            image: item.image || normalizeImageUrl(base.image),
+            images: (item.images && item.images.length > 0) ? item.images : (base.images || [base.image]).map(normalizeImageUrl),
             description: (item.description && item.description.trim()) ? item.description : base.description,
             fullDescription: (item.fullDescription && item.fullDescription.trim()) ? item.fullDescription : base.fullDescription,
             features: (item.features && item.features.length > 0) ? item.features : base.features,
@@ -27,16 +44,17 @@ export function getCatalogProducts() {
         return item;
       });
     }
-    return ALLIED_PRODUCTS;
+    return ALLIED_PRODUCTS.map(normalizeProductItem);
   } catch (err) {
     console.error('Error reading products from localStorage:', err);
-    return ALLIED_PRODUCTS;
+    return ALLIED_PRODUCTS.map(normalizeProductItem);
   }
 }
 
 export function saveCatalogProducts(products, skipServerSync = false) {
   try {
-    localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(products));
+    const normalized = Array.isArray(products) ? products.map(normalizeProductItem) : products;
+    localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(normalized));
     // Dispatch custom event so public catalog components update immediately
     window.dispatchEvent(new Event('allied_products_updated'));
 
@@ -44,12 +62,12 @@ export function saveCatalogProducts(products, skipServerSync = false) {
       fetch('/api.php?action=save_products', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ products })
+        body: JSON.stringify({ products: normalized })
       })
         .then(res => res.ok ? res.json() : null)
         .then(data => {
           if (data && data.ok && Array.isArray(data.products)) {
-            localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(data.products));
+            localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(data.products.map(normalizeProductItem)));
             window.dispatchEvent(new Event('allied_products_updated'));
           }
         })
@@ -75,7 +93,7 @@ export async function syncServerDatabase() {
     if (!data || !data.ok) return;
 
     if (Array.isArray(data.products) && data.products.length > 0) {
-      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(data.products));
+      localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(data.products.map(normalizeProductItem)));
       window.dispatchEvent(new Event('allied_products_updated'));
     }
     if (Array.isArray(data.rfqs) && data.rfqs.length > 0) {
@@ -109,8 +127,8 @@ export function addCatalogProduct(newProductData) {
     price: parseFloat(newProductData.price) || 0,
     currency: 'SAR',
     inStock: newProductData.inStock !== false,
-    image: newProductData.image || 'https://alliedpowerindustrial.com/wp-content/uploads/2025/09/s-l400.png',
-    images: newProductData.images && newProductData.images.length > 0 ? newProductData.images : [newProductData.image || 'https://alliedpowerindustrial.com/wp-content/uploads/2025/09/s-l400.png'],
+    image: normalizeImageUrl(newProductData.image || '/wp-content/uploads/2025/09/s-l400.png'),
+    images: newProductData.images && newProductData.images.length > 0 ? newProductData.images.map(normalizeImageUrl) : [normalizeImageUrl(newProductData.image || '/wp-content/uploads/2025/09/s-l400.png')],
     description: newProductData.description || 'Certified industrial equipment conforming to Saudi standards.',
     fullDescription: newProductData.fullDescription || newProductData.description || 'Full technical specifications available upon quotation.',
     features: newProductData.features && newProductData.features.length > 0 ? newProductData.features : [

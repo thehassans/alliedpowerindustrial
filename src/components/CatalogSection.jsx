@@ -449,7 +449,7 @@ export default function CatalogSection({
                       loading="lazy"
                       decoding="async"
                       onError={(e) => {
-                        e.target.src = 'https://alliedpowerindustrial.com/wp-content/uploads/2024/09/RAYCHEM.png';
+                        e.target.src = '/wp-content/uploads/2024/09/RAYCHEM.png';
                       }}
                     />
                   </div>
