@@ -1,21 +1,40 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { ALLIED_CATEGORIES, ALLIED_BRANDS } from '../data/alliedProducts';
 import { getCatalogProducts, syncServerDatabase } from '../utils/productStorage';
+import { getProductUrl, buildCatalogSeoData, applySeoMetadata } from '../utils/seoEngine';
 
 export default function CatalogSection({
   selectedCategory: propCategory,
   onCategoryChange,
   onSelectProduct,
-  onAddToCart
+  onOpenProductPage,
+  onOpenDedicatedCatalog,
+  onNavigateHome,
+  onAddToCart,
+  isDedicatedPage = false,
+  initialSearch = '',
+  initialBrand = 'All',
 }) {
   const [products, setProducts] = useState(getCatalogProducts);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState(initialSearch || '');
   const [internalCategory, setInternalCategory] = useState('All');
-  const [selectedBrand, setSelectedBrand] = useState('All');
+  const [selectedBrand, setSelectedBrand] = useState(initialBrand || 'All');
   const [sortBy, setSortBy] = useState('featured');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(16);
+  const [itemsPerPage, setItemsPerPage] = useState(isDedicatedPage ? 32 : 16);
   const [toastMessage, setToastMessage] = useState('');
+
+  useEffect(() => {
+    setSearchTerm(initialSearch || '');
+    setCurrentPage(1);
+  }, [initialSearch]);
+
+  useEffect(() => {
+    if (initialBrand) {
+      setSelectedBrand(initialBrand);
+      setCurrentPage(1);
+    }
+  }, [initialBrand]);
 
   // Sync with storage updates & cPanel server database
   useEffect(() => {
@@ -42,7 +61,7 @@ export default function CatalogSection({
   // Category counts & dynamic lists (auto-includes custom brands/categories added in Admin)
   const categoryCounts = useMemo(() => {
     const counts = { All: products.length };
-    products.forEach(p => {
+    products.forEach((p) => {
       if (p.category) {
         counts[p.category] = (counts[p.category] || 0) + 1;
       }
@@ -52,7 +71,7 @@ export default function CatalogSection({
 
   const availableCategories = useMemo(() => {
     const set = new Set(ALLIED_CATEGORIES);
-    products.forEach(p => {
+    products.forEach((p) => {
       if (p.category) set.add(p.category);
     });
     return Array.from(set);
@@ -60,7 +79,7 @@ export default function CatalogSection({
 
   const availableBrands = useMemo(() => {
     const set = new Set(ALLIED_BRANDS);
-    products.forEach(p => {
+    products.forEach((p) => {
       if (p.brand) set.add(p.brand);
     });
     return Array.from(set);
@@ -68,7 +87,7 @@ export default function CatalogSection({
 
   // Filter & Sort Logic
   const filteredProducts = useMemo(() => {
-    let result = products.filter(item => {
+    let result = products.filter((item) => {
       const matchesSearch =
         searchTerm === '' ||
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -99,6 +118,19 @@ export default function CatalogSection({
     return result;
   }, [products, searchTerm, activeCategory, selectedBrand, sortBy]);
 
+  // Apply SEO Metadata when on dedicated /products page
+  useEffect(() => {
+    if (isDedicatedPage) {
+      const seo = buildCatalogSeoData({
+        category: activeCategory,
+        brand: selectedBrand,
+        search: searchTerm,
+        totalCount: filteredProducts.length || products.length,
+      });
+      applySeoMetadata(seo);
+    }
+  }, [isDedicatedPage, activeCategory, selectedBrand, searchTerm, filteredProducts.length, products.length]);
+
   // Pagination
   const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
   const paginatedProducts = useMemo(() => {
@@ -111,11 +143,14 @@ export default function CatalogSection({
     const catalogEl = document.getElementById('catalog');
     if (catalogEl) {
       catalogEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
   const handleAddToCart = (product, e) => {
     e.stopPropagation();
+    e.preventDefault();
     onAddToCart(product, 1);
     setToastMessage(`Added "${product.name.slice(0, 30)}..." to RFQ list`);
     setTimeout(() => setToastMessage(''), 3000);
@@ -129,57 +164,186 @@ export default function CatalogSection({
     setCurrentPage(1);
   };
 
-  return (
-    <section id="catalog" style={{ backgroundColor: '#f8fafc', padding: '80px 20px', borderTop: '1px solid #e2e8f0' }}>
-      <div style={{ maxWidth: '1360px', margin: '0 auto' }}>
+  const handleCardNavigation = (e, product) => {
+    if (e) e.preventDefault();
+    if (onOpenProductPage) {
+      onOpenProductPage(product);
+    } else if (onSelectProduct) {
+      onSelectProduct(product);
+    }
+  };
 
+  return (
+    <section
+      id="catalog"
+      style={{
+        backgroundColor: '#f8fafc',
+        padding: isDedicatedPage ? '0 0 80px' : '80px 20px',
+        borderTop: isDedicatedPage ? 'none' : '1px solid #e2e8f0',
+      }}
+    >
+      {/* Dedicated /products Top Breadcrumb Banner */}
+      {isDedicatedPage && (
+        <div
+          style={{
+            backgroundColor: '#0f172a',
+            color: '#ffffff',
+            padding: '18px 20px',
+            borderBottom: '3px solid #00b862',
+            marginBottom: '40px',
+          }}
+        >
+          <div
+            style={{
+              maxWidth: '1360px',
+              margin: '0 auto',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flexWrap: 'wrap',
+              gap: '12px',
+            }}
+          >
+            <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '13px' }}>
+              <a
+                href="/"
+                onClick={(e) => {
+                  e.preventDefault();
+                  if (onNavigateHome) onNavigateHome();
+                }}
+                style={{ color: '#94a3b8', textDecoration: 'none', fontWeight: 600 }}
+              >
+                <i className="bi bi-house-door-fill" style={{ color: '#4ade80', marginRight: '4px' }}></i>
+                Home
+              </a>
+              <span style={{ color: '#475569' }}>/</span>
+              <span style={{ color: '#4ade80', fontWeight: 800 }}>All Products Catalog ({products.length} Items)</span>
+            </nav>
+
+            <button
+              type="button"
+              onClick={() => onNavigateHome && onNavigateHome()}
+              style={{
+                backgroundColor: 'rgba(255, 255, 255, 0.1)',
+                color: '#ffffff',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+                borderRadius: '8px',
+                padding: '6px 14px',
+                fontSize: '12px',
+                fontWeight: 700,
+                cursor: 'pointer',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+              }}
+            >
+              <i className="bi bi-arrow-left"></i>
+              <span>Back to Home Page</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      <div style={{ maxWidth: '1360px', margin: '0 auto', padding: isDedicatedPage ? '0 20px' : '0' }}>
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '45px' }}>
-          <span style={{
-            display: 'inline-block',
-            backgroundColor: 'var(--color-green-subtle)',
-            border: '1px solid #a7f3d0',
-            color: 'var(--color-green)',
-            fontWeight: 800,
-            fontSize: '12px',
-            textTransform: 'uppercase',
-            padding: '5px 18px',
-            borderRadius: '50px',
-            letterSpacing: '1px',
-            marginBottom: '14px'
-          }}>
-            <span style={{ color: 'var(--color-red)', marginRight: '4px' }}>●</span> Certified Industrial Inventory
+          <span
+            style={{
+              display: 'inline-block',
+              backgroundColor: 'var(--color-green-subtle)',
+              border: '1px solid #a7f3d0',
+              color: 'var(--color-green)',
+              fontWeight: 800,
+              fontSize: '12px',
+              textTransform: 'uppercase',
+              padding: '5px 18px',
+              borderRadius: '50px',
+              letterSpacing: '1px',
+              marginBottom: '14px',
+            }}
+          >
+            <span style={{ color: 'var(--color-red)', marginRight: '4px' }}>●</span> Certified Industrial Inventory &bull; Dedicated SEO Product Pages
           </span>
-          <h2 style={{
-            color: 'var(--color-black)',
-            fontSize: '38px',
-            fontWeight: 800,
-            lineHeight: '48px',
-            marginBottom: '14px'
-          }}>
-            Allied Power Industrial Company Catalog
-          </h2>
-          <p style={{
-            color: 'var(--color-text-secondary)',
-            fontSize: '16px',
-            maxWidth: '820px',
-            margin: '0 auto',
-            textAlign: 'center',
-            lineHeight: '26px'
-          }}>
-            Explore our complete portfolio of <strong style={{ color: 'var(--color-green)' }}>certified industrial electrical &amp; mechanical materials</strong> in stock at Al-Khobar. Fully compliant with Saudi Aramco (Vendor #10121504), Saudi Electricity Company (Vendor #0002017931), SABIC, and international industry specifications.
+
+          {isDedicatedPage ? (
+            <h1
+              style={{
+                color: 'var(--color-black)',
+                fontSize: 'clamp(28px, 3.5vw, 40px)',
+                fontWeight: 800,
+                lineHeight: 1.25,
+                marginBottom: '14px',
+              }}
+            >
+              Allied Power Industrial Company &mdash; Complete Products Catalog
+            </h1>
+          ) : (
+            <h2
+              style={{
+                color: 'var(--color-black)',
+                fontSize: '38px',
+                fontWeight: 800,
+                lineHeight: '48px',
+                marginBottom: '14px',
+              }}
+            >
+              Allied Power Industrial Company Catalog
+            </h2>
+          )}
+
+          <p
+            style={{
+              color: 'var(--color-text-secondary)',
+              fontSize: '16px',
+              maxWidth: '820px',
+              margin: '0 auto',
+              textAlign: 'center',
+              lineHeight: '26px',
+            }}
+          >
+            Explore our complete portfolio of <strong style={{ color: 'var(--color-green)' }}>certified industrial electrical &amp; mechanical materials</strong> in stock at Al-Khobar. Click any product below to open its dedicated technical specification &amp; SEO page.
           </p>
+
+          {!isDedicatedPage && onOpenDedicatedCatalog && (
+            <div style={{ marginTop: '18px' }}>
+              <a
+                href="/products"
+                onClick={(e) => {
+                  e.preventDefault();
+                  onOpenDedicatedCatalog({ category: activeCategory, brand: selectedBrand, search: searchTerm });
+                }}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  backgroundColor: '#0f172a',
+                  color: '#ffffff',
+                  padding: '10px 22px',
+                  borderRadius: '50px',
+                  fontSize: '13px',
+                  fontWeight: 800,
+                  textDecoration: 'none',
+                  boxShadow: '0 6px 18px rgba(15, 23, 42, 0.16)',
+                }}
+              >
+                <i className="bi bi-box-arrow-up-right" style={{ color: '#4ade80' }}></i>
+                <span>Open Dedicated All Products Page (/products)</span>
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Search & Filter Toolbar */}
-        <div style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '16px',
-          padding: '24px',
-          boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
-          marginBottom: '35px',
-          border: '1px solid #e2e8f0'
-        }}>
+        <div
+          style={{
+            backgroundColor: '#ffffff',
+            borderRadius: '16px',
+            padding: '24px',
+            boxShadow: '0 4px 20px rgba(0, 0, 0, 0.05)',
+            marginBottom: '35px',
+            border: '1px solid #e2e8f0',
+          }}
+        >
           {/* Top row: Search input + Sort + Items per page */}
           <div
             className="catalog-search-grid"
@@ -188,19 +352,22 @@ export default function CatalogSection({
               gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 250px), 1fr))',
               gap: '16px',
               marginBottom: '22px',
-              alignItems: 'center'
+              alignItems: 'center',
             }}
           >
             {/* Search Input */}
             <div style={{ position: 'relative', flex: 1 }}>
-              <i className="bi bi-search" style={{
-                position: 'absolute',
-                left: '16px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                color: '#94a3b8',
-                fontSize: '16px'
-              }}></i>
+              <i
+                className="bi bi-search"
+                style={{
+                  position: 'absolute',
+                  left: '16px',
+                  top: '50%',
+                  transform: 'translateY(-50%)',
+                  color: '#94a3b8',
+                  fontSize: '16px',
+                }}
+              ></i>
               <input
                 type="text"
                 placeholder="Search catalog by name, SKU (e.g. CC-TH, EPKT, YA27), brand or specs..."
@@ -218,10 +385,14 @@ export default function CatalogSection({
                   color: 'var(--color-black)',
                   outline: 'none',
                   transition: 'border-color 0.2s',
-                  boxSizing: 'border-box'
+                  boxSizing: 'border-box',
                 }}
-                onFocus={(e) => { e.target.style.borderColor = 'var(--color-green)'; }}
-                onBlur={(e) => { e.target.style.borderColor = '#cbd5e1'; }}
+                onFocus={(e) => {
+                  e.target.style.borderColor = 'var(--color-green)';
+                }}
+                onBlur={(e) => {
+                  e.target.style.borderColor = '#cbd5e1';
+                }}
               />
               {searchTerm && (
                 <button
@@ -235,7 +406,7 @@ export default function CatalogSection({
                     border: 'none',
                     color: '#94a3b8',
                     cursor: 'pointer',
-                    fontSize: '14px'
+                    fontSize: '14px',
                   }}
                 >
                   <i className="bi bi-x-circle-fill"></i>
@@ -256,7 +427,7 @@ export default function CatalogSection({
                   color: 'var(--color-black)',
                   backgroundColor: '#ffffff',
                   cursor: 'pointer',
-                  fontWeight: 600
+                  fontWeight: 600,
                 }}
               >
                 <option value="featured">Sort by: Default Featured</option>
@@ -280,7 +451,7 @@ export default function CatalogSection({
                   color: 'var(--color-black)',
                   backgroundColor: '#ffffff',
                   cursor: 'pointer',
-                  fontWeight: 600
+                  fontWeight: 600,
                 }}
               >
                 <option value="16">16 per page</option>
@@ -291,7 +462,7 @@ export default function CatalogSection({
             </div>
           </div>
 
-          {/* Category Filter Pills (Theme: Green with Red Counter) */}
+          {/* Category Filter Pills */}
           <div style={{ marginBottom: '18px' }}>
             <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--color-black)', textTransform: 'uppercase', marginBottom: '10px', letterSpacing: '0.5px' }}>
               Filter by Category:
@@ -307,16 +478,14 @@ export default function CatalogSection({
                     className={`cat-pill-btn ${isSelected ? 'active' : ''}`}
                   >
                     <span>{cat}</span>
-                    <span className="pill-count-badge">
-                      {count}
-                    </span>
+                    <span className="pill-count-badge">{count}</span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Brand Filter Pills (Theme: Red accent on active) */}
+          {/* Brand Filter Pills */}
           <div>
             <div style={{ fontSize: '12px', fontWeight: 800, color: 'var(--color-black)', textTransform: 'uppercase', marginBottom: '8px', letterSpacing: '0.5px' }}>
               Filter by Manufacturer / Brand:
@@ -341,16 +510,18 @@ export default function CatalogSection({
           </div>
 
           {/* Results Summary Bar */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            marginTop: '20px',
-            paddingTop: '16px',
-            borderTop: '1px solid #f1f5f9',
-            fontSize: '13px',
-            color: 'var(--color-text-secondary)'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginTop: '20px',
+              paddingTop: '16px',
+              borderTop: '1px solid #f1f5f9',
+              fontSize: '13px',
+              color: 'var(--color-text-secondary)',
+            }}
+          >
             <div>
               Showing <strong style={{ color: 'var(--color-black)' }}>{filteredProducts.length}</strong> of <strong style={{ color: 'var(--color-green)' }}>{products.length}</strong> certified industrial materials
               {(activeCategory !== 'All' || selectedBrand !== 'All' || searchTerm) && (
@@ -372,7 +543,7 @@ export default function CatalogSection({
                   fontSize: '13px',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px'
+                  gap: '4px',
                 }}
               >
                 <i className="bi bi-arrow-counterclockwise"></i> Reset Filters
@@ -383,13 +554,15 @@ export default function CatalogSection({
 
         {/* Product Cards Grid */}
         {paginatedProducts.length === 0 ? (
-          <div style={{
-            textAlign: 'center',
-            padding: '80px 20px',
-            backgroundColor: '#ffffff',
-            borderRadius: '16px',
-            border: '1px solid #e2e8f0'
-          }}>
+          <div
+            style={{
+              textAlign: 'center',
+              padding: '80px 20px',
+              backgroundColor: '#ffffff',
+              borderRadius: '16px',
+              border: '1px solid #e2e8f0',
+            }}
+          >
             <i className="bi bi-search" style={{ fontSize: '48px', color: '#cbd5e1', display: 'block', marginBottom: '16px' }}></i>
             <h3 style={{ fontSize: '20px', fontWeight: 700, color: 'var(--color-black)', marginBottom: '8px' }}>
               No Products Match Your Filter
@@ -397,10 +570,7 @@ export default function CatalogSection({
             <p style={{ fontSize: '14px', color: 'var(--color-text-secondary)', marginBottom: '20px' }}>
               Try searching with a broader keyword, different brand, or clearing category filters.
             </p>
-            <button
-              onClick={resetFilters}
-              className="btn-primary-green"
-            >
+            <button onClick={resetFilters} className="btn-primary-green">
               Reset All Filters
             </button>
           </div>
@@ -410,10 +580,11 @@ export default function CatalogSection({
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 260px), 1fr))',
-              gap: '24px'
+              gap: '24px',
             }}
           >
             {paginatedProducts.map((product) => {
+              const productHref = getProductUrl(product);
               const waQuoteMsg = encodeURIComponent(
                 `Hello Allied Power Industrial Company (Mr. Farzand Naeem),\n\nI would like to inquire about this product:\n• Product: ${product.name}\n• SKU: ${product.sku}\n• Brand: ${product.brand}\n• Price: ${product.price} SAR\n\nPlease let me know availability and technical submittal.`
               );
@@ -421,15 +592,18 @@ export default function CatalogSection({
               return (
                 <div
                   key={product.id}
-                  onClick={() => onSelectProduct(product)}
+                  onClick={(e) => handleCardNavigation(e, product)}
                   className="premium-product-card"
                 >
                   {/* Image Container */}
-                  <div className="product-img-box">
+                  <a
+                    href={productHref}
+                    onClick={(e) => handleCardNavigation(e, product)}
+                    className="product-img-box"
+                    style={{ textDecoration: 'none', display: 'flex' }}
+                  >
                     {/* Brand Tag Top Left */}
-                    <span className="product-brand-tag">
-                      {product.brand}
-                    </span>
+                    <span className="product-brand-tag">{product.brand}</span>
 
                     {/* Stock Tag Top Right */}
                     <span
@@ -445,31 +619,33 @@ export default function CatalogSection({
 
                     <img
                       src={product.image}
-                      alt={product.name}
+                      alt={`${product.name} (${product.sku})`}
                       loading="lazy"
                       decoding="async"
                       onError={(e) => {
                         e.target.src = '/wp-content/uploads/2024/09/RAYCHEM.png';
                       }}
                     />
-                  </div>
+                  </a>
 
                   {/* Card Body */}
                   <div style={{ padding: '18px', display: 'flex', flexDirection: 'column', flex: 1, justifyContent: 'space-between' }}>
                     <div>
                       {/* Category Tag */}
-                      <div style={{
-                        fontSize: '11px',
-                        fontWeight: 700,
-                        color: 'var(--color-green)',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.5px',
-                        marginBottom: '6px'
-                      }}>
+                      <div
+                        style={{
+                          fontSize: '11px',
+                          fontWeight: 700,
+                          color: 'var(--color-green)',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.5px',
+                          marginBottom: '6px',
+                        }}
+                      >
                         {product.category}
                       </div>
 
-                      {/* Product Name - Full complete title */}
+                      {/* Product Name - Clickable SEO link to dedicated page */}
                       <h3
                         title={product.name}
                         style={{
@@ -482,55 +658,71 @@ export default function CatalogSection({
                           display: '-webkit-box',
                           WebkitLineClamp: 3,
                           WebkitBoxOrient: 'vertical',
-                          overflow: 'hidden'
+                          overflow: 'hidden',
                         }}
                       >
-                        {product.name}
+                        <a
+                          href={productHref}
+                          onClick={(e) => handleCardNavigation(e, product)}
+                          style={{ color: 'inherit', textDecoration: 'none' }}
+                        >
+                          {product.name}
+                        </a>
                       </h3>
 
                       {/* Technical Specifications Snippet */}
-                      <div style={{
-                        fontSize: '12px',
-                        color: '#64748b',
-                        lineHeight: '17px',
-                        marginBottom: '10px',
-                        minHeight: '34px',
-                        display: '-webkit-box',
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: 'vertical',
-                        overflow: 'hidden'
-                      }}>
+                      <div
+                        style={{
+                          fontSize: '12px',
+                          color: '#64748b',
+                          lineHeight: '17px',
+                          marginBottom: '10px',
+                          minHeight: '34px',
+                          display: '-webkit-box',
+                          WebkitLineClamp: 2,
+                          WebkitBoxOrient: 'vertical',
+                          overflow: 'hidden',
+                        }}
+                      >
                         {product.description || (product.features && product.features[0]) || product.category}
                       </div>
 
                       {/* SKU & Origin info */}
                       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', fontSize: '12px', color: 'var(--color-text-muted)', marginBottom: '14px', flexWrap: 'wrap', gap: '4px' }}>
-                        <span>SKU: <strong style={{ color: 'var(--color-black)' }}>{product.sku}</strong></span>
-                        <span style={{ color: 'var(--color-green)', fontWeight: 600 }}>Aramco / SABIC Approved</span>
+                        <span>
+                          SKU: <strong style={{ color: 'var(--color-black)' }}>{product.sku}</strong>
+                        </span>
+                        <span style={{ color: 'var(--color-green)', fontWeight: 600 }}>Aramco / SEC Approved</span>
                       </div>
                     </div>
 
                     {/* Price & Action Row */}
                     <div>
-                      <div style={{
-                        display: 'flex',
-                        alignItems: 'baseline',
-                        justifyContent: 'space-between',
-                        paddingTop: '12px',
-                        borderTop: '1px solid #f1f5f9',
-                        marginBottom: '14px'
-                      }}>
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'baseline',
+                          justifyContent: 'space-between',
+                          paddingTop: '12px',
+                          borderTop: '1px solid #f1f5f9',
+                          marginBottom: '14px',
+                        }}
+                      >
                         <div>
                           <span style={{ fontSize: '22px', fontWeight: 800, color: 'var(--color-black)' }}>
-                            {product.price.toFixed(2)}
+                            {Number(product.price || 0).toFixed(2)}
                           </span>
                           <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--color-red)', marginLeft: '4px' }}>
                             SAR
                           </span>
                         </div>
-                        <span style={{ fontSize: '11px', color: 'var(--color-text-muted)' }}>
-                          Excl. VAT
-                        </span>
+                        <a
+                          href={productHref}
+                          onClick={(e) => handleCardNavigation(e, product)}
+                          style={{ fontSize: '11px', fontWeight: 800, color: 'var(--color-green)', textDecoration: 'none' }}
+                        >
+                          Full Page &rarr;
+                        </a>
                       </div>
 
                       {/* Buttons */}
@@ -550,10 +742,14 @@ export default function CatalogSection({
                             alignItems: 'center',
                             justifyContent: 'center',
                             gap: '6px',
-                            transition: 'all 0.2s'
+                            transition: 'all 0.2s',
                           }}
-                          onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-green-dark)'; }}
-                          onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'var(--color-green)'; }}
+                          onMouseEnter={(e) => {
+                            e.currentTarget.style.backgroundColor = 'var(--color-green-dark)';
+                          }}
+                          onMouseLeave={(e) => {
+                            e.currentTarget.style.backgroundColor = 'var(--color-green)';
+                          }}
                           title="Add to Request for Quotation list"
                         >
                           <i className="bi bi-cart-plus"></i> Add to RFQ
@@ -562,7 +758,7 @@ export default function CatalogSection({
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
-                            onSelectProduct(product);
+                            if (onSelectProduct) onSelectProduct(product);
                           }}
                           style={{
                             backgroundColor: '#ffffff',
@@ -575,9 +771,9 @@ export default function CatalogSection({
                             cursor: 'pointer',
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
                           }}
-                          title="Quick View full specifications"
+                          title="Quick View Modal"
                         >
                           <i className="bi bi-eye"></i>
                         </button>
@@ -597,7 +793,7 @@ export default function CatalogSection({
                             fontWeight: 700,
                             display: 'flex',
                             alignItems: 'center',
-                            justifyContent: 'center'
+                            justifyContent: 'center',
                           }}
                           title="Instant WhatsApp quote from Sales Manager Farzand Naeem"
                         >
@@ -614,14 +810,16 @@ export default function CatalogSection({
 
         {/* Pagination Bar */}
         {totalPages > 1 && (
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '8px',
-            marginTop: '45px',
-            flexWrap: 'wrap'
-          }}>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              gap: '8px',
+              marginTop: '45px',
+              flexWrap: 'wrap',
+            }}
+          >
             <button
               onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
@@ -636,7 +834,7 @@ export default function CatalogSection({
                 cursor: currentPage === 1 ? 'not-allowed' : 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '4px'
+                gap: '4px',
               }}
             >
               <i className="bi bi-chevron-left"></i> Prev
@@ -656,7 +854,7 @@ export default function CatalogSection({
                   fontWeight: 700,
                   fontSize: '13px',
                   cursor: 'pointer',
-                  transition: 'all 0.15s'
+                  transition: 'all 0.15s',
                 }}
               >
                 {page}
@@ -677,7 +875,7 @@ export default function CatalogSection({
                 cursor: currentPage === totalPages ? 'not-allowed' : 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '4px'
+                gap: '4px',
               }}
             >
               Next <i className="bi bi-chevron-right"></i>
@@ -687,30 +885,29 @@ export default function CatalogSection({
 
         {/* Toast Notification */}
         {toastMessage && (
-          <div style={{
-            position: 'fixed',
-            bottom: '24px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            backgroundColor: 'var(--color-black)',
-            color: '#ffffff',
-            padding: '12px 24px',
-            borderRadius: '50px',
-            fontSize: '14px',
-            fontWeight: 600,
-            boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
-            zIndex: 99999,
-            display: 'flex',
-            alignItems: 'center',
-            gap: '8px',
-            border: '1px solid var(--color-green)',
-            animation: 'fadeIn 0.2s ease-in'
-          }}>
-            <i className="bi bi-check-circle-fill" style={{ color: '#22c55e' }}></i>
-            {toastMessage}
+          <div
+            style={{
+              position: 'fixed',
+              bottom: '90px',
+              right: '30px',
+              backgroundColor: 'var(--color-black)',
+              color: '#ffffff',
+              padding: '14px 22px',
+              borderRadius: '12px',
+              boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
+              zIndex: 9999,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '10px',
+              fontSize: '14px',
+              fontWeight: 600,
+              borderLeft: '4px solid var(--color-green)',
+            }}
+          >
+            <i className="bi bi-check-circle-fill" style={{ color: 'var(--color-green-light)', fontSize: '18px' }}></i>
+            <span>{toastMessage}</span>
           </div>
         )}
-
       </div>
     </section>
   );

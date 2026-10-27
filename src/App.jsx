@@ -1,28 +1,59 @@
 import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { ALLIED_PRODUCTS, ALLIED_CATEGORIES, ALLIED_BRANDS } from './data/alliedProducts';
-import { getCatalogProducts } from './utils/productStorage';
+import { getCatalogProducts, syncServerDatabase } from './utils/productStorage';
 import { COUNTRY_CODES, DEFAULT_COUNTRY_CODE, formatFullPhoneNumber } from './utils/countryCodes';
 import { getStoredSocialLinks, SOCIAL_PLATFORMS } from './utils/socialStorage';
+import {
+  getProductSlug,
+  getProductUrl,
+  findProductBySlug,
+  buildHomeSeoData,
+  applySeoMetadata,
+} from './utils/seoEngine';
 import CatalogSection from './components/CatalogSection';
+import ProductSearchBox from './components/ProductSearchBox';
+import ProductDetailPage from './components/ProductDetailPage';
 
 const ProductModal = lazy(() => import('./components/ProductModal'));
 const RfqDrawer = lazy(() => import('./components/RfqDrawer'));
 const RfqDocumentModal = lazy(() => import('./components/RfqDocumentModal'));
 const AdminApp = lazy(() => import('./admin/AdminApp'));
 
-export default function App() {
-  // Navigation / Route Handling (Supports /admin & public site)
-  const [currentRoute, setCurrentRoute] = useState(() => {
-    if (typeof window !== 'undefined') {
-      const path = window.location.pathname;
-      const hash = window.location.hash;
-      if (path.startsWith('/admin') || hash.includes('/admin')) {
-        return 'admin';
-      }
-    }
-    return 'site';
-  });
+function parseWindowRoute() {
+  if (typeof window === 'undefined') {
+    return { route: 'site', slug: '', search: '', category: 'All', brand: 'All' };
+  }
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const hash = window.location.hash || '';
+  const params = new URLSearchParams(window.location.search);
 
+  if (path.startsWith('/admin') || hash.includes('/admin')) {
+    return { route: 'admin', slug: '', search: '', category: 'All', brand: 'All' };
+  }
+  if (path.startsWith('/product/')) {
+    const slug = path.replace(/^\/product\//, '').replace(/\/+$/, '');
+    return { route: 'product', slug, search: '', category: 'All', brand: 'All' };
+  }
+  if (path === '/products' || path === '/catalog') {
+    return {
+      route: 'products',
+      slug: '',
+      search: params.get('q') || '',
+      category: params.get('category') || 'All',
+      brand: params.get('brand') || 'All',
+    };
+  }
+  return { route: 'site', slug: '', search: '', category: 'All', brand: 'All' };
+}
+
+export default function App() {
+  const initialLoc = parseWindowRoute();
+  const [currentRoute, setCurrentRoute] = useState(initialLoc.route);
+  const [activeProductSlug, setActiveProductSlug] = useState(initialLoc.slug);
+  const [catalogSearchQuery, setCatalogSearchQuery] = useState(initialLoc.search);
+  const [catalogBrandFilter, setCatalogBrandFilter] = useState(initialLoc.brand);
+
+  const [allCatalogProducts, setAllCatalogProducts] = useState(getCatalogProducts);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
@@ -31,7 +62,7 @@ export default function App() {
   const [showBackToTop, setShowBackToTop] = useState(false);
 
   // Active Category state synced across Header Dropdown, SBU cards, and Catalog
-  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedCategory, setSelectedCategory] = useState(initialLoc.category || 'All');
 
   // RFQ Cart State
   const [cartItems, setCartItems] = useState([]);
@@ -50,6 +81,15 @@ export default function App() {
   const [socialLinks, setSocialLinks] = useState(getStoredSocialLinks);
 
   useEffect(() => {
+    const handleProductsSync = () => {
+      setAllCatalogProducts(getCatalogProducts());
+    };
+    window.addEventListener('allied_products_updated', handleProductsSync);
+    syncServerDatabase();
+    return () => window.removeEventListener('allied_products_updated', handleProductsSync);
+  }, []);
+
+  useEffect(() => {
     const handleSocialUpdate = () => {
       setSocialLinks(getStoredSocialLinks());
     };
@@ -61,15 +101,23 @@ export default function App() {
     };
   }, []);
 
+  // Apply Home SEO when on home route
+  useEffect(() => {
+    if (currentRoute === 'site') {
+      applySeoMetadata(buildHomeSeoData());
+    }
+  }, [currentRoute]);
+
   // Handle URL changes & popstate
   useEffect(() => {
     const handleLocationChange = () => {
-      const path = window.location.pathname;
-      const hash = window.location.hash;
-      if (path.startsWith('/admin') || hash.includes('/admin')) {
-        setCurrentRoute('admin');
-      } else {
-        setCurrentRoute('site');
+      const parsed = parseWindowRoute();
+      setCurrentRoute(parsed.route);
+      setActiveProductSlug(parsed.slug);
+      setCatalogSearchQuery(parsed.search);
+      setCatalogBrandFilter(parsed.brand);
+      if (parsed.category) {
+        setSelectedCategory(parsed.category);
       }
     };
 
@@ -82,13 +130,49 @@ export default function App() {
   }, []);
 
   const navigateToRoute = (route) => {
-    setCurrentRoute(route);
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
     if (route === 'admin') {
+      setCurrentRoute('admin');
       window.history.pushState(null, '', '/admin');
+    } else if (route === 'products') {
+      setCurrentRoute('products');
+      window.history.pushState(null, '', '/products');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
+      setCurrentRoute('site');
       window.history.pushState(null, '', '/');
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+  };
+
+  const openProductPage = (product) => {
+    if (!product) return;
+    const slug = getProductSlug(product);
+    const url = getProductUrl(product);
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+    setActiveProductSlug(slug);
+    setCurrentRoute('product');
+    window.history.pushState(null, '', url);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const openProductsCatalogPage = ({ search = '', category = 'All', brand = 'All' } = {}) => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+    setCatalogSearchQuery(search || '');
+    setSelectedCategory(category || 'All');
+    setCatalogBrandFilter(brand || 'All');
+    setCurrentRoute('products');
+
+    const params = new URLSearchParams();
+    if (search) params.set('q', search);
+    if (category && category !== 'All') params.set('category', category);
+    if (brand && brand !== 'All') params.set('brand', brand);
+    const qs = params.toString();
+    window.history.pushState(null, '', qs ? `/products?${qs}` : '/products');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Scroll listener for sticky header and back to top
@@ -110,17 +194,30 @@ export default function App() {
   }, []);
 
   const scrollToSection = (id) => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+    if (currentRoute !== 'site') {
+      setCurrentRoute('site');
+      window.history.pushState(null, '', '/');
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 80);
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
-    setMobileMenuOpen(false);
-    setActiveDropdown(null);
   };
 
   const handleSelectCategoryAndScroll = (categoryName) => {
     setSelectedCategory(categoryName);
-    scrollToSection('catalog');
+    if (currentRoute === 'products') {
+      openProductsCatalogPage({ category: categoryName, search: catalogSearchQuery, brand: catalogBrandFilter });
+    } else {
+      scrollToSection('catalog');
+    }
   };
 
   // Cart Management
@@ -348,19 +445,19 @@ export default function App() {
         </div>
 
         {/* Main Glassmorphic Navigation Bar */}
-        <div className="main-nav-bar">
+        <div className="main-nav-bar" style={{ gap: '12px' }}>
           {/* Logo with official transparent branding */}
-          <div style={{ display: 'flex', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0 }}>
             <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+              href="/"
+              onClick={(e) => { e.preventDefault(); navigateToRoute('site'); }}
               style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}
             >
               <img
                 src="/alliedpowerlogo-removebg-preview.png"
                 alt="Allied Power Industrial Company"
                 style={{
-                  height: isScrolled ? '46px' : '54px',
+                  height: isScrolled ? '44px' : '50px',
                   width: 'auto',
                   objectFit: 'contain',
                   transition: 'height 0.25s ease'
@@ -369,12 +466,22 @@ export default function App() {
             </a>
           </div>
 
+          {/* Instant Searchable Products Bar in Header (Desktop) */}
+          <div className="desktop-nav-wrap" style={{ flex: '1 1 240px', maxWidth: '330px', margin: '0 6px' }}>
+            <ProductSearchBox
+              variant="header"
+              onSelectProductPage={openProductPage}
+              onSearchCatalog={(q) => openProductsCatalogPage({ search: q })}
+              onAddToCart={handleAddToCart}
+            />
+          </div>
+
           {/* Desktop Navigation Links */}
-          <nav className="desktop-nav-wrap">
+          <nav className="desktop-nav-wrap" style={{ flexShrink: 0 }}>
             <a
-              href="#"
-              onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              className="nav-link-item"
+              href="/"
+              onClick={(e) => { e.preventDefault(); navigateToRoute('site'); }}
+              className={`nav-link-item ${currentRoute === 'site' ? 'active' : ''}`}
               title="Home"
             >
               <i className="bi bi-house-door-fill" style={{ fontSize: '15px' }}></i>
@@ -398,14 +505,15 @@ export default function App() {
               <span>Aramco Approval</span>
             </a>
 
-            {/* Direct Catalog Link */}
+            {/* Direct Clickable All-Products Page Link */}
             <a
-              href="#catalog"
-              onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll('All'); }}
-              className="nav-link-item"
-              style={{ fontWeight: 700 }}
+              href="/products"
+              onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: 'All' }); }}
+              className={`nav-link-item ${currentRoute === 'products' ? 'active' : ''}`}
+              style={{ fontWeight: 700, color: currentRoute === 'products' ? 'var(--color-green)' : undefined }}
             >
-              <span>Products Catalog</span>
+              <i className="bi bi-grid-3x3-gap-fill" style={{ fontSize: '13px', color: 'var(--color-green)', marginRight: '3px' }}></i>
+              <span>All Products</span>
             </a>
 
             {/* Categories Dropdown */}
@@ -415,8 +523,8 @@ export default function App() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               <a
-                href="#catalog"
-                onClick={(e) => { e.preventDefault(); scrollToSection('catalog'); }}
+                href="/products"
+                onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: 'All' }); }}
                 className="nav-link-item"
               >
                 <span>Categories</span>
@@ -432,7 +540,7 @@ export default function App() {
                     <div
                       key={idx}
                       className="nav-dropdown-item"
-                      onClick={() => handleSelectCategoryAndScroll(cat)}
+                      onClick={() => openProductsCatalogPage({ category: cat })}
                     >
                       <span>{cat}</span>
                       <i className="bi bi-arrow-right-short" style={{ color: 'var(--color-green)', fontSize: '16px' }}></i>
@@ -441,10 +549,10 @@ export default function App() {
                   <div style={{ borderTop: '1px solid #f1f5f9', marginTop: '6px', paddingTop: '6px' }}>
                     <div
                       className="nav-dropdown-item"
-                      onClick={() => handleSelectCategoryAndScroll('All')}
+                      onClick={() => openProductsCatalogPage({ category: 'All' })}
                       style={{ fontWeight: 700, color: 'var(--color-green)' }}
                     >
-                      <span>View Full Catalog</span>
+                      <span>Open Dedicated Products Page (/products)</span>
                       <i className="bi bi-grid-fill" style={{ fontSize: '12px' }}></i>
                     </div>
                   </div>
@@ -458,14 +566,6 @@ export default function App() {
               className="nav-link-item"
             >
               Brands
-            </a>
-
-            <a
-              href="#offerings"
-              onClick={(e) => { e.preventDefault(); scrollToSection('offerings'); }}
-              className="nav-link-item"
-            >
-              Services
             </a>
 
             <a
@@ -532,18 +632,39 @@ export default function App() {
           <div style={{
             background: 'rgba(255, 255, 255, 0.98)',
             backdropFilter: 'blur(16px)',
-            padding: '24px',
+            padding: '20px 24px 24px',
             borderBottom: '3px solid var(--color-green)',
             boxShadow: '0 15px 30px rgba(0,0,0,0.1)'
           }}>
+            {/* Mobile Instant Product Search */}
+            <div style={{ marginBottom: '16px' }}>
+              <ProductSearchBox
+                variant="header"
+                onSelectProductPage={openProductPage}
+                onSearchCatalog={(q) => openProductsCatalogPage({ search: q })}
+                onAddToCart={handleAddToCart}
+              />
+            </div>
+
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '14px' }}>
               <li>
                 <a
-                  href="#welcome"
-                  onClick={(e) => { e.preventDefault(); scrollToSection('welcome'); }}
-                  style={{ fontWeight: 600, color: 'var(--color-black)', fontSize: '15px' }}
+                  href="/"
+                  onClick={(e) => { e.preventDefault(); navigateToRoute('site'); }}
+                  style={{ fontWeight: 700, color: 'var(--color-black)', fontSize: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}
                 >
-                  About Allied Power Industrial Company
+                  <i className="bi bi-house-door-fill" style={{ color: 'var(--color-green)' }}></i>
+                  <span>Home Page</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="/products"
+                  onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: 'All' }); }}
+                  style={{ color: 'var(--color-green)', fontWeight: 800, fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                >
+                  <span><i className="bi bi-grid-3x3-gap-fill" style={{ marginRight: '6px' }}></i> All Products Catalog Page (/products)</span>
+                  <i className="bi bi-arrow-right"></i>
                 </a>
               </li>
               <li>
@@ -558,12 +679,11 @@ export default function App() {
               </li>
               <li>
                 <a
-                  href="#catalog"
-                  onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll('All'); }}
-                  style={{ color: 'var(--color-green)', fontWeight: 700, fontSize: '15px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+                  href="#welcome"
+                  onClick={(e) => { e.preventDefault(); scrollToSection('welcome'); }}
+                  style={{ fontWeight: 600, color: 'var(--color-black)', fontSize: '15px' }}
                 >
-                  <span>Products Catalog</span>
-                  <i className="bi bi-arrow-right"></i>
+                  About Allied Power Industrial Company
                 </a>
               </li>
               <li>
@@ -574,8 +694,8 @@ export default function App() {
                   {ALLIED_CATEGORIES.map((cat, idx) => (
                     <a
                       key={idx}
-                      href="#catalog"
-                      onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll(cat); }}
+                      href="/products"
+                      onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: cat }); }}
                       style={{ fontSize: '12px', color: 'var(--color-text-secondary)', padding: '4px 0' }}
                     >
                       &bull; {cat}
@@ -628,122 +748,120 @@ export default function App() {
       </header>
 
       {/* ========================================================
-          2. ULTRA-PREMIUM CINEMATIC HERO SLIDER
-          (Zero ghost or baked-in text - clean industrial night visuals)
+          CONDITIONAL ROUTE VIEW:
+          1. /product/:slug -> Dedicated SEO Product Page
+          2. /products      -> Dedicated All Products Catalog Page
+          3. /              -> Main Corporate Landing Page + Hero Search
+          ======================================================== */}
+      {currentRoute === 'product' ? (
+        <ProductDetailPage
+          product={findProductBySlug(allCatalogProducts, activeProductSlug)}
+          allProducts={allCatalogProducts}
+          onNavigateHome={() => navigateToRoute('site')}
+          onNavigateCatalog={openProductsCatalogPage}
+          onSelectProductPage={openProductPage}
+          onAddToCart={handleAddToCart}
+          onOpenCart={() => setIsCartOpen(true)}
+        />
+      ) : currentRoute === 'products' ? (
+        <CatalogSection
+          isDedicatedPage={true}
+          selectedCategory={selectedCategory}
+          onCategoryChange={(cat) => openProductsCatalogPage({ category: cat, search: catalogSearchQuery, brand: catalogBrandFilter })}
+          initialSearch={catalogSearchQuery}
+          initialBrand={catalogBrandFilter}
+          onSelectProduct={(product) => setSelectedProduct(product)}
+          onOpenProductPage={openProductPage}
+          onNavigateHome={() => navigateToRoute('site')}
+          onAddToCart={handleAddToCart}
+        />
+      ) : (
+        <>
+      {/* ========================================================
+          2. ULTRA-PREMIUM CINEMATIC HERO SLIDER + INSTANT PRODUCT SEARCH
           ======================================================== */}
       <section className="hero-clean-section">
-        {/* Slide 1 */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: currentSlide === 0 ? 1 : 0,
-          transition: 'opacity 1s ease-in-out',
-          zIndex: currentSlide === 0 ? 1 : 0
-        }}>
+        {/* Background Crossfade Images */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', zIndex: 0 }}>
           <img
             src="/assets/refinery-night-real.jpg"
             alt="Allied Power Industrial Company Facilities"
             className="hero-slide-bg"
+            style={{ opacity: currentSlide === 0 ? 1 : 0 }}
           />
-          <div className="hero-overlay-cinematic">
-            <div style={{ maxWidth: '820px', color: '#ffffff' }}>
-              <div className="hero-pill-tag">
-                <i className="bi bi-shield-check" style={{ color: 'var(--color-green-light)', fontSize: '14px' }}></i>
-                <span>Aramco Vendor Code: <strong>10121504</strong></span>
-                <span className="badge-red">&bull;</span>
-                <span>SEC Vendor Code: <strong>0002017931</strong></span>
-              </div>
-
-              <h1 className="hero-clean-title">
-                ALLIED POWER INDUSTRIAL COMPANY<br />
-                <span style={{ color: '#00b862' }}>DELIVERING RELIABILITY.</span>
-              </h1>
-
-              <p className="hero-clean-subtitle">
-                Allied Power Industrial Company is an officially approved Saudi Aramco Vendor (#10121504) &amp; Saudi Electricity Company Vendor (#0002017931), stocking certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems in Al Khobar.
-              </p>
-
-              <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                <button
-                  onClick={() => scrollToSection('catalog')}
-                  className="btn-primary-green"
-                >
-                  <i className="bi bi-grid-3x3-gap-fill"></i> Browse Products Catalog
-                </button>
-
-                <button
-                  onClick={() => scrollToSection('certifications')}
-                  className="btn-primary-red"
-                >
-                  <i className="bi bi-award-fill"></i> View Aramco Approval Letter
-                </button>
-
-                <a
-                  href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial%20Company,%20I%20would%20like%20to%20inquire%20about%20materials."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline-white"
-                >
-                  <i className="bi bi-whatsapp"></i> Chat on WhatsApp
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Slide 2 */}
-        <div style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: currentSlide === 1 ? 1 : 0,
-          transition: 'opacity 1s ease-in-out',
-          zIndex: currentSlide === 1 ? 1 : 0
-        }}>
           <img
             src="/assets/hero-industrial-clean.jpg"
             alt="Allied Power Industrial Company Electrical Materials Stock"
             className="hero-slide-bg"
+            style={{ opacity: currentSlide === 1 ? 1 : 0 }}
           />
-          <div className="hero-overlay-cinematic">
-            <div style={{ maxWidth: '820px', color: '#ffffff' }}>
-              <div className="hero-pill-tag">
-                <i className="bi bi-patch-check-fill" style={{ color: '#ff4757', fontSize: '14px' }}></i>
-                <span>Aramco Vendor: <strong>10121504</strong></span>
-                <span className="badge-red">&bull;</span>
-                <span>SEC Vendor: <strong>0002017931</strong> &bull; Al Khobar</span>
-              </div>
+        </div>
 
-              <h1 className="hero-clean-title">
-                CERTIFIED INDUSTRIAL<br />
-                <span style={{ color: '#ff4757' }}>ELECTRICAL SUPPLIES</span>
-              </h1>
+        {/* Persistent Foreground Overlay with Live Search Bar */}
+        <div className="hero-overlay-cinematic">
+          <div style={{ maxWidth: '880px', width: '100%', color: '#ffffff' }}>
+            <div className="hero-pill-tag">
+              <i className="bi bi-shield-check" style={{ color: '#4ade80', fontSize: '14px' }}></i>
+              <span>Aramco Vendor Code: <strong>10121504</strong></span>
+              <span className="badge-red">&bull;</span>
+              <span>SEC Vendor Code: <strong>0002017931</strong> &bull; Al Khobar</span>
+            </div>
 
-              <p className="hero-clean-subtitle">
-                Allied Power Industrial Company supplies factory-tested electrical equipment with complete Mill Test Certificates (MTC), origin documentation, and hazardous area compliance (UL, ATEX, IECEx) from Prince Naif Street, Cross 13, Al Khobar 34428, KSA.
-              </p>
+            {currentSlide === 0 ? (
+              <>
+                <h1 className="hero-clean-title">
+                  ALLIED POWER INDUSTRIAL COMPANY<br />
+                  <span style={{ color: '#00b862' }}>DELIVERING RELIABILITY.</span>
+                </h1>
+                <p className="hero-clean-subtitle" style={{ marginBottom: '22px' }}>
+                  Allied Power Industrial Company is an officially approved Saudi Aramco Vendor (#10121504) &amp; Saudi Electricity Company Vendor (#0002017931), stocking certified Raychem cable terminations, Appleton &amp; Crouse-Hinds explosion-proof fittings, BURNDY compression lugs, and SEICO earthing systems in Al Khobar.
+                </p>
+              </>
+            ) : (
+              <>
+                <h1 className="hero-clean-title">
+                  CERTIFIED INDUSTRIAL<br />
+                  <span style={{ color: '#ff4757' }}>ELECTRICAL SUPPLIES</span>
+                </h1>
+                <p className="hero-clean-subtitle" style={{ marginBottom: '22px' }}>
+                  Allied Power Industrial Company supplies factory-tested electrical equipment with complete Mill Test Certificates (MTC), origin documentation, and hazardous area compliance (UL, ATEX, IECEx) from Prince Naif Street, Cross 13, Al Khobar 34428, KSA.
+                </p>
+              </>
+            )}
 
-              <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-                <button
-                  onClick={() => scrollToSection('catalog')}
-                  className="btn-primary-green"
-                >
-                  <i className="bi bi-box-seam-fill"></i> Explore In-Stock Inventory
-                </button>
+            {/* Instant Searchable Products Bar in Hero Section */}
+            <ProductSearchBox
+              variant="hero"
+              onSelectProductPage={openProductPage}
+              onSearchCatalog={(q) => openProductsCatalogPage({ search: q })}
+              onAddToCart={handleAddToCart}
+            />
 
-                <button
-                  onClick={() => setIsCartOpen(true)}
-                  className="btn-primary-red"
-                >
-                  <i className="bi bi-file-earmark-text-fill"></i> Request Instant RFQ
-                </button>
+            <div className="hero-action-buttons" style={{ display: 'flex', gap: '14px', flexWrap: 'wrap', marginTop: '24px' }}>
+              <a
+                href="/products"
+                onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: 'All' }); }}
+                className="btn-primary-green"
+                style={{ textDecoration: 'none' }}
+              >
+                <i className="bi bi-grid-3x3-gap-fill"></i> Browse All Products Page
+              </a>
 
-                <button
-                  onClick={() => scrollToSection('certifications')}
-                  className="btn-outline-white"
-                >
-                  <i className="bi bi-patch-check-fill"></i> Vendor Credentials
-                </button>
-              </div>
+              <button
+                onClick={() => scrollToSection('certifications')}
+                className="btn-primary-red"
+              >
+                <i className="bi bi-award-fill"></i> View Aramco Approval Letter
+              </button>
+
+              <a
+                href="https://wa.me/966534017242?text=Hello%20Allied%20Power%20Industrial%20Company,%20I%20would%20like%20to%20inquire%20about%20materials."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline-white"
+              >
+                <i className="bi bi-whatsapp"></i> Chat on WhatsApp
+              </a>
             </div>
           </div>
         </div>
@@ -781,10 +899,14 @@ export default function App() {
             <div className="stats-desc-subtle">SEC Approved Electrical Supplier</div>
           </div>
 
-          <div className="stats-card-premium">
-            <div className="stats-number-green">134+</div>
-            <div className="stats-title-white">Active Catalog Materials</div>
-            <div className="stats-desc-subtle">Direct pricing in SAR &bull; Ready stock</div>
+          <div
+            className="stats-card-premium"
+            style={{ cursor: 'pointer', border: '1px solid rgba(0, 184, 98, 0.35)' }}
+            onClick={() => openProductsCatalogPage({ category: 'All' })}
+          >
+            <div className="stats-number-green">{allCatalogProducts.length}+</div>
+            <div className="stats-title-white">Clickable SEO Product Pages</div>
+            <div className="stats-desc-subtle">Click to open full /products directory</div>
           </div>
 
           <div className="stats-card-premium">
@@ -1269,6 +1391,8 @@ export default function App() {
         selectedCategory={selectedCategory}
         onCategoryChange={(cat) => setSelectedCategory(cat)}
         onSelectProduct={(product) => setSelectedProduct(product)}
+        onOpenProductPage={openProductPage}
+        onOpenDedicatedCatalog={openProductsCatalogPage}
         onAddToCart={handleAddToCart}
       />
 
@@ -1308,7 +1432,7 @@ export default function App() {
             {partnerBrands.map((b, idx) => (
               <div
                 key={idx}
-                onClick={() => handleSelectCategoryAndScroll(b.category)}
+                onClick={() => openProductsCatalogPage({ category: b.category })}
                 style={{
                   backgroundColor: 'var(--color-surface-soft)',
                   border: '1px solid var(--color-border)',
@@ -1626,7 +1750,7 @@ export default function App() {
             {sbuList.map((item, idx) => (
               <div
                 key={idx}
-                onClick={() => handleSelectCategoryAndScroll(item.name)}
+                onClick={() => openProductsCatalogPage({ category: item.name })}
                 style={{
                   background: '#ffffff',
                   borderRadius: '12px',
@@ -1657,7 +1781,7 @@ export default function App() {
                     {item.name}
                   </h4>
                   <span style={{ fontSize: '12px', color: 'var(--color-text-muted)' }}>
-                    Al-Khobar Stock &bull; Filter
+                    Al-Khobar Stock &bull; Open Category Page
                   </span>
                 </div>
                 <span className="nav-counter-pill" style={{ fontSize: '11px', padding: '3px 10px' }}>
@@ -1893,6 +2017,8 @@ export default function App() {
           </div>
         </div>
       </section>
+      </>
+      )}
 
       {/* ========================================================
           12. ULTRA-PREMIUM ENTERPRISE FOOTER
@@ -2090,8 +2216,8 @@ export default function App() {
               {ALLIED_CATEGORIES.map((cat, idx) => (
                 <li key={idx}>
                   <a
-                    href="#catalog"
-                    onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll(cat); }}
+                    href="/products"
+                    onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: cat }); }}
                     style={{
                       color: '#94a3b8',
                       transition: 'color 0.2s',
@@ -2133,8 +2259,8 @@ export default function App() {
                 </a>
               </li>
               <li>
-                <a href="#catalog" onClick={(e) => { e.preventDefault(); handleSelectCategoryAndScroll('All'); }} style={{ color: '#cbd5e1' }}>
-                  &bull; Products Catalog (SAR)
+                <a href="/products" onClick={(e) => { e.preventDefault(); openProductsCatalogPage({ category: 'All' }); }} style={{ color: '#4ade80', fontWeight: 700 }}>
+                  &bull; All Products Catalog Page (/products)
                 </a>
               </li>
               <li>

@@ -326,10 +326,12 @@ a:hover {
    ======================================================== */
 .hero-clean-section {
   position: relative;
-  height: 640px;
+  min-height: 700px;
+  height: auto;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
   margin-top: 96px; /* Offset for sticky header */
+  z-index: 20;
 }
 
 .hero-slide-bg {
@@ -342,17 +344,17 @@ a:hover {
 }
 
 .hero-overlay-cinematic {
-  position: absolute;
-  inset: 0;
+  position: relative;
+  min-height: 700px;
   background: linear-gradient(
     135deg,
-    rgba(15, 23, 42, 0.88) 0%,
-    rgba(0, 60, 32, 0.82) 45%,
-    rgba(15, 23, 42, 0.72) 100%
+    rgba(15, 23, 42, 0.90) 0%,
+    rgba(0, 60, 32, 0.84) 45%,
+    rgba(15, 23, 42, 0.76) 100%
   );
   display: flex;
   align-items: center;
-  padding: 0 8%;
+  padding: 50px 8%;
   z-index: 2;
 }
 
