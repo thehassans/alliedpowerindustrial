@@ -271,17 +271,19 @@ export default function ProductModal({ product, onClose, onAddToCart }) {
               )}
 
               {/* Product Detailed Overview & Engineering Summary */}
-              {(product.fullDescription || product.description) && (
+              {(product.description || product.fullDescription) && (
                 <div style={{ marginBottom: '20px' }}>
                   <h4 style={{ fontSize: '13px', fontWeight: 800, color: 'var(--color-black)', textTransform: 'uppercase', marginBottom: '6px', letterSpacing: '0.5px' }}>
                     Engineering &amp; Product Overview:
                   </h4>
-                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: '22px', textAlign: 'left', margin: 0 }}>
-                    {product.fullDescription || product.description}
+                  <p style={{ fontSize: '13px', color: '#475569', lineHeight: '22px', textAlign: 'left', margin: 0, whiteSpace: 'pre-line' }}>
+                    {product.description || product.fullDescription}
                   </p>
-                  {product.fullDescription && product.description && product.fullDescription !== product.description && (
-                    <div style={{ marginTop: '10px', padding: '10px 14px', background: '#f8fafc', borderRadius: '8px', borderLeft: '3px solid var(--color-green)', fontSize: '12px', color: '#334155' }}>
-                      <strong>Technical Summary:</strong> {product.description}
+                  {product.fullDescription && product.description && product.fullDescription.trim() !== product.description.trim() &&
+                    product.fullDescription.trim() !== 'Supplied with genuine Mill Test Certificates (MTC), Certificate of Origin, and technical datasheet.' &&
+                    product.fullDescription.trim() !== 'Full technical specifications available upon quotation.' && (
+                    <div style={{ marginTop: '10px', padding: '10px 14px', background: '#f8fafc', borderRadius: '8px', borderLeft: '3px solid var(--color-green)', fontSize: '12px', color: '#334155', whiteSpace: 'pre-line' }}>
+                      <strong>Extended Datasheet:</strong> {product.fullDescription}
                     </div>
                   )}
                 </div>

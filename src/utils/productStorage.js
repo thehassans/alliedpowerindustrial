@@ -3,6 +3,9 @@ import { ALLIED_PRODUCTS, ALLIED_CATEGORIES, ALLIED_BRANDS } from '../data/allie
 
 const PRODUCTS_STORAGE_KEY = 'allied_custom_products';
 
+const BOILERPLATE_FULL_DESC_1 = 'Supplied with genuine Mill Test Certificates (MTC), Certificate of Origin, and technical datasheet.';
+const BOILERPLATE_FULL_DESC_2 = 'Full technical specifications available upon quotation.';
+
 function normalizeImageUrl(url) {
   if (!url || typeof url !== 'string') return '/wp-content/uploads/2024/09/RAYCHEM.png';
   return url.replace(/^https?:\/\/(www\.)?alliedpowerindustrial\.com\/wp-content\/uploads\//i, '/wp-content/uploads/');
@@ -10,10 +13,19 @@ function normalizeImageUrl(url) {
 
 function normalizeProductItem(item) {
   if (!item || typeof item !== 'object') return item;
+  let fullDesc = item.fullDescription;
+  if (!fullDesc || fullDesc === BOILERPLATE_FULL_DESC_1 || fullDesc === BOILERPLATE_FULL_DESC_2) {
+    fullDesc = item.description || fullDesc;
+  }
+  const images = Array.isArray(item.images) && item.images.length > 0
+    ? item.images.map(normalizeImageUrl)
+    : [normalizeImageUrl(item.image)];
+
   return {
     ...item,
-    image: normalizeImageUrl(item.image),
-    images: Array.isArray(item.images) ? item.images.map(normalizeImageUrl) : [normalizeImageUrl(item.image)],
+    image: normalizeImageUrl(item.image || images[0]),
+    images,
+    fullDescription: fullDesc,
   };
 }
 
@@ -117,6 +129,17 @@ export function addCatalogProduct(newProductData) {
   const newId = Date.now();
   const newSku = newProductData.sku || `API-${Math.floor(1000 + Math.random() * 9000)}`;
 
+  const cleanImages = Array.isArray(newProductData.images) && newProductData.images.length > 0
+    ? newProductData.images.map(normalizeImageUrl)
+    : [normalizeImageUrl(newProductData.image || '/wp-content/uploads/2025/09/s-l400.png')];
+
+  const primaryImage = cleanImages[0];
+  const finalDesc = newProductData.description || 'Certified industrial equipment conforming to Saudi standards.';
+  let finalFullDesc = newProductData.fullDescription;
+  if (!finalFullDesc || finalFullDesc === BOILERPLATE_FULL_DESC_1 || finalFullDesc === BOILERPLATE_FULL_DESC_2) {
+    finalFullDesc = finalDesc;
+  }
+
   const created = {
     id: newId,
     name: newProductData.name || 'New Industrial Material',
@@ -127,10 +150,10 @@ export function addCatalogProduct(newProductData) {
     price: parseFloat(newProductData.price) || 0,
     currency: 'SAR',
     inStock: newProductData.inStock !== false,
-    image: normalizeImageUrl(newProductData.image || '/wp-content/uploads/2025/09/s-l400.png'),
-    images: newProductData.images && newProductData.images.length > 0 ? newProductData.images.map(normalizeImageUrl) : [normalizeImageUrl(newProductData.image || '/wp-content/uploads/2025/09/s-l400.png')],
-    description: newProductData.description || 'Certified industrial equipment conforming to Saudi standards.',
-    fullDescription: newProductData.fullDescription || newProductData.description || 'Full technical specifications available upon quotation.',
+    image: primaryImage,
+    images: cleanImages,
+    description: finalDesc,
+    fullDescription: finalFullDesc,
     features: newProductData.features && newProductData.features.length > 0 ? newProductData.features : [
       'Saudi Aramco 9COM compliant',
       'Factory Test Certificate (MTC) included',
@@ -148,11 +171,18 @@ export function updateCatalogProduct(id, updatedFields) {
   const current = getCatalogProducts();
   const updated = current.map(item => {
     if (item.id === id) {
-      return {
+      const merged = {
         ...item,
         ...updatedFields,
         price: updatedFields.price !== undefined ? parseFloat(updatedFields.price) : item.price
       };
+      if (merged.images && merged.images.length > 0) {
+        merged.image = merged.images[0];
+      }
+      if (merged.fullDescription === BOILERPLATE_FULL_DESC_1 || merged.fullDescription === BOILERPLATE_FULL_DESC_2) {
+        merged.fullDescription = merged.description || merged.fullDescription;
+      }
+      return normalizeProductItem(merged);
     }
     return item;
   });

@@ -25,12 +25,13 @@ export default function ProductManager({ products, onRefreshProducts }) {
   const [customBrandMode, setCustomBrandMode] = useState(false);
   const [toast, setToast] = useState('');
 
-  // Image Optimization State
+  // Image Optimization & Multi-Image Gallery State
   const [isOptimizingImg, setIsOptimizingImg] = useState(false);
   const [framingMode, setFramingMode] = useState('studio'); // 'studio' | 'contain' | 'cover'
   const [rawUploadedFile, setRawUploadedFile] = useState(null);
   const [imageStats, setImageStats] = useState(null);
   const [isDraggingOver, setIsDraggingOver] = useState(false);
+  const [urlInput, setUrlInput] = useState('');
 
   // Form State
   const [formData, setFormData] = useState({
@@ -104,6 +105,7 @@ export default function ProductManager({ products, onRefreshProducts }) {
     setCustomBrandMode(false);
     setRawUploadedFile(null);
     setImageStats(null);
+    setUrlInput('');
     setFramingMode('studio');
     setFormData({
       name: '',
@@ -114,8 +116,8 @@ export default function ProductManager({ products, onRefreshProducts }) {
       inStock: true,
       image: '',
       galleryImages: [],
-      description: 'Certified industrial material compliant with Saudi Aramco & SEC specifications.',
-      fullDescription: 'Supplied with genuine Mill Test Certificates (MTC), Certificate of Origin, and technical datasheet.',
+      description: '',
+      fullDescription: '',
       features: 'Saudi Aramco 9COM Specification Compliant (Vendor #10121504)\nGenuine Mill Test Certificate (MTC) & Certificate of Origin Included\nEx-Stock Al Khobar 34428 Facility — 24h Kingdom-Wide Dispatch'
     });
     setModalOpen(true);
@@ -126,7 +128,21 @@ export default function ProductManager({ products, onRefreshProducts }) {
     setCustomBrandMode(!availableBrands.includes(product.brand));
     setRawUploadedFile(null);
     setImageStats(null);
+    setUrlInput('');
     setFramingMode('studio');
+
+    let cleanFullDesc = product.fullDescription || '';
+    if (
+      cleanFullDesc === 'Supplied with genuine Mill Test Certificates (MTC), Certificate of Origin, and technical datasheet.' ||
+      cleanFullDesc === 'Full technical specifications available upon quotation.'
+    ) {
+      cleanFullDesc = '';
+    }
+
+    const cleanGallery = Array.isArray(product.images) && product.images.length > 0
+      ? product.images
+      : (product.image ? [product.image] : []);
+
     setFormData({
       name: product.name || '',
       sku: product.sku || generateNextSku(),
@@ -134,10 +150,10 @@ export default function ProductManager({ products, onRefreshProducts }) {
       category: product.category || ALLIED_CATEGORIES[0],
       price: product.price !== undefined ? product.price.toString() : '0',
       inStock: product.inStock !== false,
-      image: product.image || '',
-      galleryImages: Array.isArray(product.images) ? product.images : (product.image ? [product.image] : []),
+      image: product.image || cleanGallery[0] || '',
+      galleryImages: cleanGallery,
       description: product.description || '',
-      fullDescription: product.fullDescription || '',
+      fullDescription: cleanFullDesc,
       features: Array.isArray(product.features) ? product.features.join('\n') : ''
     });
     setModalOpen(true);
@@ -160,59 +176,118 @@ export default function ProductManager({ products, onRefreshProducts }) {
     showToast(`Updated ${product.sku} status to ${!product.inStock ? 'In Stock' : 'Call Off'}`);
   };
 
-  // Optimize & apply uploaded image
-  const processAndOptimizeFile = async (file, modeOverride = framingMode, isGallery = false) => {
-    if (!file || !file.type.startsWith('image/')) {
-      alert('Please select a valid image file (PNG, JPG, WEBP, or SVG).');
+  // Optimize & apply one or multiple uploaded images
+  const processAndOptimizeFiles = async (fileList, modeOverride = framingMode) => {
+    const validFiles = Array.from(fileList || []).filter(f => f && f.type && f.type.startsWith('image/'));
+    if (validFiles.length === 0) {
+      alert('Please select valid image file(s) (PNG, JPG, WEBP, or SVG).');
       return;
     }
 
     setIsOptimizingImg(true);
     try {
-      if (!isGallery) {
-        setRawUploadedFile(file);
+      if (validFiles.length === 1) {
+        setRawUploadedFile(validFiles[0]);
       }
-      const result = await optimizeProductImage(file, {
-        mode: modeOverride,
-        maxDimension: 800,
-        quality: 0.86
+      const newOptimized = [];
+      let totalOrigBytes = 0;
+      let totalOptBytes = 0;
+      let lastResult = null;
+
+      for (const file of validFiles) {
+        const result = await optimizeProductImage(file, {
+          mode: modeOverride,
+          maxDimension: 800,
+          quality: 0.86
+        });
+        newOptimized.push(result.dataUrl);
+        totalOrigBytes += result.originalBytes;
+        totalOptBytes += result.optimizedBytes;
+        lastResult = result;
+      }
+
+      setFormData(prev => {
+        const combined = [...prev.galleryImages, ...newOptimized];
+        const unique = Array.from(new Set(combined.filter(Boolean)));
+        return {
+          ...prev,
+          image: prev.image || unique[0] || '',
+          galleryImages: unique
+        };
       });
 
-      if (isGallery) {
-        setFormData(prev => ({
-          ...prev,
-          galleryImages: [...prev.galleryImages, result.dataUrl],
-          image: prev.image || result.dataUrl
-        }));
-      } else {
-        setFormData(prev => ({
-          ...prev,
-          image: result.dataUrl,
-          galleryImages: prev.galleryImages.length > 0
-            ? [result.dataUrl, ...prev.galleryImages.slice(1)]
-            : [result.dataUrl]
-        }));
+      if (lastResult) {
+        const savingsPercent = totalOrigBytes > 0 ? Math.round(((totalOrigBytes - totalOptBytes) / totalOrigBytes) * 100) : 0;
         setImageStats({
-          originalSize: formatBytes(result.originalBytes),
-          optimizedSize: formatBytes(result.optimizedBytes),
-          savingsPercent: result.savingsPercent,
-          dimensions: `${result.width}×${result.height}px`,
-          format: result.format
+          originalSize: formatBytes(totalOrigBytes),
+          optimizedSize: formatBytes(totalOptBytes),
+          savingsPercent,
+          dimensions: `${lastResult.width}×${lastResult.height}px`,
+          format: `${validFiles.length} Image(s) Processed (WebP)`
         });
       }
+      showToast(`Added ${validFiles.length} image(s) to product gallery`);
     } catch (err) {
-      console.error('Image optimization failed:', err);
-      alert('Could not process image. Please try another photo.');
+      console.error('Multi-image optimization failed:', err);
+      alert('Could not process some images. Please try other photos.');
     } finally {
       setIsOptimizingImg(false);
     }
+  };
+
+  const handleSetPrimaryImage = (imgUrl) => {
+    setFormData(prev => {
+      const remaining = prev.galleryImages.filter(img => img !== imgUrl);
+      return {
+        ...prev,
+        image: imgUrl,
+        galleryImages: [imgUrl, ...remaining]
+      };
+    });
+    showToast('Updated primary cover image');
+  };
+
+  const handleRemoveGalleryImage = (indexToRemove) => {
+    setFormData(prev => {
+      const updated = prev.galleryImages.filter((_, idx) => idx !== indexToRemove);
+      const nextPrimary = updated[0] || '';
+      return {
+        ...prev,
+        image: nextPrimary,
+        galleryImages: updated
+      };
+    });
+    showToast('Image removed from gallery');
+  };
+
+  const handleAddUrlImage = () => {
+    const trimmed = urlInput.trim();
+    if (!trimmed) return;
+    setFormData(prev => {
+      const updated = Array.from(new Set([...prev.galleryImages, trimmed]));
+      return {
+        ...prev,
+        image: prev.image || trimmed,
+        galleryImages: updated
+      };
+    });
+    setUrlInput('');
+    showToast('Added image to gallery');
+  };
+
+  const handleClearAllImages = () => {
+    setFormData(prev => ({ ...prev, image: '', galleryImages: [] }));
+    setImageStats(null);
+    setRawUploadedFile(null);
+    setUrlInput('');
+    showToast('Cleared all product images');
   };
 
   // Re-run optimization when user switches Studio Framing Mode
   const handleFramingModeChange = async (newMode) => {
     setFramingMode(newMode);
     if (rawUploadedFile) {
-      await processAndOptimizeFile(rawUploadedFile, newMode, false);
+      await processAndOptimizeFiles([rawUploadedFile], newMode);
     } else if (formData.image && formData.image.startsWith('data:image/')) {
       setIsOptimizingImg(true);
       try {
@@ -221,7 +296,14 @@ export default function ProductManager({ products, onRefreshProducts }) {
           maxDimension: 800,
           quality: 0.86
         });
-        setFormData(prev => ({ ...prev, image: result.dataUrl }));
+        setFormData(prev => {
+          const updated = prev.galleryImages.map((img, i) => i === 0 ? result.dataUrl : img);
+          return {
+            ...prev,
+            image: result.dataUrl,
+            galleryImages: updated
+          };
+        });
         setImageStats({
           originalSize: formatBytes(result.originalBytes),
           optimizedSize: formatBytes(result.optimizedBytes),
@@ -242,15 +324,16 @@ export default function ProductManager({ products, onRefreshProducts }) {
     if (!modalOpen) return;
     const handlePaste = (e) => {
       if (!e.clipboardData || !e.clipboardData.items) return;
+      const files = [];
       for (const item of e.clipboardData.items) {
         if (item.type.indexOf('image') !== -1) {
           const blob = item.getAsFile();
-          if (blob) {
-            e.preventDefault();
-            processAndOptimizeFile(blob, framingMode, false);
-            break;
-          }
+          if (blob) files.push(blob);
         }
+      }
+      if (files.length > 0) {
+        e.preventDefault();
+        processAndOptimizeFiles(files, framingMode);
       }
     };
     window.addEventListener('paste', handlePaste);
@@ -267,11 +350,14 @@ export default function ProductManager({ products, onRefreshProducts }) {
 
   const handleSubmitForm = (e) => {
     e.preventDefault();
-    const finalImage = formData.image.trim() || '/alliedpowerlogo-removebg-preview.png';
+    const cleanGallery = (formData.galleryImages || []).filter(Boolean);
+    const finalImage = cleanGallery[0] || formData.image.trim() || '/alliedpowerlogo-removebg-preview.png';
     const featureList = formData.features.split('\n').map(s => s.trim()).filter(Boolean);
-    const images = formData.galleryImages.length > 0
-      ? [finalImage, ...formData.galleryImages.filter(img => img !== finalImage)]
-      : [finalImage];
+    const images = cleanGallery.length > 0 ? cleanGallery : [finalImage];
+
+    const finalDesc = formData.description.trim() || `${formData.brand} ${formData.category} — Saudi Aramco & SEC compliant.`;
+    // If fullDescription is empty or was the boilerplate string, use the user's technical summary
+    const finalFullDesc = formData.fullDescription.trim() || finalDesc;
 
     const payload = {
       name: formData.name.trim(),
@@ -282,8 +368,8 @@ export default function ProductManager({ products, onRefreshProducts }) {
       inStock: formData.inStock,
       image: finalImage,
       images,
-      description: formData.description.trim() || `${formData.brand} ${formData.category} — Saudi Aramco & SEC compliant.`,
-      fullDescription: formData.fullDescription.trim() || formData.description.trim(),
+      description: finalDesc,
+      fullDescription: finalFullDesc,
       features: featureList
     };
 
@@ -550,24 +636,47 @@ export default function ProductManager({ products, onRefreshProducts }) {
                   onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}
                 >
                   <td style={{ padding: '10px 16px' }}>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      loading="lazy"
-                      decoding="async"
-                      style={{
-                        width: '46px',
-                        height: '46px',
-                        objectFit: 'contain',
-                        background: '#ffffff',
-                        border: '1px solid #e2e8f0',
-                        borderRadius: '8px',
-                        padding: '3px'
-                      }}
-                      onError={(e) => {
-                        e.target.src = '/alliedpowerlogo-removebg-preview.png';
-                      }}
-                    />
+                    <div style={{ position: 'relative', display: 'inline-block' }}>
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        loading="lazy"
+                        decoding="async"
+                        style={{
+                          width: '46px',
+                          height: '46px',
+                          objectFit: 'contain',
+                          background: '#ffffff',
+                          border: '1px solid #e2e8f0',
+                          borderRadius: '8px',
+                          padding: '3px',
+                          display: 'block'
+                        }}
+                        onError={(e) => {
+                          e.target.src = '/alliedpowerlogo-removebg-preview.png';
+                        }}
+                      />
+                      {product.images && product.images.length > 1 && (
+                        <span
+                          title={`${product.images.length} gallery images`}
+                          style={{
+                            position: 'absolute',
+                            bottom: '-4px',
+                            right: '-4px',
+                            backgroundColor: '#006837',
+                            color: '#ffffff',
+                            fontSize: '9px',
+                            fontWeight: 800,
+                            padding: '1px 4px',
+                            borderRadius: '4px',
+                            lineHeight: 1,
+                            boxShadow: '0 1px 3px rgba(0,0,0,0.2)'
+                          }}
+                        >
+                          📷 {product.images.length}
+                        </span>
+                      )}
+                    </div>
                   </td>
                   <td style={{ padding: '10px 16px' }}>
                     <strong style={{ display: 'block', fontSize: '13px', color: '#0f172a', marginBottom: '3px', lineHeight: '18px' }}>
@@ -1082,11 +1191,14 @@ export default function ProductManager({ products, onRefreshProducts }) {
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, color: '#1e293b', marginBottom: '6px' }}>
-                    Technical Summary (Displayed on Card &amp; RFQ PDF) *
-                  </label>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                    <label style={{ fontSize: '12px', fontWeight: 700, color: '#1e293b' }}>
+                      Technical Summary (Displayed on Product Page, Card &amp; RFQ PDF) *
+                    </label>
+                    <span style={{ fontSize: '11px', color: '#006837', fontWeight: 700 }}>Primary Overview</span>
+                  </div>
                   <textarea
-                    rows="2"
+                    rows="3"
                     required
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
@@ -1099,9 +1211,40 @@ export default function ProductManager({ products, onRefreshProducts }) {
                       color: '#0f172a',
                       fontSize: '13px',
                       outline: 'none',
-                      resize: 'vertical'
+                      resize: 'vertical',
+                      lineHeight: '20px'
                     }}
-                    placeholder="Voltage rating, conductor size, NEMA/IP enclosure rating, or standard conformance..."
+                    placeholder="Enter main technical specifications, voltage, poles, enclosure rating, compliance, etc..."
+                  />
+                  <span style={{ fontSize: '11px', color: '#64748b', display: 'block', marginTop: '4px' }}>
+                    This text is directly displayed under &ldquo;Technical Description &amp; Specifications&rdquo; on the live product page.
+                  </span>
+                </div>
+
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
+                    <label style={{ fontSize: '12px', fontWeight: 700, color: '#1e293b' }}>
+                      Extended Technical Datasheet / Long Description (Optional)
+                    </label>
+                    <span style={{ fontSize: '11px', color: '#64748b' }}>Detailed Submittal</span>
+                  </div>
+                  <textarea
+                    rows="3"
+                    value={formData.fullDescription}
+                    onChange={(e) => setFormData({ ...formData, fullDescription: e.target.value })}
+                    style={{
+                      width: '100%',
+                      padding: '10px 14px',
+                      borderRadius: '9px',
+                      backgroundColor: '#ffffff',
+                      border: '1px solid #cbd5e1',
+                      color: '#0f172a',
+                      fontSize: '13px',
+                      outline: 'none',
+                      resize: 'vertical',
+                      lineHeight: '20px'
+                    }}
+                    placeholder="Optional: Extended multi-paragraph datasheet, pin wiring diagram, manufacturer engineering specs, or installation guidelines..."
                   />
                 </div>
 
@@ -1185,7 +1328,7 @@ export default function ProductManager({ products, onRefreshProducts }) {
                 </div>
               </div>
 
-              {/* RIGHT COLUMN: Smart WebP Image Optimizer & Live Storefront Card Preview */}
+              {/* RIGHT COLUMN: Multi-Image Studio & Live Storefront Card Preview */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <div style={{
                   fontSize: '11px',
@@ -1194,9 +1337,21 @@ export default function ProductManager({ products, onRefreshProducts }) {
                   textTransform: 'uppercase',
                   letterSpacing: '0.08em',
                   borderBottom: '1px solid #e2e8f0',
-                  paddingBottom: '6px'
+                  paddingBottom: '6px',
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center'
                 }}>
-                  3. Smart Image Studio (Auto-WebP &amp; Studio Framing)
+                  <span>3. Multi-Image Studio (Auto-WebP Optimizer)</span>
+                  <span style={{
+                    backgroundColor: formData.galleryImages.length > 0 ? '#dcfce7' : '#f1f5f9',
+                    color: formData.galleryImages.length > 0 ? '#166534' : '#64748b',
+                    padding: '2px 8px',
+                    borderRadius: '50px',
+                    fontSize: '10.5px'
+                  }}>
+                    {formData.galleryImages.length} Image{formData.galleryImages.length === 1 ? '' : 's'}
+                  </span>
                 </div>
 
                 {/* Framing Mode Selector */}
@@ -1233,15 +1388,15 @@ export default function ProductManager({ products, onRefreshProducts }) {
                   ))}
                 </div>
 
-                {/* Drag & Drop / Paste Upload Zone */}
+                {/* Drag & Drop Multiple Images Upload Zone */}
                 <div
                   onDragOver={(e) => { e.preventDefault(); setIsDraggingOver(true); }}
                   onDragLeave={() => setIsDraggingOver(false)}
                   onDrop={(e) => {
                     e.preventDefault();
                     setIsDraggingOver(false);
-                    if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-                      processAndOptimizeFile(e.dataTransfer.files[0], framingMode, false);
+                    if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                      processAndOptimizeFiles(e.dataTransfer.files, framingMode);
                     }
                   }}
                   style={{
@@ -1250,43 +1405,175 @@ export default function ProductManager({ products, onRefreshProducts }) {
                     padding: '18px 16px',
                     textAlign: 'center',
                     backgroundColor: isDraggingOver ? '#f0fdf4' : '#f8fafc',
-                    transition: 'all 0.2s ease'
+                    transition: 'all 0.2s ease',
+                    cursor: 'pointer'
                   }}
                 >
                   <input
                     type="file"
-                    id="studio-primary-image-input"
+                    id="studio-multi-image-input"
+                    multiple
                     accept="image/*"
                     onChange={(e) => {
-                      if (e.target.files && e.target.files[0]) {
-                        processAndOptimizeFile(e.target.files[0], framingMode, false);
+                      if (e.target.files && e.target.files.length > 0) {
+                        processAndOptimizeFiles(e.target.files, framingMode);
                       }
+                      e.target.value = '';
                     }}
                     style={{ display: 'none' }}
                   />
-                  <label htmlFor="studio-primary-image-input" style={{ cursor: 'pointer', display: 'block' }}>
+                  <label htmlFor="studio-multi-image-input" style={{ cursor: 'pointer', display: 'block' }}>
                     <div style={{
-                      width: '44px',
-                      height: '44px',
+                      width: '46px',
+                      height: '46px',
                       borderRadius: '50%',
                       backgroundColor: '#dcfce7',
                       color: '#006837',
                       display: 'inline-flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '20px',
+                      fontSize: '22px',
                       marginBottom: '8px'
                     }}>
-                      <i className={`bi ${isOptimizingImg ? 'bi-hourglass-split' : 'bi-cloud-arrow-up-fill'}`}></i>
+                      <i className={`bi ${isOptimizingImg ? 'bi-hourglass-split' : 'bi-images'}`}></i>
                     </div>
-                    <strong style={{ display: 'block', fontSize: '13px', color: '#0f172a' }}>
-                      {isOptimizingImg ? 'Optimizing Image to WebP...' : 'Drop Product Image, Click to Browse, or Paste (Cmd+V)'}
+                    <strong style={{ display: 'block', fontSize: '13.5px', color: '#0f172a' }}>
+                      {isOptimizingImg ? 'Optimizing Images to WebP...' : 'Add Product Images (Upload Multiple at Once)'}
                     </strong>
-                    <span style={{ fontSize: '11px', color: '#64748b', display: 'block', marginTop: '3px' }}>
-                      Auto-converts raw photos into ultra-fast 800×800px WebP studio graphics
+                    <span style={{ fontSize: '11.5px', color: '#64748b', display: 'block', marginTop: '4px' }}>
+                      Click to browse or drop 1 or more photos &bull; Auto-optimizes each image into clean WebP
                     </span>
                   </label>
                 </div>
+
+                {/* Multi-Image Gallery Manager */}
+                {formData.galleryImages.length > 0 && (
+                  <div style={{
+                    backgroundColor: '#ffffff',
+                    border: '1.5px solid #e2e8f0',
+                    borderRadius: '12px',
+                    padding: '14px'
+                  }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px' }}>
+                      <span style={{ fontSize: '12px', fontWeight: 800, color: '#0f172a', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <i className="bi bi-collection-fill" style={{ color: '#006837' }}></i>
+                        Product Gallery ({formData.galleryImages.length})
+                      </span>
+                      <button
+                        type="button"
+                        onClick={handleClearAllImages}
+                        style={{
+                          background: 'none',
+                          border: 'none',
+                          color: '#dc2626',
+                          fontSize: '11.5px',
+                          fontWeight: 700,
+                          cursor: 'pointer'
+                        }}
+                      >
+                        Clear All
+                      </button>
+                    </div>
+
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fill, minmax(88px, 1fr))',
+                      gap: '10px'
+                    }}>
+                      {formData.galleryImages.map((imgUrl, idx) => {
+                        const isPrimary = idx === 0;
+                        return (
+                          <div
+                            key={idx}
+                            style={{
+                              position: 'relative',
+                              borderRadius: '8px',
+                              border: isPrimary ? '2.5px solid #006837' : '1px solid #cbd5e1',
+                              backgroundColor: '#f8fafc',
+                              padding: '4px',
+                              display: 'flex',
+                              flexDirection: 'column',
+                              alignItems: 'center',
+                              justifyContent: 'space-between'
+                            }}
+                          >
+                            {/* Primary Badge */}
+                            {isPrimary && (
+                              <span style={{
+                                position: 'absolute',
+                                top: '4px',
+                                left: '4px',
+                                backgroundColor: '#006837',
+                                color: '#ffffff',
+                                fontSize: '8.5px',
+                                fontWeight: 800,
+                                padding: '1px 5px',
+                                borderRadius: '4px',
+                                zIndex: 2
+                              }}>
+                                ★ Primary
+                              </span>
+                            )}
+
+                            {/* Image Thumbnail */}
+                            <img
+                              src={imgUrl}
+                              alt={`View ${idx + 1}`}
+                              style={{
+                                width: '100%',
+                                height: '70px',
+                                objectFit: 'contain',
+                                borderRadius: '4px',
+                                backgroundColor: '#ffffff'
+                              }}
+                            />
+
+                            {/* Actions under Thumbnail */}
+                            <div style={{ display: 'flex', gap: '4px', width: '100%', marginTop: '6px' }}>
+                              {!isPrimary && (
+                                <button
+                                  type="button"
+                                  onClick={() => handleSetPrimaryImage(imgUrl)}
+                                  title="Make this the primary cover image"
+                                  style={{
+                                    flex: 1,
+                                    backgroundColor: '#f1f5f9',
+                                    color: '#006837',
+                                    border: '1px solid #cbd5e1',
+                                    borderRadius: '4px',
+                                    fontSize: '9.5px',
+                                    fontWeight: 700,
+                                    padding: '2px 0',
+                                    cursor: 'pointer'
+                                  }}
+                                >
+                                  Make Cover
+                                </button>
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => handleRemoveGalleryImage(idx)}
+                                title="Remove this image"
+                                style={{
+                                  backgroundColor: '#fee2e2',
+                                  color: '#dc2626',
+                                  border: 'none',
+                                  borderRadius: '4px',
+                                  fontSize: '10px',
+                                  padding: '2px 6px',
+                                  cursor: 'pointer',
+                                  marginLeft: isPrimary ? 'auto' : undefined
+                                }}
+                              >
+                                <i className="bi bi-trash-fill"></i>
+                              </button>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
 
                 {/* Optimization Telemetry Pill */}
                 {imageStats && (
@@ -1324,17 +1611,17 @@ export default function ProductManager({ products, onRefreshProducts }) {
                   </div>
                 )}
 
-                {/* Direct Image URL Fallback Input */}
+                {/* Direct Image URL Adder */}
                 <div>
                   <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#64748b', marginBottom: '4px' }}>
-                    Or Paste Direct Image URL:
+                    Or Add Image via Web URL:
                   </label>
                   <div style={{ display: 'flex', gap: '8px' }}>
                     <input
                       type="text"
-                      value={formData.image}
-                      onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                      placeholder="https://... or upload file above"
+                      value={urlInput}
+                      onChange={(e) => setUrlInput(e.target.value)}
+                      placeholder="https://... image link"
                       style={{
                         flex: 1,
                         padding: '8px 12px',
@@ -1345,29 +1632,30 @@ export default function ProductManager({ products, onRefreshProducts }) {
                         fontSize: '12px',
                         outline: 'none'
                       }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                          e.preventDefault();
+                          handleAddUrlImage();
+                        }
+                      }}
                     />
-                    {formData.image && (
-                      <button
-                        type="button"
-                        onClick={() => {
-                          setFormData({ ...formData, image: '', galleryImages: [] });
-                          setImageStats(null);
-                          setRawUploadedFile(null);
-                        }}
-                        style={{
-                          backgroundColor: '#fee2e2',
-                          color: '#b91c1c',
-                          border: 'none',
-                          borderRadius: '8px',
-                          padding: '0 12px',
-                          fontSize: '11.5px',
-                          fontWeight: 700,
-                          cursor: 'pointer'
-                        }}
-                      >
-                        Clear
-                      </button>
-                    )}
+                    <button
+                      type="button"
+                      onClick={handleAddUrlImage}
+                      style={{
+                        backgroundColor: '#006837',
+                        color: '#ffffff',
+                        border: 'none',
+                        borderRadius: '8px',
+                        padding: '0 14px',
+                        fontSize: '11.5px',
+                        fontWeight: 700,
+                        cursor: 'pointer',
+                        whiteSpace: 'nowrap'
+                      }}
+                    >
+                      + Add Image
+                    </button>
                   </div>
                 </div>
 

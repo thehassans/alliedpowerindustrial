@@ -609,27 +609,54 @@ export default function ProductDetailPage({
               </div>
             )}
 
-            {/* Complete Technical Description */}
+            {/* Primary Technical Description & Specifications */}
             <div style={{ marginBottom: '24px' }}>
               <h2 style={{ fontSize: '15px', fontWeight: 800, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px' }}>
                 Technical Description &amp; Specifications
               </h2>
-              <p
+              <div
                 itemProp="description"
                 style={{
                   fontSize: '14.5px',
                   color: '#334155',
                   lineHeight: '24px',
                   backgroundColor: '#f8fafc',
-                  padding: '16px 18px',
+                  padding: '18px 20px',
                   borderRadius: '12px',
                   border: '1px solid #e2e8f0',
                   margin: 0,
+                  whiteSpace: 'pre-line',
                 }}
               >
-                {product.fullDescription || product.description || product.name}
-              </p>
+                {product.description || product.fullDescription || product.name}
+              </div>
             </div>
+
+            {/* Extended Technical Datasheet (shown if user added extended text distinct from technical summary) */}
+            {product.fullDescription &&
+              product.fullDescription.trim() !== (product.description || '').trim() &&
+              product.fullDescription.trim() !== 'Supplied with genuine Mill Test Certificates (MTC), Certificate of Origin, and technical datasheet.' &&
+              product.fullDescription.trim() !== 'Full technical specifications available upon quotation.' && (
+                <div style={{ marginBottom: '24px' }}>
+                  <h2 style={{ fontSize: '15px', fontWeight: 800, color: '#0f172a', textTransform: 'uppercase', letterSpacing: '0.5px', marginBottom: '10px' }}>
+                    Extended Technical Datasheet &amp; Details
+                  </h2>
+                  <div
+                    style={{
+                      fontSize: '14px',
+                      color: '#334155',
+                      lineHeight: '24px',
+                      backgroundColor: '#ffffff',
+                      padding: '18px 20px',
+                      borderRadius: '12px',
+                      border: '1px solid #cbd5e1',
+                      whiteSpace: 'pre-line',
+                    }}
+                  >
+                    {product.fullDescription}
+                  </div>
+                </div>
+              )}
 
             {/* Key Engineering Features */}
             {product.features && product.features.length > 0 && (

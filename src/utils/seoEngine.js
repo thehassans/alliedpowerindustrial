@@ -50,7 +50,7 @@ export function buildProductSeoData(product) {
   const sku = product.sku || `API-${product.id}`;
   const category = product.category || 'Industrial Electrical Supplies';
   const price = Number(product.price || 0).toFixed(2);
-  const cleanDesc = (product.fullDescription || product.description || product.name || '')
+  const cleanDesc = (product.description || product.fullDescription || product.name || '')
     .replace(/\s+/g, ' ')
     .trim();
 

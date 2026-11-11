@@ -65,7 +65,7 @@ function injectSeoIntoHtml(baseHtml, seoData) {
   return withoutTitle.replace('</head>', `${headBlock}\n  </head>`);
 }
 
-function run() {
+async function run() {
   const indexHtmlPath = path.join(distDir, 'index.html');
   if (!fs.existsSync(indexHtmlPath)) {
     console.error('dist/index.html not found. Run vite build first.');
@@ -74,12 +74,42 @@ function run() {
 
   const baseHtml = fs.readFileSync(indexHtmlPath, 'utf-8');
 
+  // Try to load any custom products added from Admin Panel
+  let allProducts = [...ALLIED_PRODUCTS];
+  try {
+    const res = await fetch('https://alliedpowerindustrial.com/api.php?action=sync', { signal: AbortSignal.timeout(4000) });
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data.products) && data.products.length > 0) {
+        const seenSlugs = new Set();
+        const merged = [];
+        for (const p of data.products) {
+          const s = getProductSlug(p);
+          if (s && !seenSlugs.has(s)) {
+            seenSlugs.add(s);
+            merged.push(p);
+          }
+        }
+        for (const p of ALLIED_PRODUCTS) {
+          const s = getProductSlug(p);
+          if (s && !seenSlugs.has(s)) {
+            seenSlugs.add(s);
+            merged.push(p);
+          }
+        }
+        allProducts = merged;
+      }
+    }
+  } catch {
+    // Fallback to local ALLIED_PRODUCTS
+  }
+
   // 1. Update root dist/index.html with complete Home SEO metadata
   const homeSeo = buildHomeSeoData();
   fs.writeFileSync(indexHtmlPath, injectSeoIntoHtml(baseHtml, homeSeo), 'utf-8');
 
   // 2. Generate dist/products/index.html for the dedicated /products catalog page
-  const catalogSeo = buildCatalogSeoData({ totalCount: ALLIED_PRODUCTS.length });
+  const catalogSeo = buildCatalogSeoData({ totalCount: allProducts.length });
   const productsDir = path.join(distDir, 'products');
   fs.mkdirSync(productsDir, { recursive: true });
   fs.writeFileSync(
@@ -107,7 +137,7 @@ function run() {
     lastmod: today,
   });
 
-  for (const product of ALLIED_PRODUCTS) {
+  for (const product of allProducts) {
     const slug = getProductSlug(product);
     if (!slug) continue;
 
